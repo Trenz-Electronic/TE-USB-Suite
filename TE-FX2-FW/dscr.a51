@@ -24,7 +24,7 @@ DSCR   SEGMENT   CODE PAGE
 ;;-----------------------------------------------------------------------------
 ;; Global Variables
 ;;-----------------------------------------------------------------------------
-      rseg DSCR                 ;; locate the descriptor table in on-part memory.
+      rseg DSCR               	;; locate the descriptor table in on-part memory.
 
 DeviceDscr:   
       db   DSCR_DEVICE_LEN      ;; Descriptor length
@@ -34,12 +34,12 @@ DeviceDscr:
       db   00H                  ;; Device sub-class
       db   00H                  ;; Device sub-sub-class
       db   64                   ;; Maximum packet size
-	  dw   0D00BH				;; Vendor ID (Byte swap) (Trenz Electronic)
-      dw   0003H                ;; Product ID (Sample Device) 0300
+      dw   0D00BH               ;; Vendor ID (Trenz Electronic = 0x0bd0 * 0x0bd0 + byte swap = 0xD00B) note: hex must start with a digit
+      dw   00003H               ;; Product ID (0x0300 + byte swap = 0x0003)
       dw   0000H                ;; Product version ID
       db   1                    ;; Manufacturer string index
       db   2                    ;; Product string index
-      db   3                    ;; Serial number string index
+      db   0                    ;; Serial number string index
       db   1                    ;; Number of configurations
 
 DeviceQualDscr:
@@ -80,8 +80,8 @@ HighSpeedConfigDscr:
       db   DSCR_ENDPNT          ;; Descriptor type
       db   01H                  ;; Endpoint number, and direction
       db   ET_BULK              ;; Endpoint type
-      db   40H                  ;; Maximum packet size (LSB)
-      db   00H                  ;; Maximum packet size (MSB)
+      db   00H                  ;; Maximum packet size (LSB)
+      db   02H                  ;; Maximum packet size (MSB)
       db   00H                  ;; Polling interval
 
 ;; Endpoint Descriptor	EP1 in
@@ -89,8 +89,8 @@ HighSpeedConfigDscr:
       db   DSCR_ENDPNT          ;; Descriptor type
       db   81H                  ;; Endpoint number, and direction
       db   ET_BULK              ;; Endpoint type
-      db   40H                  ;; Maximum packet size (LSB)
-      db   00H                  ;; Maximum packet size (MSB)
+      db   00H                  ;; Maximum packet size (LSB)
+      db   02H                  ;; Maximum packet size (MSB)
       db   00H                  ;; Polling interval
 
       
@@ -111,6 +111,7 @@ HighSpeedConfigDscr:
       db   00H                  ;; Maximum packet size (LSB)
       db   02H                  ;; Maximum packet size (MSB)
       db   00H                  ;; Polling interval
+
 
 ;; Endpoint Descriptor	EP4 in
       db   DSCR_ENDPNT_LEN      ;; Descriptor length
@@ -265,4 +266,3 @@ StringSerialEnd:
 UserDscr:      
       dw   0000H
       end
-      
