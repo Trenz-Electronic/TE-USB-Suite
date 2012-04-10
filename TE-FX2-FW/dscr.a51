@@ -34,8 +34,8 @@ DeviceDscr:
       db   00H                  ;; Device sub-class
       db   00H                  ;; Device sub-sub-class
       db   64                   ;; Maximum packet size
-      dw   0D00BH               ;; Vendor ID (Trenz Electronic = 0x0bd0 * 0x0bd0 + byte swap = 0xD00B) note: hex must start with a digit
-      dw   00003H               ;; Product ID (0x0300 + byte swap = 0x0003)
+      dw   0D00BH               ;; Vendor ID (Trenz Electronic = 0x0bd0 | byte_swap(0x0bd0) = 0xD00B) note: hex must start with a digit
+      dw   00003H               ;; Product ID (TE USB FX2 = 0x0300 | byte_swap(0x0300) = 0x0003)
       dw   0000H                ;; Product version ID
       db   1                    ;; Manufacturer string index
       db   2                    ;; Product string index
@@ -246,13 +246,13 @@ StringDscr2:
       db   'T',00
       db   'E',00
       db   ' ',00
-      db   'F',00
-      db   'X',00
-      db   '2',00
-      db   ' ',00
       db   'U',00
       db   'S',00
       db   'B',00
+      db   ' ',00
+      db   'F',00
+      db   'X',00
+      db   '2',00
 StringDscr2End:
 
 StringSerial:   
