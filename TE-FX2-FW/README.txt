@@ -17,6 +17,8 @@ project options should be changed.
 == Tools ==
 * Compiler: Keil uVision V4.22
 * Output file generator: C:\Cypress\USB\bin\Hex2bix.exe
+ please read Cypress AN45197 "Using the Hex2bix Conversion Utility"
+ http://www.cypress.com/?rID=17627
 
 == License ==
 Firmware source distributed under MIT license. See license_mit.txt
