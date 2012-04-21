@@ -15,7 +15,7 @@ Package should be installed to default folder (C:\Cypress\USB), otherwise
 project options should be changed.
 
 == Tools ==
-* Compiler: Keil uVision V4.22
+* Compiler: Keil uVision V4.24
 * Output file generator: C:\Cypress\USB\bin\Hex2bix.exe
  please read Cypress AN45197 "Using the Hex2bix Conversion Utility"
  http://www.cypress.com/?rID=17627

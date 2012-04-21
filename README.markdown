@@ -16,5 +16,5 @@ Linux version of FirmWare Upgrade Tool. Based on libusb.
 ## Open_FWUT
 Python version of FirmWare Upgrade Tool. Based on Windows API (TE0300DLL.dll).
 
-## TE-FX2-FW
+## TE-USB-FX2 to TE_USB_FX2.firmware
 Firmware sources for Cypress EZ-USB FX2 microcontoller.

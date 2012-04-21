@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>FX2_te_usb</OutputName>
+          <OutputName>TE_USB_FX2</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -73,8 +73,8 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.bin FX2_te_usb.hex</UserProg1Name>
-            <UserProg2Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.iic FX2_te_usb.hex</UserProg2Name>
+            <UserProg1Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.bin TE_USB_FX2.hex</UserProg1Name>
+            <UserProg2Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.iic TE_USB_FX2.hex</UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>
