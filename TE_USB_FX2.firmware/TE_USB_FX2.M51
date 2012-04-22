@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22                                                        04/21/2012  17:37:04  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22                                                        04/22/2012  17:36:19  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
@@ -59,7 +59,7 @@ LINK MAP OF MODULE:  TE_USB_FX2 (DSCR)
 
             * * * * * * *  X D A T A   M E M O R Y  * * * * * * *
                     0000H     2000H                  *** GAP ***
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 2
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 2
 
 
             XDATA   2000H     0012H     UNIT         ?XD?EP1POOL
@@ -119,7 +119,7 @@ LINK MAP OF MODULE:  TE_USB_FX2 (DSCR)
             XDATA   E634H     0001H     ABSOLUTE     
             XDATA   E635H     0001H     ABSOLUTE     
             XDATA   E636H     0001H     ABSOLUTE     
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 3
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 3
 
 
             XDATA   E637H     0001H     ABSOLUTE     
@@ -179,7 +179,7 @@ LINK MAP OF MODULE:  TE_USB_FX2 (DSCR)
             XDATA   E686H     0001H     ABSOLUTE     
             XDATA   E687H     0001H     ABSOLUTE     
                     E688H     0002H                  *** GAP ***
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 4
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 4
 
 
             XDATA   E68AH     0001H     ABSOLUTE     
@@ -239,7 +239,7 @@ LINK MAP OF MODULE:  TE_USB_FX2 (DSCR)
             XDATA   E6CCH     0001H     ABSOLUTE     
             XDATA   E6CDH     0001H     ABSOLUTE     
             XDATA   E6CEH     0001H     ABSOLUTE     
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 5
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 5
 
 
             XDATA   E6CFH     0001H     ABSOLUTE     
@@ -299,7 +299,7 @@ LINK MAP OF MODULE:  TE_USB_FX2 (DSCR)
             CODE    07FFH     0001H     INBLOCK      ?PR?ISR_EP0ACK?ISR
             CODE    0800H     025AH     INBLOCK      ?PR?MAIN?FW
             CODE    0A5AH     0154H     UNIT         ?C?LIB_CODE
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 6
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 6
 
 
             CODE    0BAEH     013EH     INBLOCK      ?PR?FIFO_INIT?EP1POOL
@@ -359,7 +359,7 @@ LINK MAP OF MODULE:  TE_USB_FX2 (DSCR)
             CODE    1680H     0001H     INBLOCK      ?PR?ISR_EP6INOUT?ISR
             CODE    1681H     0001H     INBLOCK      ?PR?ISR_EP8INOUT?ISR
             CODE    1682H     0001H     INBLOCK      ?PR?ISR_IBN?ISR
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 7
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 7
 
 
             CODE    1683H     0001H     INBLOCK      ?PR?ISR_EP0PINGNAK?ISR
@@ -419,7 +419,7 @@ SEGMENT                                      BIT_GROUP          DATA_GROUP
 
 ?PR?_EEPROMREAD?EEPROM                    -----    -----      0066H    0002H
   +--> ?PR?_EESENDDATA?EEPROM
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 8
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 8
 
 
   +--> ?PR?EEREADDATA?EEPROM
@@ -479,7 +479,7 @@ SEGMENT                                      BIT_GROUP          DATA_GROUP
 ?PR?_I2CREAD?I2C                          -----    -----      0066H    0005H
   +--> ?PR?_EESENDDATA?EEPROM
   +--> ?PR?EEREADDATA?EEPROM
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 9
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 9
 
 
 
@@ -539,7 +539,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   N:0001H         SYMBOL        ET_ISO
   C:0D94H         SYMBOL        FULLSPEEDCONFIGDSCREND
   C:0D58H         SYMBOL        HIGHSPEEDCONFIGDSCREND
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 10
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 10
 
 
   C:0D94H         SYMBOL        STRINGDSCR0
@@ -599,7 +599,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:081AH         LINE#         112
   C:081DH         LINE#         120
   C:0825H         LINE#         121
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 11
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 11
 
 
   C:082BH         LINE#         122
@@ -659,7 +659,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:0A10H         LINE#         202
   C:0A17H         LINE#         203
   C:0A1DH         LINE#         206
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 12
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 12
 
 
   C:0A1DH         LINE#         207
@@ -719,7 +719,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:054FH         LINE#         275
   C:054FH         LINE#         276
   C:0556H         LINE#         277
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 13
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 13
 
 
   C:0558H         LINE#         278
@@ -779,7 +779,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:0649H         LINE#         333
   C:0657H         LINE#         334
   C:0657H         LINE#         335
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 14
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 14
 
 
   C:0657H         LINE#         336
@@ -839,7 +839,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         MODULE        I2C
   C:0000H         SYMBOL        _ICE_DUMMY_
   C:1139H         PUBLIC        _I2CRead
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 15
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 15
 
 
   C:129CH         PUBLIC        _I2CWrite
@@ -899,7 +899,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:0007H         SYMBOL        addr
   D:005DH         SYMBOL        length
   D:005EH         SYMBOL        buf
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 16
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 16
 
 
   -------         DO            
@@ -959,7 +959,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:1288H         LINE#         43
   C:1288H         LINE#         44
   C:128FH         LINE#         45
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 17
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 17
 
 
   C:1294H         LINE#         46
@@ -1019,7 +1019,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:0000H         SYMBOL        _ICE_DUMMY_
   C:13A9H         PUBLIC        _sector_erase
   B:00B0H.0       PUBLIC        FPGA_POWER_ON
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 18
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 18
 
 
   B:00B0H.6       PUBLIC        SPI_D
@@ -1079,7 +1079,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:15B4H         LINE#         64
   C:15B7H         LINE#         65
   C:15B7H         LINE#         66
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 19
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 19
 
 
   -------         ENDPROC       GETCSPI
@@ -1139,7 +1139,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:0007H         SYMBOL        rd_buff
   D:006EH         SYMBOL        pr_count
   D:0070H         SYMBOL        pr_address
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 20
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 20
 
 
   -------         ENDDO         
@@ -1199,7 +1199,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         PROC          BULK_ERASE
   C:1549H         LINE#         180
   C:1549H         LINE#         181
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 21
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 21
 
 
   C:154CH         LINE#         182
@@ -1259,7 +1259,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:11CCH         LINE#         235
   C:11CFH         LINE#         236
   C:11D6H         LINE#         237
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 22
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 22
 
 
   C:11DDH         LINE#         238
@@ -1319,7 +1319,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:1682H         PUBLIC        ISR_Ibn
   C:167EH         PUBLIC        ISR_Ep2inout
   C:167FH         PUBLIC        ISR_Ep4inout
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 23
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 23
 
 
   C:1680H         PUBLIC        ISR_Ep6inout
@@ -1379,7 +1379,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:1365H         LINE#         88
   -------         ENDPROC       ISR_HIGHSPEED
   -------         PROC          ISR_EP0ACK
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 24
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 24
 
 
   C:07FFH         LINE#         89
@@ -1439,7 +1439,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         ENDPROC       ISR_EP2PINGNAK
   -------         PROC          ISR_EP4PINGNAK
   C:1686H         LINE#         131
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 25
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 25
 
 
   C:1686H         LINE#         133
@@ -1499,7 +1499,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         PROC          ISR_EP6EFLAG
   C:1694H         LINE#         173
   C:1694H         LINE#         175
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 26
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 26
 
 
   -------         ENDPROC       ISR_EP6EFLAG
@@ -1559,7 +1559,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:0CFEH         LINE#         39
   C:0CFFH         LINE#         40
   -------         ENDPROC       DR_GETDESCRIPTOR
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 27
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 27
 
 
   -------         PROC          DR_SETCONFIGURATION
@@ -1619,7 +1619,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         ENDPROC       DR_GETSTATUS
   -------         PROC          DR_CLEARFEATURE
   C:166FH         LINE#         94
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 28
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 28
 
 
   C:166FH         LINE#         95
@@ -1679,7 +1679,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:005DH         SYMBOL        DATA_RETURN_CNT
   B:0020H.6       SYMBOL        new_data
   D:005EH         SYMBOL        adr
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 29
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 29
 
 
   D:0060H         SYMBOL        delaycnt
@@ -1739,7 +1739,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:01A3H         LINE#         170
   C:01A5H         LINE#         171
   C:01A5H         LINE#         174
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 30
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 30
 
 
   C:01A8H         LINE#         175
@@ -1799,7 +1799,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:030EH         LINE#         244
   C:0317H         LINE#         245
   C:0324H         LINE#         246
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 31
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 31
 
 
   C:0332H         LINE#         247
@@ -1859,7 +1859,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:0448H         LINE#         303
   C:044EH         LINE#         304
   C:0450H         LINE#         305
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 32
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 32
 
 
   C:0452H         LINE#         306
@@ -1919,7 +1919,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:0C16H         LINE#         371
   C:0C1BH         LINE#         374
   C:0C1FH         LINE#         375
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 33
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 33
 
 
   C:0C23H         LINE#         376
@@ -1979,7 +1979,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         MODULE        DISCON
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0091H         PUBLIC        EXIF
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 34
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 34
 
 
   C:1418H         PUBLIC        EZUSB_Discon
@@ -2039,7 +2039,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   X:E780H         PUBLIC        EP1OUTBUF
   X:E67BH         PUBLIC        XAUTODAT1
   X:E615H         PUBLIC        EP8CFG
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 35
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 35
 
 
   X:E6A9H         PUBLIC        EP6FIFOFLGS
@@ -2099,7 +2099,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   X:E6B0H         PUBLIC        EP6FIFOBCL
   X:E620H         PUBLIC        EP2AUTOINLENH
   X:E61BH         PUBLIC        EP8FIFOCFG
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 36
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 36
 
 
   X:E6B2H         PUBLIC        EP8FIFOBCL
@@ -2159,7 +2159,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   X:E672H         PUBLIC        PORTECFG
   X:E653H         PUBLIC        EP4FIFOIRQ
   X:E6C1H         PUBLIC        GPIFIDLECS
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 37
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 37
 
 
   X:E6A3H         PUBLIC        EP2CS
@@ -2219,7 +2219,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   -------         ENDPROC       _EZUSB_GETSTRINGDSCR
   -------         ENDMOD        GET_STRD
 
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 38
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 38
 
 
   -------         MODULE        DELAY1MS
@@ -2279,7 +2279,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:00BAH         SYMBOL        EP01STAT
   X:E68AH         SYMBOL        EP0BCH
   X:E68BH         SYMBOL        EP0BCL
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 39
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 39
 
 
   X:E740H         SYMBOL        EP0BUF
@@ -2339,7 +2339,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:00ACH         SYMBOL        EP68FIFOFLGS
   X:E624H         SYMBOL        EP6AUTOINLENH
   X:E625H         SYMBOL        EP6AUTOINLENL
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 40
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 40
 
 
   X:E698H         SYMBOL        EP6BCH
@@ -2399,7 +2399,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   B:00C8H.6       SYMBOL        EXF2
   D:0091H         SYMBOL        EXIF
   X:E67BH         SYMBOL        EXTAUTODAT1
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 41
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 41
 
 
   X:E67CH         SYMBOL        EXTAUTODAT2
@@ -2459,7 +2459,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:00B0H         SYMBOL        IOD
   D:00B1H         SYMBOL        IOE
   D:00B8H         SYMBOL        IP
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 42
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 42
 
 
   B:0088H.0       SYMBOL        IT0
@@ -2519,7 +2519,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   B:00B8H.4       SYMBOL        PS0
   B:00B8H.6       SYMBOL        PS1
   D:00D0H         SYMBOL        PSW
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 43
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 43
 
 
   B:00B8H.1       SYMBOL        PT0
@@ -2579,7 +2579,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:00CCH         SYMBOL        TL2
   D:0089H         SYMBOL        TMOD
   X:E683H         SYMBOL        TOGCTL
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 44
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 44
 
 
   B:0088H.4       SYMBOL        TR0
@@ -2639,7 +2639,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   X:E6FDH         SYMBOL        CT3
   X:E6FEH         SYMBOL        CT4
   B:00D0H.7       SYMBOL        CY
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 45
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 45
 
 
   B:00C8H.1       SYMBOL        C_T2
@@ -2699,7 +2699,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   X:E630H         SYMBOL        EP2FIFOPFH
   X:E631H         SYMBOL        EP2FIFOPFL
   X:E6D2H         SYMBOL        EP2GPIFFLGSEL
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 46
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 46
 
 
   X:E6D3H         SYMBOL        EP2GPIFPFSTOP
@@ -2759,7 +2759,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   X:E6B1H         SYMBOL        EP8FIFOBCH
   X:E6B2H         SYMBOL        EP8FIFOBCL
   X:FC00H         SYMBOL        EP8FIFOBUF
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 47
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 47
 
 
   X:E61BH         SYMBOL        EP8FIFOCFG
@@ -2819,7 +2819,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   D:00BDH         SYMBOL        GPIFSGLDATH
   D:00BFH         SYMBOL        GPIFSGLDATLNOX
   D:00BEH         SYMBOL        GPIFSGLDATLX
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 48
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 48
 
 
   X:E6D1H         SYMBOL        GPIFTCB0
@@ -2879,7 +2879,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   B:0090H.3       SYMBOL        PB3
   B:0090H.4       SYMBOL        PB4
   B:0090H.5       SYMBOL        PB5
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 49
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 49
 
 
   B:0090H.6       SYMBOL        PB6
@@ -2939,7 +2939,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   B:0098H.7       SYMBOL        SM0
   B:00C0H.7       SYMBOL        SM01
   B:0098H.6       SYMBOL        SM1
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 50
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 50
 
 
   B:00C0H.6       SYMBOL        SM11
@@ -2999,7 +2999,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:158BH         LINE#         30
   C:158EH         LINE#         32
   C:158FH         LINE#         33
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 51
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 51
 
 
   C:1590H         LINE#         34
@@ -3059,7 +3059,7 @@ SYMBOL TABLE OF MODULE:  TE_USB_FX2 (DSCR)
   C:105CH         LINE#         107
   C:1060H         LINE#         109
   C:1064H         LINE#         111
-BL51 BANKED LINKER/LOCATER V6.22                                                      04/21/2012  17:37:04  PAGE 52
+BL51 BANKED LINKER/LOCATER V6.22                                                      04/22/2012  17:36:19  PAGE 52
 
 
   C:1068H         LINE#         113

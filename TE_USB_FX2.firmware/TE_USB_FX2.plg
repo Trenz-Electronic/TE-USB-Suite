@@ -4,7 +4,7 @@
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
 G:\Git\TE-USB-Suite\TE_USB_FX2.firmware\TE_USB_FX2.uvproj
-Project File Date:  04/21/2012
+Project File Date:  04/22/2012
 
 <h2>Output:</h2>
 Rebuild target 'Target 1'
@@ -20,13 +20,7 @@ compiling ep1pool.c...
 linking...
 Program Size: data=109.7 xdata=4491 code=5669
 creating hex file from "TE_USB_FX2"...
-User command #1: c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.bin TE_USB_FX2.hex
-Intel Hex file to EZ-USB Binary file conversion utility
-Copyright (c) 1997-2005, Cypress Semiconductor Inc.
-5718 Bytes written.
-Total Code Bytes = 5669
-Conversion completed successfully.
-User command #2: c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.iic TE_USB_FX2.hex
+User command #1: c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o TE_USB_FX2.iic TE_USB_FX2.hex
 Intel Hex file to EZ-USB Binary file conversion utility
 Copyright (c) 1997-2005, Cypress Semiconductor Inc.
 5718 Bytes written.

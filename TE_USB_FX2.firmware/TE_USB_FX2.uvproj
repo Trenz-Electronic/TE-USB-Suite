@@ -72,9 +72,9 @@
           </BeforeMake>
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
-            <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.bin TE_USB_FX2.hex</UserProg1Name>
-            <UserProg2Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb.iic TE_USB_FX2.hex</UserProg2Name>
+            <RunUserProg2>0</RunUserProg2>
+            <UserProg1Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o TE_USB_FX2.iic TE_USB_FX2.hex</UserProg1Name>
+            <UserProg2Name></UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>

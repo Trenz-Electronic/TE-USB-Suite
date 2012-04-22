@@ -16,7 +16,7 @@ project options should be changed.
 
 == Tools ==
 * Compiler: Keil uVision V4.24
-* Output file generator: C:\Cypress\USB\bin\Hex2bix.exe
+* Output file generator: C:\Cypress\USB\bin\Hex2bix.exe (Intel Hex file to EZ-USB Binary file conversion utility)
  please read Cypress AN45197 "Using the Hex2bix Conversion Utility"
  http://www.cypress.com/?rID=17627
  Hex2bix is a program used to convert a .hex file to a raw binary, A51, or IIC format. This application note describes how to use the Hex2bix conversion utility for successful file conversion.
