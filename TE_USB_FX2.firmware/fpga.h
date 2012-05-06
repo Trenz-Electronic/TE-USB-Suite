@@ -25,6 +25,7 @@ IN THE SOFTWARE.
 #include "fx2regs.h"
 //-----------------------------------------------------------------------------
 // Controller pins to FPGA
+sbit    FPGA_INIT       = IOD ^ 3;  //PD3
 sbit	FPGA_DONE       = IOD ^ 2;	//PD2
 sbit	FPGA_PRG        = IOD ^ 1;	//PD1
 sbit 	FPGA_POWER_ON   = IOD ^ 0;	//PD0

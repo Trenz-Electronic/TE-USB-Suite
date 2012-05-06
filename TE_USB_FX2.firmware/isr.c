@@ -195,8 +195,8 @@ void ISR_GpifWaveform(void) interrupt 0
 {
 }
 // Wake-up interrupt handler
-void resume_isr(void) interrupt WKUP_VECT
+/*void resume_isr(void) interrupt WKUP_VECT
 {
    EZUSB_CLEAR_RSMIRQ();
 }
-
+*/

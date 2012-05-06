@@ -180,7 +180,7 @@ void main(void)
 
     // clear the Sleep flag.
     Sleep = FALSE;
-    // booting = 0;
+
 	FPGA_POWER_ON = 1;
 
 	//SerialNumber
@@ -377,4 +377,9 @@ void SetupCommand(void)
    }
    // Acknowledge handshake phase of device request
    EP0CS |= bmHSNAK;
+}
+// Wake-up interrupt handler
+void resume_isr(void) interrupt WKUP_VECT
+{
+   EZUSB_CLEAR_RSMIRQ();
 }
