@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TE_USB_FX2_CyAPI_SampleApplication", "TE_USB_FX2_CyAPI_SampleApplication\TE_USB_FX2_CyAPI_SampleApplication.vcxproj", "{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Debug|x64 = Debug|x64
+		Release|Win32 = Release|Win32
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Debug|Win32.Build.0 = Debug|Win32
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Debug|x64.ActiveCfg = Debug|x64
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Debug|x64.Build.0 = Debug|x64
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Release|Win32.ActiveCfg = Release|Win32
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Release|Win32.Build.0 = Release|Win32
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Release|x64.ActiveCfg = Release|x64
+		{9539FBA4-2D9B-431D-B890-1D577F2FB2AF}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

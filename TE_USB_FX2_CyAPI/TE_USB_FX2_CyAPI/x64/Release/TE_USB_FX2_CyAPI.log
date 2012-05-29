@@ -1,0 +1,30 @@
+﻿Compilazione avviata 29/05/2012 22:21:39.
+     1>Progetto "C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI.vcxproj" sul nodo 2 (destinazioni: build).
+     1>InitializeBuildStatus:
+         Creazione di "x64\Release\TE_USB_FX2_CyAPI.unsuccessfulbuild". È stato specificato "AlwaysCreate".
+       ClCompile:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TE0300_DLLCPPNOTCLR_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"x64\Release\TE_USB_FX2_CyAPI.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TE0300_DLLCPPNOTCLR_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TE0300_DLLCPPNOTCLR_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"x64\Release\TE_USB_FX2_CyAPI.pch" /Fo"x64\Release\\" /Fd"x64\Release\vc100.pdb" /Gd /TP /errorReport:prompt TE_USB_FX2_CyAPI.cpp
+         TE_USB_FX2_CyAPI.cpp
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.dll" /INCREMENTAL:NO /NOLOGO /LIBPATH:"C:\Cypress\Cypress Suite USB 3.4.7\CyAPI\inc" setupapi.lib CyApi.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt.lib /MANIFEST /ManifestFile:"x64\Release\TE_USB_FX2_CyAPI.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.lib" /MACHINE:X64 /DLL x64\Release\dllmain.obj
+         x64\Release\stdafx.obj
+         x64\Release\TE_USB_FX2_CyAPI.obj
+         CyAPI.lib
+            Creazione della libreria C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.lib e dell'oggetto C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.exp in corso...
+         Generazione codice in corso...
+         Generazione codice terminata
+         TE_USB_FX2_CyAPI.vcxproj -> C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\x64\Release\TE_USB_FX2_CyAPI.dll;#2" /manifest x64\Release\TE_USB_FX2_CyAPI.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Eliminazione del file "x64\Release\TE_USB_FX2_CyAPI.unsuccessfulbuild" in corso.
+         Aggiornamento timestamp di "x64\Release\TE_USB_FX2_CyAPI.lastbuildstate".
+     1>Compilazione progetto "C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\prova3\prova\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI.vcxproj" (destinazioni: build) completata.
+
+Compilazione completata.
+
+Tempo trascorso 00:00:02.36

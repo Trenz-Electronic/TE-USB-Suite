@@ -1,0 +1,15 @@
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_SampleApplication.exe
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_SampleApplication.pdb
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\CyUSB.dll
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2.dll
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\ResolveAssemblyReference.cache
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\TE_USB_FX2_SampleApplication.exe
+c:\users\sergiopavesia\documents\visual studio 2010\Projects\TE_USB_FX2_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\TE_USB_FX2_SampleApplication.pdb
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\TE_USB_FX2_SampleApplication.exe
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\TE_USB_FX2_SampleApplication.pdb
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_SampleApplication.exe
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_SampleApplication.pdb
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\CyUSB.dll
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_CyUSB.dll
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_CyUSB.pdb
+C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\ResolveAssemblyReference.cache
