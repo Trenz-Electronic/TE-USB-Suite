@@ -72,7 +72,6 @@ void EEPROMRead(WORD addr, BYTE length, BYTE xdata *buf)
     EEsendData(MSB(addr));		// send message to EEPROM
     EEsendData(LSB(addr));
 
-    // in zacnem branje
     I2CS |= bmSTART;		    // set start bit
     EEsendData(0xA3);		    // send I2C address
 

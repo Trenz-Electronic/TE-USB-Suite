@@ -29,8 +29,8 @@ void read_version(BYTE xdata *buf);
 
 #define sVERSION_adr 0x1fe0
 
-#define fx2_ver_maj_ 	2
-#define fx2_ver_min_	2
+#define fx2_ver_maj_ 	3
+#define fx2_ver_min_	0
 
 #define fx2_tip_maj_ 	1
 #define fx2_tip_min_	1

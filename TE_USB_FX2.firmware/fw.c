@@ -26,6 +26,7 @@ IN THE SOFTWARE.
 #include <stdio.h>
 #include "fpga.h"
 #include "eeprom.h"
+#include "spi.h"
 #include "dr.h"
 //-----------------------------------------------------------------------------
 // Constants
@@ -98,6 +99,8 @@ void main(void)
     DWORD  j=0;
     WORD   IntDescrAddr;
     WORD   ExtDescrAddr;
+
+    FPGA_PRG = 0;   // Disable FPGA boot
 
     // Initialize Global States
     Sleep = FALSE;              // Disable sleep mode
@@ -180,8 +183,9 @@ void main(void)
 
     // clear the Sleep flag.
     Sleep = FALSE;
-    // booting = 0;
-	FPGA_POWER_ON = 1;
+
+	FPGA_POWER_ON = 1;  // Power ON FPGA
+
 
 	//SerialNumber
 	sSerNum[0] = 18;	// SizeOf array
@@ -198,6 +202,11 @@ void main(void)
 	sSerNum[4]  = sSerNum[3]; sSerNum[5] = 0;
 							  sSerNum[3] = 0;
 
+    SPI_CS = 1; SYNCDELAY;
+    SPI_CS = 0; SYNCDELAY;
+    SPI_CS = 1; SYNCDELAY;
+    IOD = 0xFF;
+    FPGA_PRG = 1;       // Enable FPGA boot
 	// Need to clear EP1 buffer
 	if( !( EP1OUTCS & 0x02) ) 
 		EP1OUTBC = 0x40;	
@@ -377,4 +386,9 @@ void SetupCommand(void)
    }
    // Acknowledge handshake phase of device request
    EP0CS |= bmHSNAK;
+}
+// Wake-up interrupt handler
+void resume_isr(void) interrupt WKUP_VECT
+{
+   EZUSB_CLEAR_RSMIRQ();
 }
