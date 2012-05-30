@@ -1,7 +1,7 @@
 ﻿# Trenz Electronic USB Suite
 This repository contains projects and files related to TE USB equipped modules.
 
-## TE0300_API_Example and TE0320_API_Example
+## archive/TE0300_API_Example and archive/TE0320_API_Example
 Example programs (C language) which show API usage. 
 This program privide functions:
 

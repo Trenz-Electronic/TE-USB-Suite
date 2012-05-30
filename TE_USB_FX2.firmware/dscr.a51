@@ -35,11 +35,11 @@ DeviceDscr:
       db   00H                  ;; Device sub-sub-class
       db   64                   ;; Maximum packet size
 
-      dw   0D00BH               ;; Vendor ID byte_swap(Trenz Electronic = 0x0BD0)
-      dw   00003H               ;; Product ID byte_swap(TE USB FX2 = 0x0300)
+;;      dw   0D00BH               ;; Vendor ID byte_swap(Trenz Electronic = 0x0BD0)
+;;      dw   00003H               ;; Product ID byte_swap(TE USB FX2 = 0x0300)
 
-;;      dw   04705H               ;; Vendor ID byte_swap(DEWESoft = 0x0547)
-;;      dw   0210H                ;; Product ID byte_swap(Sample Device = 0x1002)
+      dw   04705H               ;; Vendor ID byte_swap(DEWESoft = 0x0547)
+      dw   0210H                ;; Product ID byte_swap(Sample Device = 0x1002)
 
       dw   0000H                ;; Product version ID
       db   1                    ;; Manufacturer string index
