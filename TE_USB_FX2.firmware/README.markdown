@@ -23,3 +23,19 @@ project options should be changed.
 
 ## License
 Firmware source distributed under MIT license. See license_mit.txt
+
+## Binary Firmware Files
+
+### TE_USB_FX2-v03.00.iic
+Trenz Electronic FX2 USB microcontroller firmware file:
+* VID/PID: 0x0BD0/0x0300
+* device driver: Trenz Electronic (Cypress Semiconductor derivative)
+* firmware version: 3.0
+* file format: I2C (Inter-Integrated-Circuit EEPROM)
+
+### TE_USB_FX2-v03.00.DW.iic
+Trenz Electronic FX2 USB microcontroller firmware file (<strong>not recommended for new designs</strong>):
+* VID/PID: 0x0547/0x1002
+* device driver source: DEWESoft
+* firmware version: 3.0
+* file format: I2C (Inter-Integrated-Circuit EEPROM)
