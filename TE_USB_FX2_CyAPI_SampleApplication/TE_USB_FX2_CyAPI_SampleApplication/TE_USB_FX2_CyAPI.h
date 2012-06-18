@@ -7,7 +7,8 @@
 
 #pragma once
 
-#include <WinDef.h>
+//#include <WinDef.h> NO, it fails at 32 bit
+#include <windows.h>
 
 #include "CyAPI.h"
 

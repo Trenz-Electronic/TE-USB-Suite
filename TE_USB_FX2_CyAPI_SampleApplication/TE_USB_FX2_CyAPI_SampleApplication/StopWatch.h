@@ -1,6 +1,6 @@
 #pragma once
 
-#include <Winbase.h>
+#include <windows.h>
 
 /// Takes the time
 class CStopWatch

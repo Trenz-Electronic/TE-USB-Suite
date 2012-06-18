@@ -1,14 +1,9 @@
-// stdafx.h : file di inclusione per file di inclusione di sistema standard
-// o file di inclusione specifici del progetto utilizzati di frequente, ma
-// modificati raramente
-//
-
 #pragma once
 
 #include "targetver.h"
 
-#define WIN32_LEAN_AND_MEAN             // Escludere gli elementi utilizzati di rado dalle intestazioni di Windows
-// File di intestazione di Windows:
+#define WIN32_LEAN_AND_MEAN             
+
 #include <windows.h>
 
 #include <wtypes.h>
@@ -35,5 +30,3 @@ enum ST_Status
   ST_ERROR = 1
 };
 
-
-// TODO: fare riferimento qui alle intestazioni aggiuntive richieste dal programma

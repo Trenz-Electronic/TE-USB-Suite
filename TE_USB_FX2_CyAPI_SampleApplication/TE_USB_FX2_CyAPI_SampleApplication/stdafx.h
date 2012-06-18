@@ -1,7 +1,5 @@
-// stdafx.h : file di inclusione per file di inclusione di sistema standard
-// o file di inclusione specifici del progetto utilizzati di frequente, ma
-// modificati raramente
-//
+// stdafx.h : include file for standard system include files or 
+//include files specific of the project used frequently but changed rarely 
 
 #pragma once
 
@@ -10,6 +8,3 @@
 #include <stdio.h>
 #include <tchar.h>
 
-
-
-// TODO: fare riferimento qui alle intestazioni aggiuntive richieste dal programma
