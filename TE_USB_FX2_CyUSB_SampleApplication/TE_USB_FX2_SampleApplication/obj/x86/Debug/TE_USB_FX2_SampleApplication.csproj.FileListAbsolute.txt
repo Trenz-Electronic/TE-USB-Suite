@@ -1,8 +1,0 @@
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Debug\TE_USB_FX2_SampleApplication.exe
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Debug\TE_USB_FX2_SampleApplication.pdb
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Debug\CyUSB.dll
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Debug\TE_USB_FX2_CyUSB.dll
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Debug\TE_USB_FX2_CyUSB.pdb
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Debug\ResolveAssemblyReference.cache
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Debug\TE_USB_FX2_SampleApplication.exe
-C:\Users\SergioPavesiA\Documents\Visual Studio 2010\Projects\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Debug\TE_USB_FX2_SampleApplication.pdb

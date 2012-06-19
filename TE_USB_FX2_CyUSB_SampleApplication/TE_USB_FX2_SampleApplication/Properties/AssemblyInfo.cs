@@ -2,9 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
-// Le informazioni generali relative a un assembly sono controllate dal seguente 
-// set di attributi. Per modificare le informazioni associate a un assembly
-// occorre quindi modificare i valori di questi attributi.
+// General informations related to an assembly are controlled by the following set of attributes.
 [assembly: AssemblyTitle("TE_USB_FX2_SampleApplication")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
@@ -14,23 +12,21 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// Se si imposta ComVisible su false, i tipi in questo assembly non saranno visibili 
-// ai componenti COM. Se è necessario accedere a un tipo in questo assembly da 
-// COM, impostare su true l'attributo ComVisible per tale tipo.
+// If attribute ComVisible is set to false, types of this assembly will not be visible to COM components.
+// If it is necessary to access a type in this assembly from COM, user must set to true the attribute ComVisible for this type.
 [assembly: ComVisible(false)]
 
-// Se il progetto viene esposto a COM, il GUID che segue verrà utilizzato per creare l'ID della libreria dei tipi
+//If the project is exposed to COM, the following GUID will be used to create the type library IDs.
 [assembly: Guid("84bb1407-a2a6-4311-bba0-d9048111fc16")]
 
-// Le informazioni sulla versione di un assembly sono costituite dai seguenti quattro valori:
+// Version Informations of an assembly are constituted by the following four value: 
 //
-//      Numero di versione principale
-//      Numero di versione secondario 
-//      Numero build
-//      Revisione
+//      Major Version Number
+//      Minor Version Number  
+//      Build Number
+//      Revision
 //
-// È possibile specificare tutti i valori oppure impostare valori predefiniti per i numeri relativi alla revisione e alla build 
-// utilizzando l'asterisco (*) come descritto di seguito:
+// It is possible specify all values or set predefined values for number related to Revision and Build Number using * as following described: 
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
