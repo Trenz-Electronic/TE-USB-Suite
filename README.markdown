@@ -19,9 +19,9 @@ Trenz Electronic C++ API for FPGA module series equipped with FX2 USB microcontr
 ## TE_USB_FX2_CyUSB<br />TE_USB_FX2_CyUSB_SampleApplication
 Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).
  With sample applications.
-* Folder "executable" contains files executable on Microsoft Windows operating systems. "Microsoft .NET Framework 4" (vcredist_x64.exe) shall be installed.
-** The "Standalone Installer" (dotNetFx40_Full_x86_x64.exe) can be downloaded from http://www.microsoft.com/en-us/download/details.aspx?id=17718 .
-** The "Web Installer" (dotNetFx40_Full_setup.exe) can be downloaded from http://www.microsoft.com/en-us/download/details.aspx?id=17851 .
+* Folder "executable" contains files executable on Microsoft Windows operating systems. "Microsoft .NET Framework 4" (vcredist_x64.exe) shall be installed.<br />
+  The "Standalone Installer" (dotNetFx40_Full_x86_x64.exe) can be downloaded from http://www.microsoft.com/en-us/download/details.aspx?id=17718 .<br />
+  The "Web Installer" (dotNetFx40_Full_setup.exe) can be downloaded from http://www.microsoft.com/en-us/download/details.aspx?id=17851 .
 
 ## archive/TE0300_API_Example<br />archive/TE0320_API_Example
 **Not recommended for new designs**.<br />
