@@ -12,17 +12,17 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
-// If attribute ComVisible is set to false, types of this assembly will not be visible to COM components.
-// If it is necessary to access a type in this assembly from COM, user must set to true the attribute ComVisible for this type.
+// If attribute ComVisible is set to false, types of this assembly do not will be visible to COM components.
+// If it is necessary to access from COM  to a type in this assembly, user must set to true the attribute ComVisible for this type.
 [assembly: ComVisible(false)]
 
-//If the project is exposed to COM, the following GUID will be used to create the type library IDs.
+//If the project is exposed to COM, the following GUID will be used to create the ID of types library.
 [assembly: Guid("84bb1407-a2a6-4311-bba0-d9048111fc16")]
 
 // Version Informations of an assembly are constituted by the following four value: 
 //
-//      Major Version Number
-//      Minor Version Number  
+//      Principal Version Number
+//      Secondary Version Number  
 //      Build Number
 //      Revision
 //

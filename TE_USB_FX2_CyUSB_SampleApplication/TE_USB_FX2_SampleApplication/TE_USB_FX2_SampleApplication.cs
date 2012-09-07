@@ -723,7 +723,7 @@ namespace TE_USB_FX2_SampleApplication
 
             Console.WriteLine("BufferSizeR {0} ", BufferSizeR);
 
-            Console.WriteLine("Write the Packets Number desired (power of 2 is better)");
+            Console.WriteLine("Write the Packets Number desired");
             Console.WriteLine("Value suggested is 1200 if you are testing TE0320 or TE0630");
             Console.WriteLine("Value suggested is  600 if you are testing TE0300");
 
@@ -733,10 +733,13 @@ namespace TE_USB_FX2_SampleApplication
 
             Console.WriteLine("PacketsNumberR {0} ", PacketsNumberR);
 
-            Console.WriteLine("Write the Packet Length desired (power of 2 is better)");
-            Console.WriteLine("Value suggested is 102400(old test) or 131072(new test)");
+            Console.WriteLine("Write the Packet Length desired");
+            Console.WriteLine("Value suggested is 102400");
             Console.WriteLine("if you are testing TE0320 or TE0630.");
-            Console.WriteLine("Value suggested is  51200 if you are testing TE0300");
+            Console.WriteLine("Know issue: does not use 131072 or the test fail.");
+            Console.WriteLine("Value suggested is  51200 if you are testing TE0300;");
+            Console.WriteLine("if the value used is >51200 the test fails.");
+            
             Console.WriteLine("In C# you are normally able to read even packet with length less than ");
             Console.WriteLine("512 byte AND it is what you implicitly do with point 5 (FX2 firmware version)");
             Console.WriteLine("6 (FPGA firmware version),7 (FX2 FIFO Status) BUT for this test ");
@@ -751,7 +754,7 @@ namespace TE_USB_FX2_SampleApplication
             Console.WriteLine("Write the Timeout value desired, the integer is measured in milliseconds");
             Console.WriteLine("Value TimeOut (ms) > [PacketLength/DataThroughput ]+1 ms");
             Console.WriteLine("for high responsive computer");
-            Console.WriteLine("DataThroughput value expected is >30 Mbyte/s, so with PacketLength=131072 byte,");
+            Console.WriteLine("DataThroughput value expected is >30 Mbyte/s, so with PacketLength=102400 byte,");
             Console.WriteLine("the value is 5-6 ms");
             Console.WriteLine("If the computer is not highly responsive you must set Timeout to large value :");
             Console.WriteLine("20,50,200,1000 ms (it depends on how much the computer lack real time behavior).");
@@ -775,7 +778,7 @@ namespace TE_USB_FX2_SampleApplication
             int BufferSizeW = 131072;
             int.TryParse(lineBufferSizeW, out BufferSizeW); // Try to parse the string as an integer
 
-            Console.WriteLine("Write the Packets Number desired (power of 2 is better)");
+            Console.WriteLine("Write the Packets Number desired");
             Console.WriteLine("Value suggested is 1200 if you are testing TE0320 or TE0630");
             Console.WriteLine("Value suggested is  600 if you are testing TE0300");
 
@@ -783,10 +786,11 @@ namespace TE_USB_FX2_SampleApplication
             int PacketsNumberW = 5;
             int.TryParse(linePacketsNumberW, out PacketsNumberW); // Try to parse the string as an integer
 
-            Console.WriteLine("Write the Packet Length desired (power of 2 is better)");
-            Console.WriteLine("Value suggested is 102400(old test) or 131072(new test)");
-            Console.WriteLine("if you are testing TE0320 or TE0630");
-            Console.WriteLine("Value suggested is  51200 if you are testing TE0300");
+            Console.WriteLine("Write the Packet Length desired");
+            Console.WriteLine("Value suggested is 102400");
+            Console.WriteLine("Know issue: does not use 131072 or the test fail.");
+            Console.WriteLine("Value suggested is  51200 if you are testing TE0300;");
+            Console.WriteLine("if the value used is >51200 the test fails.");
             Console.WriteLine("In C# you are able to write even packet with length less than");
             Console.WriteLine("512 byte AND in this case you can also do this BUT");
             Console.WriteLine("in this case you are only able to test write data integrity");
@@ -799,7 +803,7 @@ namespace TE_USB_FX2_SampleApplication
             Console.WriteLine("Write the Timeout value desired, the integer is measured in milliseconds");
             Console.WriteLine("Value TimeOut (ms) > [PacketLength/DataThroughput ]+1 ms");
             Console.WriteLine("for high responsive computer");
-            Console.WriteLine("DataThroughput value expected is >20 Mbyte/s, so with PacketLength=131072 byte,");
+            Console.WriteLine("DataThroughput value expected is >20 Mbyte/s, so with PacketLength=102400 byte,");
             Console.WriteLine("the value is 5-6 ms");
             Console.WriteLine("If the computer is not highly responsive you must set Timeout to large value :");
             Console.WriteLine("20,50,200,1000 ms (it depends on how much the computer lack real time behavior).");
@@ -809,11 +813,6 @@ namespace TE_USB_FX2_SampleApplication
             uint.TryParse(lineTimeOutW, out TimeOutW); // Try to parse the string as an integer
 
             Console.WriteLine("You want make an integrity test on data writen on FPGA?");
-            Console.WriteLine("The FPGA test is unstable so it can give wrong message");
-            Console.WriteLine("You can fail a write test even if you pass a following read test");
-            Console.WriteLine("If you use the combination DriverBuffer 131072 and  ");
-            Console.WriteLine("PacketSize 131072 you have a Write Test Fail BUT");
-            Console.WriteLine("a Read Test Pass");
             Console.WriteLine("1 for YES, 0 for NO");
 
             string lineGetStatusFPGAyn = Console.ReadLine(); // Read string from console
