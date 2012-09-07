@@ -48,12 +48,4 @@
       <Filter>File di origine</Filter>
     </ClCompile>
   </ItemGroup>
-  <ItemGroup>
-    <Library Include="CyAPI.lib">
-      <Filter>File di risorse</Filter>
-    </Library>
-    <Library Include="TE_USB_FX2_CyAPI.lib">
-      <Filter>File di risorse</Filter>
-    </Library>
-  </ItemGroup>
 </Project>

@@ -1,15 +1,9 @@
-// TE_USB_FX2_CyAPI_SampleApplication.cpp : definisce il punto di ingresso dell'applicazione console.
+// TE_USB_FX2_CyAPI_SampleApplication.cpp : define the access point to console application.
 //
 
-// TEdllMenuNoCLR.cpp : definisce il punto di ingresso dell'applicazione console.
-//
+//#include "stdafx.h"
 
-#include "stdafx.h"
-
-// DWUSBDLLExample64.cpp : definisce il punto di ingresso dell'applicazione console.
 #pragma once
-
-
 
 #include "stdafx.h"
 //#include <iostream>
@@ -546,15 +540,17 @@ int _tmain(int argc, _TCHAR* argv[])
 
       cin>>BufferSizeR;
 
-      cout << "Write the Packets Number desired (power of 2 is better)" <<endl;
+      cout << "Write the Packets Number desired" <<endl;
       cout << "Value suggested is 1200 if you are testing TE0320 or TE0630" <<endl;
       cout <<"Value suggested is  600 if you are testing TE0300" <<endl;
 
       cin>>PacketsNumberR; // Try to parse the string as an integer
 
-      cout << "Write the Packet Length desired (power of 2 is better)" <<endl;
-      cout << "Value suggested is 102400(old test) or 131072(new test) if you are testing" <<endl;
-      cout << "TE0320 or TE0630. Value suggested is  51200 if you are testing TE0300" <<endl;
+      cout << "Write the Packet Length desired" <<endl;
+      cout << "Value suggested is 102400 if you are testing TE0320 or TE0630." <<endl;
+	  cout << "Know issue: does not use 131072 or the test fail." <<endl;
+      cout << "Value suggested is  51200 if you are testing TE0300" <<endl;
+	  cout << "if the value used is >51200 the test fails." <<endl;
       cout << "In C# you are able to read even packet with length less than 512 byte" <<endl;
       cout << "512 byte AND it is what you implicitly do with point 5 (FX2 firmware version)" <<endl;
       cout << "6 (FPGA firmware version),7 (FX2 FIFO Status) BUT for this test " <<endl;
@@ -565,7 +561,7 @@ int _tmain(int argc, _TCHAR* argv[])
       cout << "Write the Timeout value desired, the integer is measured in milliseconds" <<endl;
       cout << "Value TimeOut (ms) > [PacketLength/DataThroughput ]+1 ms for high responsive" <<endl;
       cout << "computer. DataThroughput value expected is >30 Mbyte/s, " <<endl;
-      cout << "so with PacketLength=131072 byte, the value is 5-6 ms. " <<endl;
+      cout << "so with PacketLength=102400 byte, the value is 5-6 ms. " <<endl;
       cout << "If the computer is not highly responsive you must set Timeout to large value:" <<endl;
       cout << "20,50,200,1000 ms (it depends on how much the computer lack real time behavior)." <<endl;
 
@@ -581,15 +577,17 @@ int _tmain(int argc, _TCHAR* argv[])
       unsigned int BufferSizeW = 131072;
       cin>>BufferSizeW;
 
-      cout << "Write the Packets Number desired (power of 2 is better)" <<endl;
+      cout << "Write the Packets Number desired" <<endl;
       cout << "Value suggested is 1200 if you are testing TE0320 or TE0630" <<endl;
       cout <<"Value suggested is  600 if you are testing TE0300" <<endl;
       int PacketsNumberW = 5;
       cin>>PacketsNumberW; // Try to parse the string as an integer
 
-      cout << "Write the Packet Length desired (power of 2 is better)" <<endl;
-      cout << "Value suggested is 102400(old test) or 131072(new test) if you are testing" <<endl;
-      cout << "TE0320 or TE0630. Value suggested is 51200 if you are testing TE0300" <<endl;
+      cout << "Write the Packet Length desired" <<endl;
+      cout << "Value suggested is 102400 if you are testing TE0320 or TE0630." <<endl;
+	  cout << "Know issue: does not use 102400 or the test fail." <<endl;
+      cout << "Value suggested is 51200 if you are testing TE0300" <<endl;
+	  cout << "if the value used is >51200 the test fails." <<endl;
       cout << "In C# you are able to write even packet with length less than 512 byte" <<endl;
       cout << "In C++ you are able to write even packet with length less than" <<endl;
       cout << "512 byte AND in this case you can also do this BUT" <<endl;
@@ -599,19 +597,14 @@ int _tmain(int argc, _TCHAR* argv[])
 
       cout << "Write the Timeout value desired, the integer is measured in milliseconds" <<endl;
       cout << "Value TimeOut (ms) > [PacketLength/DataThroughput ]+1 ms for high responsive " <<endl;
-      cout << "computer. DataThroughput value expected is >30 Mbyte/s," <<endl;
-      cout << "so with PacketLength=131072 byte,the value is 5-6 ms." <<endl;
+      cout << "computer. DataThroughput value expected is >20 Mbyte/s," <<endl;
+      cout << "so with PacketLength=102400 byte,the value is 5-6 ms." <<endl;
       cout << "If the computer is not highly responsive you must set Timeout to large value :" <<endl;
       cout << "20,50,200,1000 ms (it depends on how much the computer lack real time behavior)." <<endl;
       unsigned int TimeOutW = 1000;
       cin>>TimeOutW; // Try to parse the string as an integer
 
       cout << "You want make an integrity test on data writen on FPGA?" <<endl;
-      cout << "The FPGA test is unstable so it can give wrong message"  <<endl;
-      cout << "You can fail a write test even if you pass a following read test" <<endl;
-      cout << "If you use the combination DriverBuffer 131072 and  " <<endl;
-      cout << "PacketSize 131072 you have a Write Test Fail BUT" <<endl;
-      cout << "a Read Test Pass" <<endl;
       cout << "1 for YES, 0 for NO" <<endl;
 
       unsigned int GetStatusFPGAyn = 1;

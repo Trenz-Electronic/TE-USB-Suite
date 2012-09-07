@@ -69,40 +69,6 @@ enum ST_Status
   ST_ERROR = 1
 };
 
-
-
-
-
-
-
-//typedef int (WINAPI *_TE_USB_FX2_ScanCards)();
-//typedef int (WINAPI *_TE_USB_FX2_Open)(PHANDLE PHandle, int CardNo);
-//typedef int (WINAPI *_TE_USB_FX2_Close)(PHANDLE PHandle);
-//typedef int (WINAPI *_TE_USB_FX2_SendCommand)(HANDLE Handle, byte* PCommand, int CmdLength, byte* PReply, int* PReplyLength, int Timeout);
-//typedef int (WINAPI *_TE_USB_FX2_GetData)(HANDLE Handle, byte* PReply, int* PPacketCnt, PI_PipeNumber PipeNo, int Timeout);
-//typedef int (WINAPI *_TE_USB_FX2_SetData)(HANDLE Handle, byte* PSend, int PacketCnt, PI_PipeNumber PipeNo);
-
-//TE_USB_FX2_DLLCPPNOTCLR_API int fnTE_USB_FX2_DLLcppNotCLR(void);
-
-//typedef int (WINAPI *_TE_USB_FX2_ScanCards)();
-//TE_USB_FX2_DLLCPPNOTCLR_API int TE_USB_FX2_ScanCards ();
-
-//typedef int (WINAPI *_TE_USB_FX2_Open)(unsigned int* PHandle, int CardNo);
-//TE_USB_FX2_DLLCPPNOTCLR_API int TE_USB_FX2_Open (HANDLE PHandle, int CardNo);
-
-//typedef int (WINAPI *_TE_USB_FX2_Close)(unsigned int* PHandle);
-//TE_USB_FX2_DLLCPPNOTCLR_API int TE_USB_FX2_Close (HANDLE PHandle);
-
-//typedef int (WINAPI *_TE_USB_FX2_SendCommand)(unsigned int PHandle, byte* cmd, int cmd_len, byte* reply, int* reply_len, int timeout);
-//TE_USB_FX2_DLLCPPNOTCLR_API int TE_USB_FX2_SendCommand (HANDLE PHandle, byte* cmd, long cmd_len, byte* reply, long reply_len, int timeout);
-
-//typedef int (WINAPI *_TE_USB_FX2_GetData)(unsigned int PHandle, byte* data, int* len, PI_PipeNumber, int timeout);
-//TE_USB_FX2_DLLCPPNOTCLR_API int TE_USB_FX2_GetData (HANDLE PHandle, byte* data, long len, PI_PipeNumber PipeNo, int timeout);
-
-//typedef int (WINAPI *_TE_USB_FX2_SetData)(unsigned int PHandle, byte* data, int len, PI_PipeNumber);
-//TE_USB_FX2_DLLCPPNOTCLR_API int TE_USB_FX2_SetData (HANDLE PHandle, byte* data, long len, PI_PipeNumber PipeNo);
-
-
 HINSTANCE hInstLibrary;//Dll handle
 
 //functions
