@@ -1,5 +1,5 @@
 //The following ifedef block represents the standard mode to create macro that simplify 
-// the export from a DLL. All file in the DLL is compiled with the TE_USB_FX2_DLLCPPNOTCLR_EXPORTS 
+// the export from a DLL. All file in the DLL is compiled with the TE_USB_FX2_CYAPI_EXPORTS 
 // symbol defined in the line of command. This symbol must not be defined in projects 
 // that uses this DLL. In this way any other project whose source files will see the functions 
 // TE_USB_FX2_CYAPI as imported from a DLL, while the DLL will see the 
@@ -18,29 +18,6 @@ enum PI_PipeNumber
   PI_EP6	= 3,
   PI_EP8	= 5
 };
-
-//typedef int (WINAPI *_TE_USB_FX2_ScanCards)();
-//static int TE_USB_FX2_ScanCards ();
-
-//typedef int (WINAPI *_TE_USB_FX2_Open)(unsigned int* PHandle, int CardNo);
-//static int TE_USB_FX2_Open (HANDLE PHandle, int CardNo);
-
-//typedef int (WINAPI *_TE_USB_FX2_Close)(unsigned int* PHandle);
-//static int TE_USB_FX2_Close (HANDLE PHandle);
-
-//typedef int (WINAPI *_TE_USB_FX2_SendCommand)(unsigned int PHandle, byte* cmd, int cmd_len, byte* reply, int* reply_len, int timeout);
-//static int TE_USB_FX2_SendCommand (HANDLE PHandle, byte* cmd, long cmd_len, byte* reply, long reply_len, int timeout);
-
-//typedef int (WINAPI *_TE_USB_FX2_GetData)(unsigned int PHandle, byte* data, int* len, PI_PipeNumber, int timeout);
-//static int TE_USB_FX2_GetData (HANDLE PHandle, byte* data, long len, PI_PipeNumber PipeNo, int timeout);
-
-//typedef int (WINAPI *_TE_USB_FX2_SetData)(unsigned int PHandle, byte* data, int len, PI_PipeNumber);
-//static int TE_USB_FX2_SetData (HANDLE PHandle, byte* data, long len, PI_PipeNumber PipeNo);
-//};
-
-//extern TE_USB_FX2_CYAPI int nTE_USB_FX2_DLLcppNotCLR;
-
-//TE_USB_FX2_CYAPI int fnTE_USB_FX2_DLLcppNotCLR(void);
 
 //typedef int (WINAPI *_TE_USB_FX2_ScanCards)();
 TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards (CCyUSBDevice *USBDeviceList);
