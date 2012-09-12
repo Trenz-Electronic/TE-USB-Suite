@@ -12,7 +12,8 @@ Firmware source files for Cypress EZ-USB FX2 microcontoller on Trenz Electronic 
 
 ## TE_USB_FX2_CyAPI<br />TE_USB_FX2_CyAPI_SampleApplication
 Trenz Electronic C++ API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
-With sample application.
+With sample application.<br />
+Please find the documentation here: http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
 * Folder "TE_USB_FX2_CyAPI/" contains a Microsoft Visual Studio 2010 project for Trenz Electronic C++ API
 * Folder "TE_USB_FX2_CyAPI_SampleApplication/" contains a Microsoft Visual Studio 2010 project for a Trenz Electronic C++ API sampple application
 * Folder "TE_USB_FX2_CyAPI_SampleApplication/executable-32/" contains files executable on 32-bit Microsoft Windows operating systems. "Microsoft Visual C++ 2010 Redistributable Package (x86)" (vcredist_x86.exe) shall be installed and can be downloaded from http://www.microsoft.com/en-us/download/details.aspx?id=5555 .
@@ -20,7 +21,8 @@ With sample application.
 
 ## TE_USB_FX2_CyUSB<br />TE_USB_FX2_CyUSB_SampleApplication
 Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
-With sample applications.
+With sample applications.<br />
+Please find the documentation here: http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
 * Folder "TE_USB_FX2_CyUSB/" contains a Microsoft Visual Studio 2010 project for Trenz Electronic C# API
 * Folder "TE_USB_FX2_CyUSB_SampleApplication/" contains a Microsoft Visual Studio 2010 project for a Trenz Electronic C# API sampple application
 * Folder "TE_USB_FX2_CyUSB_SampleApplication/executable/" contains files executable on Microsoft Windows operating systems. "Microsoft .NET Framework 4" (vcredist_x64.exe) shall be installed.<br />
