@@ -1,8 +1,0 @@
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_SampleApplication.exe
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_SampleApplication.pdb
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\CyUSB.dll
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_CyUSB.dll
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\bin\Release\TE_USB_FX2_CyUSB.pdb
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\ResolveAssemblyReference.cache
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\TE_USB_FX2_SampleApplication.exe
-C:\Users\Public\Documents\YouCam\ToTrenz\Cpp\ToGitHub3\Csharp\ProgettiPrecompilati\CyUSBsample\TE_USB_FX2_CyUSB_SampleApplication\TE_USB_FX2_SampleApplication\obj\x86\Release\TE_USB_FX2_SampleApplication.pdb

@@ -1,0 +1,30 @@
+﻿Build started 9/11/2012 12:37:30 AM.
+     1>Project "C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\TE_USB_FX2_CyAPI.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TE0300_DLLCPPNOTCLR_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yc"StdAfx.h" /Fp"Release\TE_USB_FX2_CyAPI.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
+         stdafx.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TE0300_DLLCPPNOTCLR_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt dllmain.cpp
+         dllmain.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _WINDOWS /D _USRDLL /D TE0300_DLLCPPNOTCLR_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Yu"StdAfx.h" /Fp"Release\TE_USB_FX2_CyAPI.pch" /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt TE_USB_FX2_CyAPI.cpp
+         TE_USB_FX2_CyAPI.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.dll" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt.lib /MANIFEST /ManifestFile:"Release\TE_USB_FX2_CyAPI.dll.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.pdb" /SUBSYSTEM:WINDOWS /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.lib" /MACHINE:X86 /DLL Release\dllmain.obj
+         Release\stdafx.obj
+         Release\TE_USB_FX2_CyAPI.obj
+         CyAPI.lib
+            Creating library C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.lib and object C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.exp
+         Generating code
+         Finished generating code
+         TE_USB_FX2_CyAPI.vcxproj -> C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.dll
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\Release\TE_USB_FX2_CyAPI.dll;#2" /manifest Release\TE_USB_FX2_CyAPI.dll.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\TE_USB_FX2_CyAPI.unsuccessfulbuild".
+         Touching "Release\TE_USB_FX2_CyAPI.lastbuildstate".
+     1>Done Building Project "C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI\TE_USB_FX2_CyAPI.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:03.36

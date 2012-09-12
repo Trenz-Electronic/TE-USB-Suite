@@ -1,0 +1,6 @@
+C:\TE_USB_FX2_CyUSB\TE_USB_FX2_CyUSB\bin\Release\TE_USB_FX2_CyUSB.dll
+C:\TE_USB_FX2_CyUSB\TE_USB_FX2_CyUSB\bin\Release\TE_USB_FX2_CyUSB.pdb
+C:\TE_USB_FX2_CyUSB\TE_USB_FX2_CyUSB\bin\Release\CyUSB.dll
+C:\TE_USB_FX2_CyUSB\TE_USB_FX2_CyUSB\obj\Release\ResolveAssemblyReference.cache
+C:\TE_USB_FX2_CyUSB\TE_USB_FX2_CyUSB\obj\Release\TE_USB_FX2_CyUSB.dll
+C:\TE_USB_FX2_CyUSB\TE_USB_FX2_CyUSB\obj\Release\TE_USB_FX2_CyUSB.pdb

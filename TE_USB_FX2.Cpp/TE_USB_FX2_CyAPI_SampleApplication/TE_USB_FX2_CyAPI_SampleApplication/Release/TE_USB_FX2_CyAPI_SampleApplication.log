@@ -1,0 +1,24 @@
+﻿Build started 9/11/2012 1:25:36 AM.
+     1>Project "C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\TE_USB_FX2_CyAPI_SampleApplication\TE_USB_FX2_CyAPI_SampleApplication.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "Release\TE_USB_FX2_CyAPI_SampleApplication.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /O2 /Oi /Oy- /GL /D WIN32 /D NDEBUG /D _CONSOLE /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp TE_USB_FX2_CyAPI_SampleApplication.cpp
+         stdafx.cpp
+         TE_USB_FX2_CyAPI_SampleApplication.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\Release\TE_USB_FX2_CyAPI_SampleApplication.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /NODEFAULTLIB:libcmt.lib /MANIFEST /ManifestFile:"Release\TE_USB_FX2_CyAPI_SampleApplication.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\Release\TE_USB_FX2_CyAPI_SampleApplication.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\Release\TE_USB_FX2_CyAPI_SampleApplication.lib" /MACHINE:X86 Release\stdafx.obj
+         Release\TE_USB_FX2_CyAPI_SampleApplication.obj
+         Generating code
+         Finished generating code
+         TE_USB_FX2_CyAPI_SampleApplication.vcxproj -> C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\Release\TE_USB_FX2_CyAPI_SampleApplication.exe
+       Manifest:
+         C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\Release\TE_USB_FX2_CyAPI_SampleApplication.exe;#1" /manifest Release\TE_USB_FX2_CyAPI_SampleApplication.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "Release\TE_USB_FX2_CyAPI_SampleApplication.unsuccessfulbuild".
+         Touching "Release\TE_USB_FX2_CyAPI_SampleApplication.lastbuildstate".
+     1>Done Building Project "C:\VCppProject\Express\VSExp32bit\TE_USB_FX2_CyAPI_SampleApplication\TE_USB_FX2_CyAPI_SampleApplication\TE_USB_FX2_CyAPI_SampleApplication.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:02.45
