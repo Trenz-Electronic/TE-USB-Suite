@@ -12,7 +12,7 @@ Please find the documentation here (generation 2): http://www.trenz-electronic.d
 ## TE_USB_FX2.firmware
 Firmware source files for Cypress EZ-USB FX2 microcontoller on Trenz Electronic modules.
 
-## TE_USB_FX2_CyAPI<br />TE_USB_FX2_CyAPI_SampleApplication
+## TE_USB_FX2.Cpp/TE_USB_FX2_CyAPI<br />TE_USB_FX2.Cpp/TE_USB_FX2_CyAPI_SampleApplication
 Trenz Electronic C++ API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
 With sample application.
 * Folder "TE_USB_FX2_CyAPI/" contains a Microsoft Visual Studio 2010 project for Trenz Electronic C++ API
@@ -22,14 +22,14 @@ With sample application.
 
 Please find the documentation here (generation 3): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
 
-## TE_USB_FX2_CyUSB<br />TE_USB_FX2_CyUSB_SampleApplication
+## TE_USB_FX2.Cs/TE_USB_FX2_CyUSB<br />TE_USB_FX2.Cs/TE_USB_FX2_CyUSB_SampleApplication
 Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
 With sample applications.
 * Folder "TE_USB_FX2_CyUSB/" contains a Microsoft Visual Studio 2010 project for Trenz Electronic C# API
 * Folder "TE_USB_FX2_CyUSB_SampleApplication/" contains a Microsoft Visual Studio 2010 project for a Trenz Electronic C# API sampple application
-* Folder "TE_USB_FX2_CyUSB_SampleApplication/executable/" contains files executable on Microsoft Windows operating systems. "Microsoft .NET Framework 4" (vcredist_x64.exe) shall be installed.<br />
-  The "Standalone Installer" (dotNetFx40_Full_x86_x64.exe) can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=17718 .<br />
-  The "Web Installer" (dotNetFx40_Full_setup.exe) can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=17851 .
+* Folder "TE_USB_FX2_CyUSB_SampleApplication/executable/" contains files executable on Microsoft Windows operating systems. "Microsoft .NET Framework 4" (vcredist_x64.exe) shall be installed.
+  * The "Standalone Installer" (dotNetFx40_Full_x86_x64.exe) can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=17718 .<br />
+  * The "Web Installer" (dotNetFx40_Full_setup.exe) can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=17851 .
 
 Please find the documentation here (generation 3): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
 
