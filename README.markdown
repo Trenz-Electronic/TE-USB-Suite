@@ -3,42 +3,23 @@ This repository contains projects and files relevant to Trenz Electronic modules
 
 ## Linux_FWUT
 Linux version of FirmWare Upgrade Tool. Based on libusb.<br />
-Please find the documentation here (generation 2): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
-
-## Open_FWUT
-Python version of FirmWare Upgrade Tool. Based on Windows API (TE0300DLL.dll).<br />
-Please find the documentation here (generation 2): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
+This application is compatible with both generation 2 and 3 of the TE USB FX2 software stack. <br /> 
+For generation 2, please use VID/PID = 0x0547/0x1002. <br />
+For generation 3, please use VID/PID = 0x0BD0/0x0300. <br />
 
 ## TE_USB_FX2.firmware
-Firmware source files for Cypress EZ-USB FX2 microcontoller on Trenz Electronic modules.
+Firmware source files for Cypress EZ-USB FX2 microcontoller on Trenz Electronic modules. <br />
+This application is compatible with both generation 2 and 3 of the TE USB FX2 software stack. <br />
+For generation 2, please use VID/PID = 0x0547/0x1002. <br />
+For generation 3, please use VID/PID = 0x0BD0/0x0300. <br />
 
-## TE_USB_FX2.Cpp/TE_USB_FX2_CyAPI<br />TE_USB_FX2.Cpp/TE_USB_FX2_CyAPI_SampleApplication
-Trenz Electronic C++ API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
-With sample application.
-* Folder "TE_USB_FX2_CyAPI/" contains a Microsoft Visual Studio 2010 project for Trenz Electronic C++ API
-* Folder "TE_USB_FX2_CyAPI_SampleApplication/" contains a Microsoft Visual Studio 2010 project for a Trenz Electronic C++ API sampple application
-* Folder "TE_USB_FX2_CyAPI_SampleApplication/executable-32/" contains files executable on 32-bit Microsoft Windows operating systems. "Microsoft Visual C++ 2010 Redistributable Package (x86)" (vcredist_x86.exe) shall be installed and can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=5555 .
-* Folder "TE_USB_FX2_CyAPI_SampleApplication/executable-64/" contains files executable on 64-bit Microsoft Windows operating systems. "Microsoft Visual C++ 2010 Redistributable Package (x64)" (vcredist_x64.exe) shall be installed and can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=14632 .
-
-Please find the documentation here (generation 3): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
-
-## TE_USB_FX2.Cs/TE_USB_FX2_CyUSB<br />TE_USB_FX2.Cs/TE_USB_FX2_CyUSB_SampleApplication
-Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
-With sample applications.
-* Folder "TE_USB_FX2_CyUSB/" contains a Microsoft Visual Studio 2010 project for Trenz Electronic C# API
-* Folder "TE_USB_FX2_CyUSB_SampleApplication/" contains a Microsoft Visual Studio 2010 project for a Trenz Electronic C# API sampple application
-* Folder "TE_USB_FX2_CyUSB_SampleApplication/executable/" contains files executable on Microsoft Windows operating systems. "Microsoft .NET Framework 4" (vcredist_x64.exe) shall be installed.
-  * The "Standalone Installer" (dotNetFx40_Full_x86_x64.exe) can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=17718 .<br />
-  * The "Web Installer" (dotNetFx40_Full_setup.exe) can be downloaded from<br />http://www.microsoft.com/en-us/download/details.aspx?id=17851 .
-
-Please find the documentation here (generation 3): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
-
-## archive/TE0300_API_Example<br />archive/TE0320_API_Example
+## TE_USB_FX2.gen_2<br />
 **Not recommended for new designs**.<br />
-Example programs (C language) which show API usage. These programs:
-* get FX2 firmware information (version and status)
-* get FPGA information
-* run memory tests
-* run USB transfer tests
+- Open FirmWare Upgrade Tool.<br />
+This software provided main functions to update EEPROM and Flash content on TE modules based on Cypress USB-EZ FX2 chip.
+- Example programs (C language) which show API usage.
 
-Please find the documentation here (generation 2): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html
+## TE_USB_FX2.gen_3
+- Trenz Electronic C++ API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
+- Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
+- Example programs (C++ and C# language) which show API usage. 
