@@ -1,4 +1,4 @@
-﻿﻿# Trenz Electronic USB Suite
+## Trenz Electronic USB Suite
 This repository contains projects and files relevant to Trenz Electronic modules equipped with a USB microcontroller.
 
 Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).<br />
