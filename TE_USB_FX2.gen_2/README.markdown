@@ -1,4 +1,4 @@
-﻿﻿# Trenz Electronic USB Suite
+## Trenz Electronic USB Suite
 This repository contains projects and files relevant to Trenz Electronic modules equipped with a USB microcontroller.
 
 ## Open_FWUT
