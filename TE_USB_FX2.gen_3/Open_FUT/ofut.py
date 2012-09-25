@@ -277,7 +277,7 @@ def eeprom_program():	  # USB Lg EEPROM programming
 		#--if fx2dll.TE0300_Open(byref(m_handle), 0) != 0: # Open and get handle
 		# int TE_USB_FX2_Open (  int CardNumber, unsigned long TimeOut, int DriverBufferSize);
 		#if fx2dll.TE_USB_FX2_Open(CardNumber, timeout_ms, DriverBufferSize) != 0: # Open and get handle
-		if fx2dll.TE_USB_FX2_Open(CardNumber, timeout_ms) != 0: # Open and get handle
+		if fx2dll.TE_USB_FX2_Open(CardNumber, timeout_ms, DriverBufferSize) != 0: # Open and get handle
 			op.set("Error")
 			printlog("ERROR: Failed to connect card")
 			op_error = 4
