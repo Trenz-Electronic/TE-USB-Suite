@@ -14,5 +14,5 @@ With sample applications.
 Please find the documentation here (generation 3): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html .
 
 ## Open_FUT3
-Python version of DEWESoft FUT (Firmware Upgrade Tool.<br />
+Python version of DEWESoft FUT (Firmware Upgrade Tool).<br />
 Based on simplified TE USB FX2 API for C, C++ and Python (TE_USB_FX2_API_C.dll).
