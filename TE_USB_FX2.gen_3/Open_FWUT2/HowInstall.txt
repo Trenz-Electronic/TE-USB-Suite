@@ -1,0 +1,328 @@
+C:\>cd Python27
+
+C:\Python27>python
+Python 2.7.3 (default, Apr 10 2012, 23:24:47) [MSC v.1500 64 bit (AMD64)] on win
+32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit()
+
+C:\Python27>cd test
+
+C:\Python27\test>pyhon setup.py install
+'pyhon' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Python27\test>python setup.py install
+running install
+running build
+running install_data
+copying TE_USB_FX2_CyAPI.dll -> C:\Python27\.
+running install_egg_info
+Writing C:\Python27\Lib\site-packages\UNKNOWN-0.0.0-py2.7.egg-info
+
+C:\Python27\test>
+
+----------
+
+C:\Python27\test>make_exe
+
+
+byte-compiling C:\Python27\lib\distutils\text_file.py to distutils\text_file.pyc
+
+byte-compiling C:\Python27\lib\doctest.py to doctest.pyc
+byte-compiling C:\Python27\lib\dummy_thread.py to dummy_thread.pyc
+byte-compiling C:\Python27\lib\encodings\__init__.py to encodings\__init__.pyc
+creating C:\Python27\test\build\bdist.win-amd64\winexe\collect-2.7\encodings
+byte-compiling C:\Python27\lib\encodings\aliases.py to encodings\aliases.pyc
+byte-compiling C:\Python27\lib\encodings\ascii.py to encodings\ascii.pyc
+byte-compiling C:\Python27\lib\encodings\base64_codec.py to encodings\base64_cod
+ec.pyc
+byte-compiling C:\Python27\lib\encodings\big5.py to encodings\big5.pyc
+byte-compiling C:\Python27\lib\encodings\big5hkscs.py to encodings\big5hkscs.pyc
+
+byte-compiling C:\Python27\lib\encodings\bz2_codec.py to encodings\bz2_codec.pyc
+
+byte-compiling C:\Python27\lib\encodings\charmap.py to encodings\charmap.pyc
+byte-compiling C:\Python27\lib\encodings\cp037.py to encodings\cp037.pyc
+byte-compiling C:\Python27\lib\encodings\cp1006.py to encodings\cp1006.pyc
+byte-compiling C:\Python27\lib\encodings\cp1026.py to encodings\cp1026.pyc
+byte-compiling C:\Python27\lib\encodings\cp1140.py to encodings\cp1140.pyc
+byte-compiling C:\Python27\lib\encodings\cp1250.py to encodings\cp1250.pyc
+byte-compiling C:\Python27\lib\encodings\cp1251.py to encodings\cp1251.pyc
+byte-compiling C:\Python27\lib\encodings\cp1252.py to encodings\cp1252.pyc
+byte-compiling C:\Python27\lib\encodings\cp1253.py to encodings\cp1253.pyc
+byte-compiling C:\Python27\lib\encodings\cp1254.py to encodings\cp1254.pyc
+byte-compiling C:\Python27\lib\encodings\cp1255.py to encodings\cp1255.pyc
+byte-compiling C:\Python27\lib\encodings\cp1256.py to encodings\cp1256.pyc
+byte-compiling C:\Python27\lib\encodings\cp1257.py to encodings\cp1257.pyc
+byte-compiling C:\Python27\lib\encodings\cp1258.py to encodings\cp1258.pyc
+byte-compiling C:\Python27\lib\encodings\cp424.py to encodings\cp424.pyc
+byte-compiling C:\Python27\lib\encodings\cp437.py to encodings\cp437.pyc
+byte-compiling C:\Python27\lib\encodings\cp500.py to encodings\cp500.pyc
+byte-compiling C:\Python27\lib\encodings\cp720.py to encodings\cp720.pyc
+byte-compiling C:\Python27\lib\encodings\cp737.py to encodings\cp737.pyc
+byte-compiling C:\Python27\lib\encodings\cp775.py to encodings\cp775.pyc
+byte-compiling C:\Python27\lib\encodings\cp850.py to encodings\cp850.pyc
+byte-compiling C:\Python27\lib\encodings\cp852.py to encodings\cp852.pyc
+byte-compiling C:\Python27\lib\encodings\cp855.py to encodings\cp855.pyc
+byte-compiling C:\Python27\lib\encodings\cp856.py to encodings\cp856.pyc
+byte-compiling C:\Python27\lib\encodings\cp857.py to encodings\cp857.pyc
+byte-compiling C:\Python27\lib\encodings\cp858.py to encodings\cp858.pyc
+byte-compiling C:\Python27\lib\encodings\cp860.py to encodings\cp860.pyc
+byte-compiling C:\Python27\lib\encodings\cp861.py to encodings\cp861.pyc
+byte-compiling C:\Python27\lib\encodings\cp862.py to encodings\cp862.pyc
+byte-compiling C:\Python27\lib\encodings\cp863.py to encodings\cp863.pyc
+byte-compiling C:\Python27\lib\encodings\cp864.py to encodings\cp864.pyc
+byte-compiling C:\Python27\lib\encodings\cp865.py to encodings\cp865.pyc
+byte-compiling C:\Python27\lib\encodings\cp866.py to encodings\cp866.pyc
+byte-compiling C:\Python27\lib\encodings\cp869.py to encodings\cp869.pyc
+byte-compiling C:\Python27\lib\encodings\cp874.py to encodings\cp874.pyc
+byte-compiling C:\Python27\lib\encodings\cp875.py to encodings\cp875.pyc
+byte-compiling C:\Python27\lib\encodings\cp932.py to encodings\cp932.pyc
+byte-compiling C:\Python27\lib\encodings\cp949.py to encodings\cp949.pyc
+byte-compiling C:\Python27\lib\encodings\cp950.py to encodings\cp950.pyc
+byte-compiling C:\Python27\lib\encodings\euc_jis_2004.py to encodings\euc_jis_20
+04.pyc
+byte-compiling C:\Python27\lib\encodings\euc_jisx0213.py to encodings\euc_jisx02
+13.pyc
+byte-compiling C:\Python27\lib\encodings\euc_jp.py to encodings\euc_jp.pyc
+byte-compiling C:\Python27\lib\encodings\euc_kr.py to encodings\euc_kr.pyc
+byte-compiling C:\Python27\lib\encodings\gb18030.py to encodings\gb18030.pyc
+byte-compiling C:\Python27\lib\encodings\gb2312.py to encodings\gb2312.pyc
+byte-compiling C:\Python27\lib\encodings\gbk.py to encodings\gbk.pyc
+byte-compiling C:\Python27\lib\encodings\hex_codec.py to encodings\hex_codec.pyc
+
+byte-compiling C:\Python27\lib\encodings\hp_roman8.py to encodings\hp_roman8.pyc
+
+byte-compiling C:\Python27\lib\encodings\hz.py to encodings\hz.pyc
+byte-compiling C:\Python27\lib\encodings\idna.py to encodings\idna.pyc
+byte-compiling C:\Python27\lib\encodings\iso2022_jp.py to encodings\iso2022_jp.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso2022_jp_1.py to encodings\iso2022_jp
+_1.pyc
+byte-compiling C:\Python27\lib\encodings\iso2022_jp_2.py to encodings\iso2022_jp
+_2.pyc
+byte-compiling C:\Python27\lib\encodings\iso2022_jp_2004.py to encodings\iso2022
+_jp_2004.pyc
+byte-compiling C:\Python27\lib\encodings\iso2022_jp_3.py to encodings\iso2022_jp
+_3.pyc
+byte-compiling C:\Python27\lib\encodings\iso2022_jp_ext.py to encodings\iso2022_
+jp_ext.pyc
+byte-compiling C:\Python27\lib\encodings\iso2022_kr.py to encodings\iso2022_kr.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_1.py to encodings\iso8859_1.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_10.py to encodings\iso8859_10.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_11.py to encodings\iso8859_11.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_13.py to encodings\iso8859_13.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_14.py to encodings\iso8859_14.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_15.py to encodings\iso8859_15.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_16.py to encodings\iso8859_16.p
+yc
+byte-compiling C:\Python27\lib\encodings\iso8859_2.py to encodings\iso8859_2.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_3.py to encodings\iso8859_3.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_4.py to encodings\iso8859_4.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_5.py to encodings\iso8859_5.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_6.py to encodings\iso8859_6.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_7.py to encodings\iso8859_7.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_8.py to encodings\iso8859_8.pyc
+
+byte-compiling C:\Python27\lib\encodings\iso8859_9.py to encodings\iso8859_9.pyc
+
+byte-compiling C:\Python27\lib\encodings\johab.py to encodings\johab.pyc
+byte-compiling C:\Python27\lib\encodings\koi8_r.py to encodings\koi8_r.pyc
+byte-compiling C:\Python27\lib\encodings\koi8_u.py to encodings\koi8_u.pyc
+byte-compiling C:\Python27\lib\encodings\latin_1.py to encodings\latin_1.pyc
+byte-compiling C:\Python27\lib\encodings\mac_arabic.py to encodings\mac_arabic.p
+yc
+byte-compiling C:\Python27\lib\encodings\mac_centeuro.py to encodings\mac_centeu
+ro.pyc
+byte-compiling C:\Python27\lib\encodings\mac_croatian.py to encodings\mac_croati
+an.pyc
+byte-compiling C:\Python27\lib\encodings\mac_cyrillic.py to encodings\mac_cyrill
+ic.pyc
+byte-compiling C:\Python27\lib\encodings\mac_farsi.py to encodings\mac_farsi.pyc
+
+byte-compiling C:\Python27\lib\encodings\mac_greek.py to encodings\mac_greek.pyc
+
+byte-compiling C:\Python27\lib\encodings\mac_iceland.py to encodings\mac_iceland
+.pyc
+byte-compiling C:\Python27\lib\encodings\mac_latin2.py to encodings\mac_latin2.p
+yc
+byte-compiling C:\Python27\lib\encodings\mac_roman.py to encodings\mac_roman.pyc
+
+byte-compiling C:\Python27\lib\encodings\mac_romanian.py to encodings\mac_romani
+an.pyc
+byte-compiling C:\Python27\lib\encodings\mac_turkish.py to encodings\mac_turkish
+.pyc
+byte-compiling C:\Python27\lib\encodings\mbcs.py to encodings\mbcs.pyc
+byte-compiling C:\Python27\lib\encodings\palmos.py to encodings\palmos.pyc
+byte-compiling C:\Python27\lib\encodings\ptcp154.py to encodings\ptcp154.pyc
+byte-compiling C:\Python27\lib\encodings\punycode.py to encodings\punycode.pyc
+byte-compiling C:\Python27\lib\encodings\quopri_codec.py to encodings\quopri_cod
+ec.pyc
+byte-compiling C:\Python27\lib\encodings\raw_unicode_escape.py to encodings\raw_
+unicode_escape.pyc
+byte-compiling C:\Python27\lib\encodings\rot_13.py to encodings\rot_13.pyc
+byte-compiling C:\Python27\lib\encodings\shift_jis.py to encodings\shift_jis.pyc
+
+byte-compiling C:\Python27\lib\encodings\shift_jis_2004.py to encodings\shift_ji
+s_2004.pyc
+byte-compiling C:\Python27\lib\encodings\shift_jisx0213.py to encodings\shift_ji
+sx0213.pyc
+byte-compiling C:\Python27\lib\encodings\string_escape.py to encodings\string_es
+cape.pyc
+byte-compiling C:\Python27\lib\encodings\tis_620.py to encodings\tis_620.pyc
+byte-compiling C:\Python27\lib\encodings\undefined.py to encodings\undefined.pyc
+
+byte-compiling C:\Python27\lib\encodings\unicode_escape.py to encodings\unicode_
+escape.pyc
+byte-compiling C:\Python27\lib\encodings\unicode_internal.py to encodings\unicod
+e_internal.pyc
+byte-compiling C:\Python27\lib\encodings\utf_16.py to encodings\utf_16.pyc
+byte-compiling C:\Python27\lib\encodings\utf_16_be.py to encodings\utf_16_be.pyc
+
+byte-compiling C:\Python27\lib\encodings\utf_16_le.py to encodings\utf_16_le.pyc
+
+byte-compiling C:\Python27\lib\encodings\utf_32.py to encodings\utf_32.pyc
+byte-compiling C:\Python27\lib\encodings\utf_32_be.py to encodings\utf_32_be.pyc
+
+byte-compiling C:\Python27\lib\encodings\utf_32_le.py to encodings\utf_32_le.pyc
+
+byte-compiling C:\Python27\lib\encodings\utf_7.py to encodings\utf_7.pyc
+byte-compiling C:\Python27\lib\encodings\utf_8.py to encodings\utf_8.pyc
+byte-compiling C:\Python27\lib\encodings\utf_8_sig.py to encodings\utf_8_sig.pyc
+
+byte-compiling C:\Python27\lib\encodings\uu_codec.py to encodings\uu_codec.pyc
+byte-compiling C:\Python27\lib\encodings\zlib_codec.py to encodings\zlib_codec.p
+yc
+byte-compiling C:\Python27\lib\fnmatch.py to fnmatch.pyc
+byte-compiling C:\Python27\lib\functools.py to functools.pyc
+byte-compiling C:\Python27\lib\genericpath.py to genericpath.pyc
+byte-compiling C:\Python27\lib\getopt.py to getopt.pyc
+byte-compiling C:\Python27\lib\gettext.py to gettext.pyc
+byte-compiling C:\Python27\lib\gzip.py to gzip.pyc
+byte-compiling C:\Python27\lib\hashlib.py to hashlib.pyc
+byte-compiling C:\Python27\lib\heapq.py to heapq.pyc
+byte-compiling C:\Python27\lib\inspect.py to inspect.pyc
+byte-compiling C:\Python27\lib\io.py to io.pyc
+byte-compiling C:\Python27\lib\keyword.py to keyword.pyc
+byte-compiling C:\Python27\lib\lib-tk\FixTk.py to FixTk.pyc
+byte-compiling C:\Python27\lib\lib-tk\Tkconstants.py to Tkconstants.pyc
+byte-compiling C:\Python27\lib\lib-tk\Tkinter.py to Tkinter.pyc
+byte-compiling C:\Python27\lib\lib-tk\tkCommonDialog.py to tkCommonDialog.pyc
+byte-compiling C:\Python27\lib\lib-tk\tkFileDialog.py to tkFileDialog.pyc
+byte-compiling C:\Python27\lib\lib-tk\tkFont.py to tkFont.pyc
+byte-compiling C:\Python27\lib\lib-tk\tkMessageBox.py to tkMessageBox.pyc
+byte-compiling C:\Python27\lib\lib-tk\ttk.py to ttk.pyc
+byte-compiling C:\Python27\lib\linecache.py to linecache.pyc
+byte-compiling C:\Python27\lib\locale.py to locale.pyc
+byte-compiling C:\Python27\lib\logging\__init__.py to logging\__init__.pyc
+creating C:\Python27\test\build\bdist.win-amd64\winexe\collect-2.7\logging
+byte-compiling C:\Python27\lib\ntpath.py to ntpath.pyc
+byte-compiling C:\Python27\lib\opcode.py to opcode.pyc
+byte-compiling C:\Python27\lib\optparse.py to optparse.pyc
+byte-compiling C:\Python27\lib\os.py to os.pyc
+byte-compiling C:\Python27\lib\os2emxpath.py to os2emxpath.pyc
+byte-compiling C:\Python27\lib\pdb.py to pdb.pyc
+byte-compiling C:\Python27\lib\pickle.py to pickle.pyc
+byte-compiling C:\Python27\lib\posixpath.py to posixpath.pyc
+byte-compiling C:\Python27\lib\pprint.py to pprint.pyc
+byte-compiling C:\Python27\lib\py_compile.py to py_compile.pyc
+byte-compiling C:\Python27\lib\quopri.py to quopri.pyc
+byte-compiling C:\Python27\lib\random.py to random.pyc
+byte-compiling C:\Python27\lib\re.py to re.pyc
+byte-compiling C:\Python27\lib\repr.py to repr.pyc
+byte-compiling C:\Python27\lib\shlex.py to shlex.pyc
+byte-compiling C:\Python27\lib\shutil.py to shutil.pyc
+byte-compiling C:\Python27\lib\sre.py to sre.pyc
+byte-compiling C:\Python27\lib\sre_compile.py to sre_compile.pyc
+byte-compiling C:\Python27\lib\sre_constants.py to sre_constants.pyc
+byte-compiling C:\Python27\lib\sre_parse.py to sre_parse.pyc
+byte-compiling C:\Python27\lib\stat.py to stat.pyc
+byte-compiling C:\Python27\lib\string.py to string.pyc
+byte-compiling C:\Python27\lib\stringprep.py to stringprep.pyc
+byte-compiling C:\Python27\lib\struct.py to struct.pyc
+byte-compiling C:\Python27\lib\subprocess.py to subprocess.pyc
+byte-compiling C:\Python27\lib\tarfile.py to tarfile.pyc
+byte-compiling C:\Python27\lib\tempfile.py to tempfile.pyc
+byte-compiling C:\Python27\lib\textwrap.py to textwrap.pyc
+byte-compiling C:\Python27\lib\threading.py to threading.pyc
+byte-compiling C:\Python27\lib\token.py to token.pyc
+byte-compiling C:\Python27\lib\tokenize.py to tokenize.pyc
+byte-compiling C:\Python27\lib\traceback.py to traceback.pyc
+byte-compiling C:\Python27\lib\types.py to types.pyc
+byte-compiling C:\Python27\lib\unittest\__init__.py to unittest\__init__.pyc
+creating C:\Python27\test\build\bdist.win-amd64\winexe\collect-2.7\unittest
+byte-compiling C:\Python27\lib\unittest\case.py to unittest\case.pyc
+byte-compiling C:\Python27\lib\unittest\loader.py to unittest\loader.pyc
+byte-compiling C:\Python27\lib\unittest\main.py to unittest\main.pyc
+byte-compiling C:\Python27\lib\unittest\result.py to unittest\result.pyc
+byte-compiling C:\Python27\lib\unittest\runner.py to unittest\runner.pyc
+byte-compiling C:\Python27\lib\unittest\signals.py to unittest\signals.pyc
+byte-compiling C:\Python27\lib\unittest\suite.py to unittest\suite.pyc
+byte-compiling C:\Python27\lib\unittest\util.py to unittest\util.pyc
+byte-compiling C:\Python27\lib\warnings.py to warnings.pyc
+byte-compiling C:\Python27\lib\weakref.py to weakref.pyc
+byte-compiling C:\Python27\lib\zipfile.py to zipfile.pyc
+byte-compiling C:\Python27\test\build\bdist.win-amd64\winexe\temp\_ctypes.py to
+_ctypes.pyc
+byte-compiling C:\Python27\test\build\bdist.win-amd64\winexe\temp\_hashlib.py to
+ _hashlib.pyc
+byte-compiling C:\Python27\test\build\bdist.win-amd64\winexe\temp\_tkinter.py to
+ _tkinter.pyc
+byte-compiling C:\Python27\test\build\bdist.win-amd64\winexe\temp\bz2.py to bz2.
+pyc
+byte-compiling C:\Python27\test\build\bdist.win-amd64\winexe\temp\select.py to s
+elect.pyc
+byte-compiling C:\Python27\test\build\bdist.win-amd64\winexe\temp\unicodedata.py
+ to unicodedata.pyc
+byte-compiling C:\Python27\test\pkg_fx2def.py to pkg_fx2def.pyc
+*** copy extensions ***
+copying C:\Python27\DLLs\_ctypes.pyd -> C:\Python27\test\dist
+copying C:\Python27\DLLs\_hashlib.pyd -> C:\Python27\test\dist
+copying C:\Python27\DLLs\_tkinter.pyd -> C:\Python27\test\dist
+copying C:\Python27\DLLs\bz2.pyd -> C:\Python27\test\dist
+copying C:\Python27\DLLs\select.pyd -> C:\Python27\test\dist
+copying C:\Python27\DLLs\unicodedata.pyd -> C:\Python27\test\dist
+*** copy dlls ***
+copying C:\Windows\system32\python27.dll -> C:\Python27\test\dist
+setting sys.winver for 'C:\Python27\test\dist\python27.dll' to 'py2exe'
+copying C:\Python27\DLLs\tk85.dll -> C:\Python27\test\dist
+copying C:\Python27\DLLs\tcl85.dll -> C:\Python27\test\dist
+*** copy data files ***
+copying TE_USB_FX2_CyAPI.dll -> C:\Python27\test\dist\.
+copying C:\Python27\lib\site-packages\py2exe\run_w.exe -> C:\Python27\test\dist\
+ofut.exe
+
+*** binary dependencies ***
+Your executable(s) also depend on these dlls which are not included,
+you may or may not need to distribute them.
+
+Make sure you have the license if you distribute any of them, and
+make sure you don't distribute files belonging to the operating system.
+
+   OLEAUT32.dll - C:\Windows\system32\OLEAUT32.dll
+   USER32.dll - C:\Windows\system32\USER32.dll
+   IMM32.dll - C:\Windows\system32\IMM32.dll
+   SHELL32.dll - C:\Windows\system32\SHELL32.dll
+   KERNEL32.dll - C:\Windows\system32\KERNEL32.dll
+   COMDLG32.dll - C:\Windows\system32\COMDLG32.dll
+   COMCTL32.dll - C:\Windows\system32\COMCTL32.dll
+   ADVAPI32.dll - C:\Windows\system32\ADVAPI32.dll
+   WS2_32.dll - C:\Windows\system32\WS2_32.dll
+   GDI32.dll - C:\Windows\system32\GDI32.dll
+   ole32.dll - C:\Windows\system32\ole32.dll
+
+C:\Python27\test>

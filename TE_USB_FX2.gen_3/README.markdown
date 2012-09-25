@@ -12,3 +12,6 @@ Trenz Electronic C#  API for FPGA module series equipped with FX2 USB microcontr
 With sample applications.
 
 Please find the documentation here (generation 3): http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite.html .
+
+## Open_FWUT
+Python version of FirmWare Upgrade Tool.<br /> Based on Simplified TE API (TE_USB_FX2_CyAPI.dll).<br />
