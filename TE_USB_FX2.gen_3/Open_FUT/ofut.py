@@ -71,8 +71,8 @@ fwu_options['title'] = 'Select firmware update file' # title
 # Define later used variables
 usb_bitstream = None
 fpga_bitstream = None
-fx2dll_32_name = "TE_USB_FX2_CyAPI_32.dll"
-fx2dll_64_name = "TE_USB_FX2_CyAPI_64.dll"
+fx2dll_32_name = "TE_USB_FX2_API_C-32.dll"
+fx2dll_64_name = "TE_USB_FX2_API_C-64.dll"
 fx2dll = None
 fpga_file_opened = 0
 usb_file_opened = 0
