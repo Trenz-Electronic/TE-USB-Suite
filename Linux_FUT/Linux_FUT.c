@@ -26,13 +26,18 @@ To compile the software you have to install the libusb-1.0
 #include <libusb.h>
 #include <string.h>
 
-#define	VENDOR_ID 0x0547
-#define PRODUCT_ID 0x1002
+// TE USB FX2: generation 2.0
+// #define  VENDOR_ID   0x0547
+// #define  PRODUCT_ID  0x1002
+
+// TE USB FX2: generation 2.5 and 3.0
+#define  VENDOR_ID   0x0BD0
+#define  PRODUCT_ID  0x0300
 
 #define USAGE												\
 		"Usage:\n" 										\
 		"	sudo %s OPTIONS\n"								\
-		"	$Id: TE_USB_FX2_programmer.c 15598 2012-03-20 10:29:26Z xykhe $ $HeadURL: https://svn.zeiss.org/tme/projects/33xx/trunk/pob/sw/linux/tools/trenzusb/trenzprogrammer.c $\n"								\
+		"	$Id: Linux_FUT.c 15598 2012-03-20 10:29:26Z xykhe $ $HeadURL: https://svn.zeiss.org/tme/projects/33xx/trunk/pob/sw/linux/tools/trenzusb/trenzprogrammer.c $\n"								\
 		"\n"											\
 		"	This tools is used to program the fpga and eeprom on the Trenz Electronic TE0320\n"\
 		"	The two necessary files are usb.bin and fpga.bin. They are normaly packed \n" 	\
