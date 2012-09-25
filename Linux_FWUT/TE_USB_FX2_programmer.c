@@ -32,13 +32,13 @@ To compile the software you have to install the libusb-1.0
 #define USAGE												\
 		"Usage:\n" 										\
 		"	sudo %s OPTIONS\n"								\
-		"	$Id: trenzprogrammer.c 15598 2012-03-20 10:29:26Z xykhe $ $HeadURL: https://svn.zeiss.org/tme/projects/33xx/trunk/pob/sw/linux/tools/trenzusb/trenzprogrammer.c $\n"								\
+		"	$Id: TE_USB_FX2_programmer.c 15598 2012-03-20 10:29:26Z xykhe $ $HeadURL: https://svn.zeiss.org/tme/projects/33xx/trunk/pob/sw/linux/tools/trenzusb/trenzprogrammer.c $\n"								\
 		"\n"											\
-		"	This tools is used to program the fpga and eeprom on the Trenz Board UM-TE320\n"\
+		"	This tools is used to program the fpga and eeprom on the Trenz Electronic TE0320\n"\
 		"	The two necessary files are usb.bin and fpga.bin. They are normaly packed \n" 	\
 		"	together in a file with the extension \"fwu\". This file is a zip-file.\n"	\
 		"	to unzip it us unzip \"file.fwu\". The usb.bin is delivered by the company \n"	\
-		"	Trenz. The fpga.bin is generated with \"Xilinx ISE\"\n\n"			\
+		"	Trenz Electronic. The fpga.bin is generated with \"Xilinx ISE\"\n\n"			\
 		"	Device Ids of the usb (lsusb):\n"						\
 		"		Vendor Id: 0x0547\n"							\
 		"		Device Id: 0x1002\n"							\
