@@ -21,21 +21,29 @@ project options should be changed.
  http://www.cypress.com/?rID=17627
  Hex2bix is a program used to convert a .hex file to a raw binary, A51, or IIC format. This application note describes how to use the Hex2bix conversion utility for successful file conversion.
 
+## Build
+To build project you can open project file in Keil uVision (TE_USB_FX2.uvproj for TE version and DW_USB_FX2.uvproj for DW version).
+or use bat files:
+* te.bat - build TE firmware version 
+* dw.bat - build DW firmware version 
+* build.bat - build both firmware versions
+* clean.bat - remove generated files
+
 ## License
 Firmware source distributed under MIT license. See license_mit.txt
 
 ## Binary Firmware Files
 
-### TE_USB_FX2-v03.00.iic
+### TE_USB_FX2-v03.01.iic
 Trenz Electronic FX2 USB microcontroller firmware file:
 * VID/PID: 0x0BD0/0x0300
 * device driver: Trenz Electronic (Cypress Semiconductor derivative)
-* firmware version: 3.0
+* firmware version: 3.1
 * file format: I2C (Inter-Integrated-Circuit EEPROM)
 
-### TE_USB_FX2-v03.00.DW.iic
+### TE_USB_FX2-v03.01.DW.iic
 Trenz Electronic FX2 USB microcontroller firmware file (<strong>not recommended for new designs</strong>):
 * VID/PID: 0x0547/0x1002
 * device driver source: DEWESoft
-* firmware version: 3.0
+* firmware version: 3.1
 * file format: I2C (Inter-Integrated-Circuit EEPROM)
