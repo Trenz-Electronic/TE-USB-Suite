@@ -25,6 +25,11 @@ IN THE SOFTWARE.
 #include "fx2.h"
 #include "fx2regs.h"
 
+void EEPROMWriteByte(WORD addr, BYTE value);
+void EEPROMWrite(WORD addr, BYTE length, BYTE xdata *buf);
+void EEPROMRead(WORD addr, BYTE length, BYTE xdata *buf);
+void EEsendData(BYTE DATA);
+BYTE EEreadData(void);
 void I2CWrite(BYTE addr, BYTE length, BYTE xdata *buf);
 void I2CRead(BYTE addr, BYTE length, BYTE xdata *buf);
 void I2CRead2(BYTE addr, BYTE length, BYTE *buf);

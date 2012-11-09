@@ -7,7 +7,7 @@
 
   <Targets>
     <Target>
-      <TargetName>te</TargetName>
+      <TargetName>dw</TargetName>
       <ToolsetNumber>0x0</ToolsetNumber>
       <ToolsetName>MCS-51</ToolsetName>
       <TargetOption>
@@ -44,7 +44,7 @@
             <InvalidFlash>1</InvalidFlash>
           </TargetStatus>
           <OutputDirectory>.\</OutputDirectory>
-          <OutputName>usb_te</OutputName>
+          <OutputName>usb_dw</OutputName>
           <CreateExecutable>1</CreateExecutable>
           <CreateLib>0</CreateLib>
           <CreateHexFile>1</CreateHexFile>
@@ -73,8 +73,8 @@
           <AfterMake>
             <RunUserProg1>1</RunUserProg1>
             <RunUserProg2>1</RunUserProg2>
-            <UserProg1Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb_te.bin usb_te.hex</UserProg1Name>
-            <UserProg2Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb_te.iic usb_te.hex</UserProg2Name>
+            <UserProg1Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb_dw.bin usb_dw.hex</UserProg1Name>
+            <UserProg2Name>c:\cypress\usb\bin\hex2bix -i -f 0xC2 -o usb_dw.iic usb_dw.hex</UserProg2Name>
             <UserProg1Dos16Mode>0</UserProg1Dos16Mode>
             <UserProg2Dos16Mode>0</UserProg2Dos16Mode>
           </AfterMake>
@@ -368,6 +368,11 @@
               <FilePath>.\USBJmpTb.OBJ</FilePath>
             </File>
             <File>
+              <FileName>dscr_dw.a51</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\dscr_dw.a51</FilePath>
+            </File>
+            <File>
               <FileName>te_api.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\te_api.c</FilePath>
@@ -381,11 +386,6 @@
               <FileName>i2c.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\i2c.c</FilePath>
-            </File>
-            <File>
-              <FileName>dscr_te.a51</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\dscr_te.a51</FilePath>
             </File>
           </Files>
         </Group>
