@@ -220,8 +220,8 @@
       <Focus>0</Focus>
       <ColumnNumber>2</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>231</TopLine>
-      <CurrentLine>231</CurrentLine>
+      <TopLine>199</TopLine>
+      <CurrentLine>199</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\fw.c</PathWithFileName>
       <FilenameWithoutPath>fw.c</FilenameWithoutPath>
@@ -274,10 +274,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>6</ColumnNumber>
+      <ColumnNumber>37</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>190</TopLine>
-      <CurrentLine>205</CurrentLine>
+      <TopLine>546</TopLine>
+      <CurrentLine>546</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\te_api.c</PathWithFileName>
       <FilenameWithoutPath>te_api.c</FilenameWithoutPath>
@@ -290,7 +290,7 @@
       <Focus>0</Focus>
       <ColumnNumber>17</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>156</TopLine>
+      <TopLine>158</TopLine>
       <CurrentLine>164</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\spi.c</PathWithFileName>
@@ -327,8 +327,8 @@
   </Group>
 
   <AlienFiles>
-    <PathWithFilename>C:\Projects\Temporary\fx2_firmware_test_v3.09\versions.h</PathWithFilename>
-    <TopLine>21</TopLine>
+    <PathWithFilename>C:\Projects\Trenz\repos\TE-USB-Suite\TE_USB_FX2.firmware\versions.h</PathWithFilename>
+    <TopLine>27</TopLine>
     <CurrentLine>33</CurrentLine>
     <Constant>0</Constant>
     <WindowPosition>
@@ -357,31 +357,31 @@
     <ActiveMDIGroup>0</ActiveMDIGroup>
     <MDIGroup>
       <Size>100</Size>
-      <ActiveTab>1</ActiveTab>
+      <ActiveTab>2</ActiveTab>
       <Documents>
         <Doc>
-          <Name>.\fw.c</Name>
-          <ColumnNumber>2</ColumnNumber>
-          <TopLine>231</TopLine>
-          <CurrentLine>231</CurrentLine>
-        </Doc>
-        <Doc>
-          <Name>.\te_api.c</Name>
-          <ColumnNumber>6</ColumnNumber>
-          <TopLine>190</TopLine>
-          <CurrentLine>205</CurrentLine>
+          <Name>.\spi.c</Name>
+          <ColumnNumber>17</ColumnNumber>
+          <TopLine>158</TopLine>
+          <CurrentLine>164</CurrentLine>
         </Doc>
         <Doc>
           <Name>versions.h</Name>
           <ColumnNumber>22</ColumnNumber>
-          <TopLine>21</TopLine>
+          <TopLine>27</TopLine>
           <CurrentLine>33</CurrentLine>
         </Doc>
         <Doc>
-          <Name>.\spi.c</Name>
-          <ColumnNumber>17</ColumnNumber>
-          <TopLine>156</TopLine>
-          <CurrentLine>164</CurrentLine>
+          <Name>.\te_api.c</Name>
+          <ColumnNumber>37</ColumnNumber>
+          <TopLine>546</TopLine>
+          <CurrentLine>546</CurrentLine>
+        </Doc>
+        <Doc>
+          <Name>.\fw.c</Name>
+          <ColumnNumber>2</ColumnNumber>
+          <TopLine>199</TopLine>
+          <CurrentLine>199</CurrentLine>
         </Doc>
       </Documents>
     </MDIGroup>

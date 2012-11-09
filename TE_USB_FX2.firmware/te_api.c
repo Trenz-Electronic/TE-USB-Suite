@@ -92,6 +92,7 @@ void WRITE_REG_FPGA (BYTE reg, BYTE xdata *regdata);
 #define EEPROM_WRITE				0xA9
 #define FLASH_WRITE_COMMAND			0xAA
 #define DEV_LOCK					0xBB
+#define START_TEST					0xBD
 
 #define I2C_WRITE_READ				0xAB
 #define GET_FIFO_STATUS				0xAC
@@ -128,7 +129,7 @@ void EP1_Pool(void){
 	WORD	adr, delaycnt;
 	BYTE	i2cadr;
 	char *p;
-	
+
 	if( !( EP1OUTCS & 0x02) ){ 		// Got something
 		for (adr = 0; adr < 0x40; adr++) 
 			EP1INBUF[adr] = 0xff;	// fill output buffer
@@ -163,9 +164,9 @@ void EP1_Pool(void){
 			//		break;
 
 			case	READ_STATUS:
-				if (fx2_status.flash_busy == 1){
+				//if (fx2_status.flash_busy == 1){
 					fx2_status.flash_busy = check_flash_busy();
-				}
+				//}
 				fx2_status.booting = FPGA_DONE;
 				fx2_status.fpga_prog = 0xaa;
 				if (EZUSB_HIGHSPEED()){
@@ -177,7 +178,6 @@ void EP1_Pool(void){
 				new_data = TRUE;					
 				p = memcpy (&EP1INBUF[0], &fx2_status.fifo_error, sizeof(fx2_status));
 
-				//EP1INBUF[2] = check_flash_busy();
 				fx2_status.i2c_new_data = 0;
 				break;
 
@@ -202,7 +202,8 @@ void EP1_Pool(void){
 				break;			
 
 			case FLASH_ERASE:
-				//busy_polling();
+				// busy_polling();	
+				// On some modules it cause API error - better to do it from software side
 				bulk_erase();
 				new_data = TRUE;
 				fx2_status.flash_busy = 1;
@@ -254,8 +255,9 @@ void EP1_Pool(void){
 				break;
 
 			case I2C_WRITE:
-				i2cadr = EP1OUTBUF[1];
-				I2CWrite(i2cadr, EP1OUTBUF[2], &EP1OUTBUF[3]);	// adress, size, data
+				//i2cadr = EP1OUTBUF[1];
+				//I2CWrite(i2cadr, EP1OUTBUF[2], &EP1OUTBUF[3]);	// adress, size, data
+				I2CWrite(EP1OUTBUF[1], EP1OUTBUF[2], &EP1OUTBUF[3]);	// adress, size, data
 				new_data = TRUE;
 				break;
 
@@ -314,21 +316,20 @@ void EP1_Pool(void){
 						EP1INBUF[0] = 0x22;	// Sucessfull lock
 						lock = 1;
 					}
-					else {				// Device is locked
+					else				// Device is locked
 						EP1INBUF[0] = 0x00;	// Already locked
-					}
 				}
 				else{						// Driver trying to unlock device
 					if(lock == 1){		// Device is locked
 						EP1INBUF[0] = 0x33;	// Sucessfull unlock
 						lock = 0;
 					}
-					else {				// Device is unlocked
+					else				// Device is unlocked
 						EP1INBUF[0] = 0x00;	// Got problem
-					}
 				}
 				new_data = TRUE;
 				break;
+				
 		}
 		EP1OUTBC = EP1DATA_COUNT;	// Free input buffer
 	}
