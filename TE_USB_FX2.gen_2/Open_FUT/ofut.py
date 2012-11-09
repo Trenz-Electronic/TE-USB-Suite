@@ -45,26 +45,26 @@ import zipfile
 #-------------------------------------------------------------------------------
 version = " v0.03 Beta"
 root = Tk() # Create main window
-root.title("Open Firmware Upgrade Tool"+version)    # Header of main window
-fpga_file_opt = fpga_options = {}     # Array of file open dialog fpga_options
+root.title("Open Firmware Upgrade Tool"+version)	# Header of main window
+fpga_file_opt = fpga_options = {}	 # Array of file open dialog fpga_options
 fpga_options['defaultextension'] = '' 
 fpga_options['filetypes'] = [('bin files', '.bin'), ('all files', '.*')]
-fpga_options['initialdir'] = '.'             # Current dir
-fpga_options['initialfile'] = 'fpga.bin'     # default file name
+fpga_options['initialdir'] = '.'			 # Current dir
+fpga_options['initialfile'] = 'fpga.bin'	 # default file name
 fpga_options['parent'] = root
 fpga_options['title'] = 'Select FPGA bitstream file' # title
-usb_file_opt = usb_options = {}     # Array of file open dialog usb_options
+usb_file_opt = usb_options = {}	 # Array of file open dialog usb_options
 usb_options['defaultextension'] = '' 
 usb_options['filetypes'] = [('bin files', '.bin'), ('all files', '.*')]
-usb_options['initialdir'] = '.'             # Current dir
-usb_options['initialfile'] = 'usb.bin'      # default file name
+usb_options['initialdir'] = '.'			 # Current dir
+usb_options['initialfile'] = 'usb.bin'	  # default file name
 usb_options['parent'] = root
 usb_options['title'] = 'Select USB firmware file' # title
-fwu_file_opt = fwu_options = {}     # Array of file open dialog fwu_options
+fwu_file_opt = fwu_options = {}	 # Array of file open dialog fwu_options
 fwu_options['defaultextension'] = '' 
 fwu_options['filetypes'] = [('fwu files', '.fwu'), ('all files', '.*')]
-fwu_options['initialdir'] = '.'             # Current dir
-fwu_options['initialfile'] = 'v.fwu'      # default file name
+fwu_options['initialdir'] = '.'			 # Current dir
+fwu_options['initialfile'] = 'v.fwu'	  # default file name
 fwu_options['parent'] = root
 fwu_options['title'] = 'Select firmware update file' # title
 # Define later used variables
@@ -73,392 +73,410 @@ fpga_bitstream = None
 fx2dll = None
 fpga_file_opened = 0
 usb_file_opened = 0
-complete = 0        # Progressbar variable
-op_error = 0        # Error number
-op = StringVar()    # Current operation name
-op.set("")          # No operation at start
+complete = 0		# Progressbar variable
+op_error = 0		# Error number
+op = StringVar()	# Current operation name
+op.set("")		  # No operation at start
 m_handle = c_int(0) # create variable to handle
-opened = 0          # handle flag
+opened = 0		  # handle flag
 #-------------------------------------------------------------------------------
 def bitswap(orig_byte): # Function swap bits in byte
-    return sum(1<<(8-1-i) for i in range(8) if orig_byte>>i&1)
+	return sum(1<<(8-1-i) for i in range(8) if orig_byte>>i&1)
 #-------------------------------------------------------------------------------
 def printlog(logmsg):
-    log_text.config(state = NORMAL)     # Enable for editing
-    log_text.insert(END, logmsg + '\n') # Add to the end of text
-    log_text.config(state = DISABLED)   # Disable editing
-    log_text.yview(END)                 # scroll down to the end
+	log_text.config(state = NORMAL)	 # Enable for editing
+	log_text.insert(END, logmsg + '\n') # Add to the end of text
+	log_text.config(state = DISABLED)   # Disable editing
+	log_text.yview(END)				 # scroll down to the end
 #-------------------------------------------------------------------------------
 def fpga_bitfile_select():   # Call file select dialog
-    global fpga_bitstream
-    global fpga_file_opened
-    fpga_bitfile_name = askopenfilename(**fpga_file_opt) # File select dialog
-    fpga_file_text.config(state = NORMAL)       # Enable for editing
-    fpga_file_text.delete(1.0, END)             # Erase input field
-    fpga_file_text.insert(END, fpga_bitfile_name)  #Put file name in input field
-    fpga_file_text.config(state = DISABLED)     # Disable editing
-    if fpga_bitfile_name:
-        fpga_bin_file = open(fpga_bitfile_name, 'rb')    # Open in binary mode
-        fpga_bitstream = fpga_bin_file.read()            # Read
-        fpga_bin_file.close()                            # Close
-        fpga_file_opened = 1
-    else:                                           # No filename defined
-        printlog("ERROR: Can't open file")
-        op.set("Error")     # Show error
-        op_error = 1        # Signalling
-    return 0
+	global fpga_bitstream
+	global fpga_file_opened
+	fpga_bitfile_name = askopenfilename(**fpga_file_opt) # File select dialog
+	fpga_file_text.config(state = NORMAL)	   # Enable for editing
+	fpga_file_text.delete(1.0, END)			 # Erase input field
+	fpga_file_text.insert(END, fpga_bitfile_name)  #Put file name in input field
+	fpga_file_text.config(state = DISABLED)	 # Disable editing
+	if fpga_bitfile_name:
+		fpga_bin_file = open(fpga_bitfile_name, 'rb')	# Open in binary mode
+		fpga_bitstream = fpga_bin_file.read()			# Read
+		fpga_bin_file.close()							# Close
+		fpga_file_opened = 1
+	else:										   # No filename defined
+		printlog("ERROR: Can't open file")
+		op.set("Error")	 # Show error
+		op_error = 1		# Signalling
+	return 0
 #-------------------------------------------------------------------------------
 def usb_bitfile_select():   # Call file select dialog
-    global usb_bitstream
-    global usb_file_opened
-    usb_bitfile_name = askopenfilename(**usb_file_opt)  # File select dialog
-    usb_file_text.config(state = NORMAL)            # Enable for editing
-    usb_file_text.delete(1.0, END)                  # Erase input field
-    usb_file_text.insert(END, usb_bitfile_name)  # Put file name in input field
-    usb_file_text.config(state = DISABLED)          # Disable editing
-    if usb_bitfile_name:
-        usb_bin_file = open(usb_bitfile_name, 'rb') # Open in binary mode
-        usb_bitstream = usb_bin_file.read()         # Read
-        usb_bin_file.close()                        # Close
-        usb_file_opened = 1
-    else:                                           # No filename defined
-        printlog("ERROR: Can't open file")
-        op.set("Error")                             # Show error
-        op_error = 1                                # Signaling error
-    return 0
+	global usb_bitstream
+	global usb_file_opened
+	usb_bitfile_name = askopenfilename(**usb_file_opt)  # File select dialog
+	usb_file_text.config(state = NORMAL)			# Enable for editing
+	usb_file_text.delete(1.0, END)				  # Erase input field
+	usb_file_text.insert(END, usb_bitfile_name)  # Put file name in input field
+	usb_file_text.config(state = DISABLED)		  # Disable editing
+	if usb_bitfile_name:
+		usb_bin_file = open(usb_bitfile_name, 'rb') # Open in binary mode
+		usb_bitstream = usb_bin_file.read()		 # Read
+		usb_bin_file.close()						# Close
+		usb_file_opened = 1
+	else:										   # No filename defined
+		printlog("ERROR: Can't open file")
+		op.set("Error")							 # Show error
+		op_error = 1								# Signaling error
+	return 0
 #-------------------------------------------------------------------------------
 def fwu_file_select():   # Call file select dialog
-    global usb_bitstream
-    global fpga_bitstream
-    global usb_file_opened
-    global fpga_file_opened
-    fwu_file_name = askopenfilename(**fwu_file_opt) # File select dialog
-    fwu_file_text.config(state = NORMAL)        # Enable for editing
-    fwu_file_text.delete(1.0, END)              # Erase input field
-    fwu_file_text.insert(END, fwu_file_name)    # Put file name in input field
-    fwu_file_text.config(state = DISABLED)      # Disable editing
-    if zipfile.is_zipfile(fwu_file_name):       # Check if file is really zip
-        printlog("Reading fwu from " + fwu_file_name)
-        fwu_file = file(fwu_file_name, 'rb')    # define zip file
-        zip_file = zipfile.ZipFile(fwu_file, 'r')   # operate as zip
-        usb_bitstream = zip_file.read("usb.bin", 'rb')  # read usb.bin from zip
-        printlog("USB  Firmware size " + str(len(usb_bitstream)))
-        usb_file_opened = 1
-        fpga_bitstream = zip_file.read("fpga.bin", 'rb')    # read fpga.bin
-        printlog("FPGA Bitstream size " + str(len(fpga_bitstream)))
-        fpga_file_opened = 1     
-        zip_file.close()        # close zip
-    else:                       # not zip file
-        printlog("ERROR: File " + fwu_file_name + " is not valid FWU file")
-        op.set("Error")
-        op_error = 1
-    return 0
+	global usb_bitstream
+	global fpga_bitstream
+	global usb_file_opened
+	global fpga_file_opened
+	fwu_file_name = askopenfilename(**fwu_file_opt) # File select dialog
+	fwu_file_text.config(state = NORMAL)		# Enable for editing
+	fwu_file_text.delete(1.0, END)			  # Erase input field
+	fwu_file_text.insert(END, fwu_file_name)	# Put file name in input field
+	fwu_file_text.config(state = DISABLED)	  # Disable editing
+	if zipfile.is_zipfile(fwu_file_name):	   # Check if file is really zip
+		printlog("Reading fwu from " + fwu_file_name)
+		fwu_file = file(fwu_file_name, 'rb')	# define zip file
+		zip_file = zipfile.ZipFile(fwu_file, 'r')   # operate as zip
+		usb_bitstream = zip_file.read("usb.bin", 'rb')  # read usb.bin from zip
+		printlog("USB  Firmware size " + str(len(usb_bitstream)))
+		usb_file_opened = 1
+		fpga_bitstream = zip_file.read("fpga.bin", 'rb')	# read fpga.bin
+		printlog("FPGA Bitstream size " + str(len(fpga_bitstream)))
+		fpga_file_opened = 1	 
+		zip_file.close()		# close zip
+	else:					   # not zip file
+		printlog("ERROR: File " + fwu_file_name + " is not valid FWU file")
+		op.set("Error")
+		op_error = 1
+	return 0
 #-------------------------------------------------------------------------------
 def spi_erase_sectors(sectors2erase):
-    global op_error
-    global op
-    global complete
-    global root
-    global m_handle
-    global opened
-    global fx2dll
-    printlog("Erasing SPI Flash")
-    op.set("Erasing")   # Update operation label
-    cmd = create_string_buffer(64)      # Buffer for command
-    reply = create_string_buffer(64)    # Buffer for reply
-    cmd[0] = CMD_FX2_SECTOR_ERASE       # Command 
-    cmd_length = c_int(64)              # Command length always = 64
-    reply_length = c_int(64)            # Variable for reply length
-    timeout_ms = c_int(1000)            # Timeout 1s
-    printlog(str(sectors2erase) + " Sectors to erase")
-    for sector in range(sectors2erase):
-        complete = (sector * 100) / sectors2erase # progressbar
-        progressbar["value"] = complete
-        root.update()                   # Redrive to update progressbar
-        cmd[1] = chr(sector)            # sector to erase (convert to 8 bit)
-        if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
-        byref(reply), byref(reply_length), timeout_ms) != 0:    # call API 
-            op.set("Error")
-            printlog("ERROR: Can't call API function TE0300_SendCommand")
-            op_error = 5
-            break
-    if op_error == 0:
-        printlog("Erase complete")
+	global op_error
+	global op
+	global complete
+	global root
+	global m_handle
+	global opened
+	global fx2dll
+	printlog("Erasing SPI Flash")
+	op.set("Erasing")   # Update operation label
+	cmd = create_string_buffer(64)	  # Buffer for command
+	reply = create_string_buffer(64)	# Buffer for reply
+	cmd[0] = CMD_FX2_SECTOR_ERASE	   # Command 
+	cmd_length = c_int(64)			  # Command length always = 64
+	reply_length = c_int(64)			# Variable for reply length
+	timeout_ms = c_int(1000)			# Timeout 1s
+	printlog(str(sectors2erase) + " Sectors to erase")
+	for sector in range(sectors2erase):
+		complete = (sector * 100) / sectors2erase # progressbar
+		progressbar["value"] = complete
+		root.update()				   # Redrive to update progressbar
+		cmd[1] = chr(sector)			# sector to erase (convert to 8 bit)
+		if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
+		byref(reply), byref(reply_length), timeout_ms) != 0:	# call API 
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op_error = 5
+			break
+	if op_error == 0:
+		printlog("Erase complete")
 
 def spi_erase_bulk():
-    global op_error
-    global op
-    global complete
-    global root
-    global m_handle
-    global opened
-    global fx2dll
-    printlog("Erasing SPI Flash")
-    op.set("Erasing")   # Update operation label
-    cmd = create_string_buffer(64)      # Buffer for command
-    reply = create_string_buffer(64)    # Buffer for reply
-    cmd[0] = CMD_FX2_FLASH_ERASE        # Command
-    cmd_length = c_int(64)              # Command length always = 64
-    reply_length = c_int(64)            # Variable for reply length
-    timeout_ms = c_int(1000)            # Timeout 1s
-    printlog("Bulk erase")
-    if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
-    byref(reply), byref(reply_length), timeout_ms) != 0:    # call API 
-        op.set("Error")
-        printlog("ERROR: Can't call API function TE0300_SendCommand")
-        op_error = 5
-    # Chip erase time 15-30s
-    erase_complete = 0
-    if op_error == 0:   # No errors in past
-        for t in range(35):
-            time.sleep(1)
-            complete = (t * 100) / 35 # progressbar
-            progressbar["value"] = complete
-            root.update()                   # Redrive to update progressbar
-            # testing Busy Flag
-            cmd[0] = CMD_FX2_READ_STATUS
-            if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), 
-            byref(reply_length), timeout_ms) != 0:
-                op.set("Error")
-                printlog("ERROR: Can't call API function TE0300_SendCommand")
-                op_error = 5
-            if ord(reply[2]) == 0:
-                erase_complete = 1
-                break
-    # Check if we finish erasing
-    if erase_complete == 0:
-        op.set("Error")
-        printlog("ERROR: Flash busy after chip erase")
-        op_error = 6
-    else:
-        printlog("Erase complete");
-        
-#-------------------------------------------------------------------------------
-def eeprom_program():      # USB Lg EEPROM programming 
-    global usb_bitstream
-    global op_error
-    global op
-    global complete
-    global root
-    global m_handle
-    global opened
-    global usb_file_opened
-    op_error = 0
-    time_op_start = time.time() # Store start time
-    if usb_file_opened == 1:
-        printlog("Programming EEPROM")
-        bitstream_size = len(usb_bitstream)             # Calculate size
-        printlog("Firmware size " + str(bitstream_size))
-    else:
-        op.set("Error")
-        printlog("ERROR: File not selected")
-        op_error = 6
-    # Load dll
-    if op_error == 0:   # No errors in past
-        fx2dll = windll.LoadLibrary("TE0300DLL.dll")
-        cards = fx2dll.TE0300_ScanCards()   # Call ScanCards driver function
-        printlog("Found " + str(cards) + " card(s)")
-        if cards == 0:
-            op.set("Error")
-            printlog("ERROR: No cards to connect")
-            op_error = 3
-    # Connect to card
-    if op_error == 0:   # No errors in past
-        if fx2dll.TE0300_Open(byref(m_handle), 0) != 0: # Open and get handle
-            op.set("Error")
-            printlog("ERROR: Failed to connect card")
-            op_error = 4
-        else:
-            opened = 1
-            printlog("Connected to card 1")
-    # Write
-    if op_error == 0:   # No errors in past
-        op.set("Programming")               # Update operation label
-        progressbar["value"] = 0            # Reset progressbar
-        cmd = create_string_buffer(64)      # create buffers for API call
-        reply = create_string_buffer(64)    
-        cmd_length = c_int(64)
-        reply_length = c_int(64)
-        timeout_ms = c_int(1000)
-        printlog("Writing bitstream to EEPROM")
-        wr_block_max_size = 32      # write by 32 bytes per transfer
-        cmd[0] = CMD_FX2_EEPROM_WRITE
-        wr_op_cnt = 0
-        for i2c_addr in range(0, bitstream_size, wr_block_max_size):
-            if (bitstream_size - i2c_addr) > wr_block_max_size:
-                i2c_size = wr_block_max_size            # usual transfer = 32
-            else:
-                i2c_size = bitstream_size - i2c_addr    # last chunk
-            cmd[1] = chr((i2c_addr >> 8) & 0x00ff)      # high part of addr
-            cmd[2] = chr(i2c_addr & 0x00ff)             # low part of addr
-            cmd[3] = chr(i2c_size)                      # size
-            for j in range(i2c_size):
-                cmd[4 + j] = usb_bitstream[i2c_addr + j]
-            if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
-            byref(reply), byref(reply_length), timeout_ms) != 0:
-                op.set("Error")
-                printlog("ERROR: Can't call API function")
-                op_error = 5
-            if wr_op_cnt % 10 == 0:    # update progressbar
-                complete = (i2c_addr / (bitstream_size / 100))
-                progressbar["value"] = complete
-                root.update()
-            wr_op_cnt += 1;
-    if op_error == 0:   # No errors in past    
-        printlog("EEPROM Write complete")
-        op.set("Done")              # Update operation label
-        progressbar["value"] = 100  # Show it 100%
-        root.update()               # Rewrite
-    if opened == 1:
-        fx2dll.TE0300_Close(byref(m_handle))    # close driver connection
-        opened = 0
-#-------------------------------------------------------------------------------
-def spi_program():      # SPI Flash programming 
-    global fpga_bitstream
-    global op_error
-    global op
-    global complete
-    global root
-    global m_handle
-    global opened
-    global fpga_file_opened
-    global fx2dll
-    op_error = 0
-    time_op_start = time.time() # Store start time
-    if fpga_file_opened == 1:
-        printlog("SPI Programming")
-        bitstream_size = len(fpga_bitstream)             # Calculate size
-        printlog("Bitstream size " + str(bitstream_size))
-    else:
-        op.set("Error")
-        printlog("ERROR: File not selected")
-        op_error = 6
-    # Load dll
-    if op_error == 0:   # No errors in past
-        fx2dll = windll.LoadLibrary("TE0300DLL.dll")
-        cards = fx2dll.TE0300_ScanCards()   # Call ScanCards driver function
-        printlog("Found " + str(cards) + " card(s)")
-        if cards == 0:
-            op.set("Error")
-            printlog("ERROR: No cards to connect")
-            op_error = 3
-    # Connect to card
-    if op_error == 0:   # No errors in past
-        if fx2dll.TE0300_Open(byref(m_handle), 0) != 0: # Open and get handle
-            op.set("Error")
-            printlog("ERROR: Failed to connect card")
-            op_error = 4
-        else:
-            opened = 1
-            printlog("Connected to card 1")
+	global op_error
+	global op
+	global complete
+	global root
+	global m_handle
+	global opened
+	global fx2dll
+	printlog("Erasing SPI Flash")
+	op.set("Erasing")   				# Update operation label
+	cmd = create_string_buffer(64)	  	# Buffer for command
+	reply = create_string_buffer(64)	# Buffer for reply
+	cmd_length = c_int(64)			  	# Command length always = 64
+	reply_length = c_int(64)			# Variable for reply length
+	timeout_ms = c_int(1000)			# Timeout 1s
 
-    cmd = create_string_buffer(64)      # Buffer for command
-    reply = create_string_buffer(64)    # Buffer for reply
-    cmd_length = c_int(64)              # Command length always = 64
-    reply_length = c_int(64)            # Variable for reply length
-    timeout_ms = c_int(1000)            # Timeout 1s
-     
-    # Erase Flash
-    if op_error == 0:   # No errors in past
-        sectors2erase = (bitstream_size >> 16) + 1 # full sectors + remainder
-        #spi_erase_sectors(sectors2erase)
-        spi_erase_bulk()
-            
-    # Write to flash
-    if op_error == 0:   # No errors in past
-        op.set("Preparing")         # Update operation label
-        progressbar["value"] = 0    # Reset progressbar
-        wr_bitstream = create_string_buffer(bitstream_size) # Create buffer
-        printlog("Prepare write buffer")    # We have to swap bits before write
-        for i in range(bitstream_size):
-            wr_bitstream[i] = chr(bitswap(ord(fpga_bitstream[i])))   # swap
-            if i % 10000 == 0:  # update progressbar, but not often
-                complete = (i * 100) / bitstream_size
-                progressbar["value"] = complete
-                root.update()
-        printlog("Programming")
-        op.set("Programming")       # Update operation label
-        progressbar["value"] = 0    # Reset progressbar
-        time_write_start = time.time()  # remember start time
-        wr_block_max_size = 59      # maximum bytes to put in one write command
-        spi_addr = 0                # From address 0
-        wr_op_cnt = 0               # count cycles for progressbar
-        cmd[0] = CMD_FX2_FLASH_WRITE    # Set command
-        while spi_addr < bitstream_size:    # cycle to the end of bitstream
-            if (bitstream_size - spi_addr) > wr_block_max_size: # can write 59
-                wr_block_size = wr_block_max_size
-            else:   # data remainder is less than 59
-                wr_block_size = bitstream_size - spi_addr
-            sector_rem = 0x00ffff - (spi_addr & 0x00ffff)   # sector remainder
-            if sector_rem < wr_block_max_size and sector_rem != 0:  # cross 
-                wr_block_size = sector_rem + 1; # write to the end of sector
-            cmd[1] = chr((spi_addr >> 16) & 0x00ff) # higgest part of addr
-            cmd[2] = chr((spi_addr >> 8) & 0x00ff)  # high part of addr
-            cmd[3] = chr(spi_addr & 0x00ff)         # low part of addr
-            cmd[4] = chr(wr_block_size)             # size
-            for wr_block_cnt in range(wr_block_size):   # copy data
-                cmd[5 + wr_block_cnt] = wr_bitstream[spi_addr + wr_block_cnt]
-            if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
-            byref(reply), byref(reply_length), timeout_ms) != 0:   # call API
-                op.set("Error") # Update operation label
-                printlog("ERROR: Can't call API function TE0300_SendCommand")
-                op_error = 5
-            if wr_op_cnt % 100 == 0:    # update progressbar
-                complete = (spi_addr / (bitstream_size / 100))
-                progressbar["value"] = complete
-                root.update()
-            # Check readback
-            for wr_block_cnt in range(wr_block_size): # compare reply with data
-                if reply[wr_block_cnt] != cmd[5 + wr_block_cnt]:
-                    op.set("Error")
-                    printlog("ERROR: Write failed at " + str(spi_addr))
-                    op_error = 5
-                    break
-            if op_error != 0:
-                break
-            spi_addr += wr_block_size   # update address
-            wr_op_cnt += 1              # increment operation counter
-    if op_error == 0:   # No errors in past
-        printlog("Write complete")
-        printlog("Total time "+ str(round((time.time() - time_op_start))) 
-        + " seconds")
-        printlog("Turn on FPGA")
-        cmd[0] = CMD_FX2_POWER_ON   # Power ON FPGA
-        cmd[1] = chr(1)             # 1 = Turn ON
-        if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), 
-        byref(reply_length), timeout_ms) != 0:  # Call API
-            printlog("ERROR: Can't call API function TE0300_SendCommand")
-            op.set("Error")
-            op_error = 5
-    if op_error == 0:   # No errors in past
-        complete = 0
-        progressbar["value"] = 0    
-        root.update()   # Redraw
-        time.sleep(1)   # Wait for boot
-        printlog("Checking DONE pin")
-        cmd[0] = CMD_FX2_READ_STATUS
-        if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), 
-        byref(reply_length), timeout_ms) != 0:
-            printlog("ERROR: Can't call API function TE0300_SendCommand")
-            op.set("Error")
-            op_error = 5
-        if ord(reply[3]) == 0:  # Check DONE
-            printlog("ERROR: DONE pin is not High")
-        else:
-            printlog("DONE pin is High")
-            op.set("Done")              # Update operation label
-            complete = 100              # Show it 100%
-            progressbar["value"] = 100  # Show it 100%
-            root.update()               # Rewrite
-    if opened == 1:
-        fx2dll.TE0300_Close(byref(m_handle))    # close driver connection
-        opened = 0
-        printlog("Done")
+	cmd[0] = CMD_FX2_READ_STATUS
+	for t in range(7):
+		if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), byref(reply_length), timeout_ms) != 0:	# call API 
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+	if ord(reply[2]) != 0:
+		op.set("Error")
+		printlog("ERROR: Flash busy")
+		op_error = 6
+
+	printlog("Bulk erase")
+	flash_busy = 0
+	while flash_busy == 0:					# Flash should be busy after erase command
+		cmd[0] = CMD_FX2_FLASH_ERASE		# Command
+		if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), byref(reply_length), timeout_ms) != 0:	# call API 
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op_error = 5
+		cmd[0] = CMD_FX2_READ_STATUS
+		if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), byref(reply_length), timeout_ms) != 0:	# call API 
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op_error = 5
+		flash_busy = ord(reply[2])
+	# Chip erase time 15-30s
+	erase_complete = 0
+	if op_error == 0:   # No errors in past
+		for t in range(35):
+			time.sleep(1)
+			complete = (t * 100) / 35 # progressbar
+			progressbar["value"] = complete
+			root.update()				   # Redrive to update progressbar
+			# testing Busy Flag
+			cmd[0] = CMD_FX2_READ_STATUS
+			if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), 
+			byref(reply_length), timeout_ms) != 0:
+				op.set("Error")
+				printlog("ERROR: Can't call API function TE0300_SendCommand")
+				op_error = 5
+			if ord(reply[2]) == 0:
+				erase_complete = 1
+				break
+	# Check if we finish erasing
+	if erase_complete == 0:
+		op.set("Error")
+		printlog("ERROR: Flash busy after chip erase")
+		op_error = 6
+	else:
+		printlog("Erase complete");
+		
+#-------------------------------------------------------------------------------
+def eeprom_program():	  # USB Lg EEPROM programming 
+	global usb_bitstream
+	global op_error
+	global op
+	global complete
+	global root
+	global m_handle
+	global opened
+	global usb_file_opened
+	op_error = 0
+	time_op_start = time.time() # Store start time
+	if usb_file_opened == 1:
+		printlog("Programming EEPROM")
+		bitstream_size = len(usb_bitstream)			 # Calculate size
+		printlog("Firmware size " + str(bitstream_size))
+	else:
+		op.set("Error")
+		printlog("ERROR: File not selected")
+		op_error = 6
+	# Load dll
+	if op_error == 0:   # No errors in past
+		fx2dll = windll.LoadLibrary("TE0300DLL.dll")
+		cards = fx2dll.TE0300_ScanCards()   # Call ScanCards driver function
+		printlog("Found " + str(cards) + " card(s)")
+		if cards == 0:
+			op.set("Error")
+			printlog("ERROR: No cards to connect")
+			op_error = 3
+	# Connect to card
+	if op_error == 0:   # No errors in past
+		if fx2dll.TE0300_Open(byref(m_handle), 0) != 0: # Open and get handle
+			op.set("Error")
+			printlog("ERROR: Failed to connect card")
+			op_error = 4
+		else:
+			opened = 1
+			printlog("Connected to card 1")
+	# Write
+	if op_error == 0:   # No errors in past
+		op.set("Programming")			   # Update operation label
+		progressbar["value"] = 0			# Reset progressbar
+		cmd = create_string_buffer(64)	  # create buffers for API call
+		reply = create_string_buffer(64)	
+		cmd_length = c_int(64)
+		reply_length = c_int(64)
+		timeout_ms = c_int(1000)
+		printlog("Writing bitstream to EEPROM")
+		wr_block_max_size = 32	  # write by 32 bytes per transfer
+		cmd[0] = CMD_FX2_EEPROM_WRITE
+		wr_op_cnt = 0
+		for i2c_addr in range(0, bitstream_size, wr_block_max_size):
+			if (bitstream_size - i2c_addr) > wr_block_max_size:
+				i2c_size = wr_block_max_size			# usual transfer = 32
+			else:
+				i2c_size = bitstream_size - i2c_addr	# last chunk
+			cmd[1] = chr((i2c_addr >> 8) & 0x00ff)	  # high part of addr
+			cmd[2] = chr(i2c_addr & 0x00ff)			 # low part of addr
+			cmd[3] = chr(i2c_size)					  # size
+			for j in range(i2c_size):
+				cmd[4 + j] = usb_bitstream[i2c_addr + j]
+			if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
+			byref(reply), byref(reply_length), timeout_ms) != 0:
+				op.set("Error")
+				printlog("ERROR: Can't call API function")
+				op_error = 5
+			if wr_op_cnt % 10 == 0:	# update progressbar
+				complete = (i2c_addr / (bitstream_size / 100))
+				progressbar["value"] = complete
+				root.update()
+			wr_op_cnt += 1;
+	if op_error == 0:   # No errors in past	
+		printlog("EEPROM Write complete")
+		op.set("Done")			  # Update operation label
+		progressbar["value"] = 100  # Show it 100%
+		root.update()			   # Rewrite
+	if opened == 1:
+		fx2dll.TE0300_Close(byref(m_handle))	# close driver connection
+		opened = 0
+#-------------------------------------------------------------------------------
+def spi_program():	  # SPI Flash programming 
+	global fpga_bitstream
+	global op_error
+	global op
+	global complete
+	global root
+	global m_handle
+	global opened
+	global fpga_file_opened
+	global fx2dll
+	op_error = 0
+	time_op_start = time.time() # Store start time
+	if fpga_file_opened == 1:
+		printlog("SPI Programming")
+		bitstream_size = len(fpga_bitstream)			 # Calculate size
+		printlog("Bitstream size " + str(bitstream_size))
+	else:
+		op.set("Error")
+		printlog("ERROR: File not selected")
+		op_error = 6
+	# Load dll
+	if op_error == 0:   # No errors in past
+		fx2dll = windll.LoadLibrary("TE0300DLL.dll")
+		cards = fx2dll.TE0300_ScanCards()   # Call ScanCards driver function
+		printlog("Found " + str(cards) + " card(s)")
+		if cards == 0:
+			op.set("Error")
+			printlog("ERROR: No cards to connect")
+			op_error = 3
+	# Connect to card
+	if op_error == 0:   # No errors in past
+		if fx2dll.TE0300_Open(byref(m_handle), 0) != 0: # Open and get handle
+			op.set("Error")
+			printlog("ERROR: Failed to connect card")
+			op_error = 4
+		else:
+			opened = 1
+			printlog("Connected to card 1")
+
+	cmd = create_string_buffer(64)	  # Buffer for command
+	reply = create_string_buffer(64)	# Buffer for reply
+	cmd_length = c_int(64)			  # Command length always = 64
+	reply_length = c_int(64)			# Variable for reply length
+	timeout_ms = c_int(1000)			# Timeout 1s
+	 
+	# Erase Flash
+	if op_error == 0:   # No errors in past
+		sectors2erase = (bitstream_size >> 16) + 1 # full sectors + remainder
+		#spi_erase_sectors(sectors2erase)
+		spi_erase_bulk()
+			
+	# Write to flash
+	if op_error == 0:   # No errors in past
+		op.set("Preparing")		 # Update operation label
+		progressbar["value"] = 0	# Reset progressbar
+		wr_bitstream = create_string_buffer(bitstream_size) # Create buffer
+		printlog("Prepare write buffer")	# We have to swap bits before write
+		for i in range(bitstream_size):
+			wr_bitstream[i] = chr(bitswap(ord(fpga_bitstream[i])))   # swap
+			if i % 10000 == 0:  # update progressbar, but not often
+				complete = (i * 100) / bitstream_size
+				progressbar["value"] = complete
+				root.update()
+		printlog("Programming")
+		op.set("Programming")	   # Update operation label
+		progressbar["value"] = 0	# Reset progressbar
+		time_write_start = time.time()  # remember start time
+		wr_block_max_size = 59	  # maximum bytes to put in one write command
+		spi_addr = 0				# From address 0
+		wr_op_cnt = 0			   # count cycles for progressbar
+		cmd[0] = CMD_FX2_FLASH_WRITE	# Set command
+		while spi_addr < bitstream_size:	# cycle to the end of bitstream
+			if (bitstream_size - spi_addr) > wr_block_max_size: # can write 59
+				wr_block_size = wr_block_max_size
+			else:   # data remainder is less than 59
+				wr_block_size = bitstream_size - spi_addr
+			sector_rem = 0x00ffff - (spi_addr & 0x00ffff)   # sector remainder
+			if sector_rem < wr_block_max_size and sector_rem != 0:  # cross 
+				wr_block_size = sector_rem + 1; # write to the end of sector
+			cmd[1] = chr((spi_addr >> 16) & 0x00ff) # higgest part of addr
+			cmd[2] = chr((spi_addr >> 8) & 0x00ff)  # high part of addr
+			cmd[3] = chr(spi_addr & 0x00ff)		 # low part of addr
+			cmd[4] = chr(wr_block_size)			 # size
+			for wr_block_cnt in range(wr_block_size):   # copy data
+				cmd[5 + wr_block_cnt] = wr_bitstream[spi_addr + wr_block_cnt]
+			if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, 
+			byref(reply), byref(reply_length), timeout_ms) != 0:   # call API
+				op.set("Error") # Update operation label
+				printlog("ERROR: Can't call API function TE0300_SendCommand")
+				op_error = 5
+			if wr_op_cnt % 100 == 0:	# update progressbar
+				complete = (spi_addr / (bitstream_size / 100))
+				progressbar["value"] = complete
+				root.update()
+			# Check readback
+			for wr_block_cnt in range(wr_block_size): # compare reply with data
+				if reply[wr_block_cnt] != cmd[5 + wr_block_cnt]:
+					op.set("Error")
+					printlog("ERROR: Write failed at " + str(spi_addr))
+					op_error = 5
+					break
+			if op_error != 0:
+				break
+			spi_addr += wr_block_size   # update address
+			wr_op_cnt += 1			  # increment operation counter
+	if op_error == 0:   # No errors in past
+		printlog("Write complete")
+		printlog("Total time "+ str(round((time.time() - time_op_start))) 
+		+ " seconds")
+		printlog("Turn on FPGA")
+		cmd[0] = CMD_FX2_POWER_ON   # Power ON FPGA
+		cmd[1] = chr(1)			 # 1 = Turn ON
+		if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), 
+		byref(reply_length), timeout_ms) != 0:  # Call API
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op.set("Error")
+			op_error = 5
+	if op_error == 0:   # No errors in past
+		complete = 0
+		progressbar["value"] = 0	
+		root.update()   # Redraw
+		time.sleep(1)   # Wait for boot
+		printlog("Checking DONE pin")
+		cmd[0] = CMD_FX2_READ_STATUS
+		if fx2dll.TE0300_SendCommand(m_handle, cmd, cmd_length, byref(reply), 
+		byref(reply_length), timeout_ms) != 0:
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op.set("Error")
+			op_error = 5
+		if ord(reply[3]) == 0:  # Check DONE
+			printlog("ERROR: DONE pin is not High")
+		else:
+			printlog("DONE pin is High")
+			op.set("Done")			  # Update operation label
+			complete = 100			  # Show it 100%
+			progressbar["value"] = 100  # Show it 100%
+			root.update()			   # Rewrite
+	if opened == 1:
+		fx2dll.TE0300_Close(byref(m_handle))	# close driver connection
+		opened = 0
+		printlog("Done")
 #-------------------------------------------------------------------------------
 def update_both():
-    printlog("Full firmware upgrade")
-    eeprom_program()
-    spi_program()
+	printlog("Full firmware upgrade")
+	eeprom_program()
+	spi_program()
 #-------------------------------------------------------------------------------
 # GUI
 #-------------------------------------------------------------------------------
@@ -535,7 +553,7 @@ progressbar.pack(side = RIGHT, fill = X, expand = 1)
 log_scroll.pack(side = RIGHT, fill = Y, expand = 0)
 log_text.pack(side = LEFT, fill = BOTH, expand = 1)
 log_scroll.config(command = log_text.yview) # connect scroll to text
-log_text.config(yscrollcommand = log_scroll.set)    # coonect test to scroll
+log_text.config(yscrollcommand = log_scroll.set)	# coonect test to scroll
 log_text.config(state = DISABLED)   # Edit by user is disabled
 # Run
 root.mainloop()

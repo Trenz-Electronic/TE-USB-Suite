@@ -114,9 +114,8 @@ data = create_string_buffer(PACKET_LEN * packets)
 packet = create_string_buffer(PACKET_LEN)
 #-------------------------------------------------------------------------------
 # Host -> FX2 -> FPGA (w) test
-#RX_PACKET_LEN = 102400
-RX_PACKET_LEN = 1024
-#rx_packets = 600
+RX_PACKET_LEN = 102400
+#RX_PACKET_LEN = 1024
 rx_packets = 600
 rx_packetlen = c_long(RX_PACKET_LEN)
 
@@ -265,4 +264,6 @@ else:
 print "Transferred "+str(total_cnt/1024)+" kB in "+str(elapsed_time)+" s = "+str(total_cnt/(elapsed_time*1024*1024))+" MB/s"
 #-------------------------------------------------------------------------------
 print "Done"
+raw_input('Press Enter')
+
 	

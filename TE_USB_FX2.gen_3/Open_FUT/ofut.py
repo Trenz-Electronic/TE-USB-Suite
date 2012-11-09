@@ -205,15 +205,36 @@ def spi_erase_bulk():
 	op.set("Erasing")   # Update operation label
 	cmd = create_string_buffer(64)	  # Buffer for command
 	reply = create_string_buffer(64)	# Buffer for reply
-	cmd[0] = CMD_FX2_FLASH_ERASE		# Command
 	cmd_length = c_long(64)			 # Command length always = 64
 	reply_length = c_long(64)		   # Variable for reply length
 	timeout_ms = c_ulong(1000)		  # Timeout 1s
-	printlog("Bulk erase")
-	if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API
+
+	cmd[0] = CMD_FX2_READ_STATUS
+	for t in range(7):
+		if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+	if ord(reply[2]) != 0:
 		op.set("Error")
-		printlog("ERROR: Can't call API function TE0300_SendCommand")
-		op_error = 5
+		printlog("ERROR: Flash busy")
+		op_error = 6
+	
+	printlog("Bulk erase")
+	
+	flash_busy = 0
+	while flash_busy == 0:					# Flash should be busy after erase command
+		cmd[0] = CMD_FX2_FLASH_ERASE		# Command
+		if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op_error = 5
+		cmd[0] = CMD_FX2_READ_STATUS		# Command
+		if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API
+			op.set("Error")
+			printlog("ERROR: Can't call API function TE0300_SendCommand")
+			op_error = 5
+		flash_busy = ord(reply[2])
+		
 	# Chip erase time 15-30s
 	erase_complete = 0
 	if op_error == 0:   # No errors in past
