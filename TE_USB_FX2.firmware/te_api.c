@@ -287,8 +287,11 @@ void EP1_Pool(void){
 					FPGA_POWER_ON = 0;
 					fx2_status.IntAutoConfigured = 0;
 				}
-				else
+				else{
 					FPGA_POWER_ON = 1;
+					IOD = 0x03;	// Enable Power and disable Reset
+					OED = 0x03;	// PROG_B and POWER
+				}
 				if (FPGA_POWER_ON)
 					EP1INBUF[0] = 1;
 				else
