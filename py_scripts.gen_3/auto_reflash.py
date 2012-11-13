@@ -103,9 +103,9 @@ def flash_erase():
 		flash_busy = ord(reply[2])
 
 	erase_complete = 0
-	for t in range(70):
+	for t in range(90):			# 45 sec (Max erase time for W25Q128 is 40 sec)
 		time.sleep(0.5)
-		complete = (t * 100) / 70 # progressbar
+		complete = (t * 100) / 90 # progressbar
 		print str(int(complete)) + "%\r",
 		# testing Busy Flag
 		cmd[0] = CMD_FX2_READ_STATUS
@@ -217,7 +217,8 @@ def check_done():
 		print "ERROR: Can't call API function TE0300_SendCommand"
 		return 1
 	
-	if ord(reply[3]) == 0:  # Check DONE
+#	if ord(reply[3]) == 0:  # Check DONE
+	if ord(reply[4]) == 0:  # Check DONE
 		return 2
 	else:
 		return 0
