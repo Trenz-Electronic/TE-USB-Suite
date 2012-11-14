@@ -48,12 +48,18 @@ LDFLAGS+=-L ${LIBDIR}
 %.rel : %.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
-default: usb_te.iic
+default: usb_te.iic usb_dw.iic
 
 %.iic : %.hex
 	c:\\Cypress\USB\bin\Hex2bix.exe -ir -f 0xC2 -m 0xF000 -c 0x1 -o $@ $<
 
-usb_te.hex: vectors.rel fw.rel dscr_te.rel eeprom.rel startup.rel te_api.rel spi.rel ${LIBDIR}/${LIB}
+usb_te.hex: vectors.rel fw.rel dscr_te.rel i2c.rel startup.rel te_api.rel spi.rel ${LIBDIR}/${LIB}
+	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $+
+	packihx $@ > .tmp.hex
+	rm $@
+	mv .tmp.hex $@
+
+usb_dw.hex: vectors.rel fw.rel dscr_dw.rel i2c.rel startup.rel te_api.rel spi.rel ${LIBDIR}/${LIB}
 	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $+
 	packihx $@ > .tmp.hex
 	rm $@
@@ -64,8 +70,8 @@ ${LIBDIR}/${LIB}:
 
 dscr_te.rel: dscr_te.a51
 dscr_dw.rel: dscr_dw.a51
-eeprom.rel: eeprom.c eeprom.h
-fw.rel: fw.c eeprom.h te_api.h fpga.h spi.h
+i2c.rel: i2c.c i2c.h
+fw.rel: fw.c i2c.h te_api.h fpga.h spi.h
 te_api.rel: te_api.c te_api.h
 spi.rel: spi.c spi.h
 
@@ -75,8 +81,9 @@ clean:
 	make -C ${LIBDIR} clean
 	rm -f *.lst *.asm *.sym *.rel *.mem *.map *.rst *.hex *.iic *.lk *.omf *.cdb
 
-release: usb_te.iic
-	copy usb_te.iic ready_for_download
+release: usb_te.iic usb_dw.iic
+	copy usb_te.iic ..\ready_for_download\current_te.iic
+	copy usb_dw.iic ..\ready_for_download\current_dw.iic
 	make -C ${LIBDIR} clean
 	rm -f *.lst *.asm *.sym *.rel *.mem *.map *.rst *.hex *.iic *.lk *.omf *.cdb
 

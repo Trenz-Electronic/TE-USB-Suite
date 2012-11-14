@@ -26,12 +26,12 @@
 #include "usb_descriptors.h"
 #include "usb_requests.h"
 
-extern __xdata char str0[];
-extern __xdata char str1[];
-extern __xdata char str2[];
-extern __xdata char str3[];
-extern __xdata char str4[];
-extern __xdata char str5[];
+//extern __xdata char str0[];
+//extern __xdata char str1[];
+//extern __xdata char str2[];
+//extern __xdata char str3[];
+//extern __xdata char str4[];
+//extern __xdata char str5[];
 
 volatile __bit _usb_got_SUDAV;
 
@@ -43,7 +43,7 @@ __xdata unsigned char *current_devqual_descr;
 __xdata unsigned char *current_config_descr;
 __xdata unsigned char *other_config_descr;
 
-volatile __xdata BYTE LineCode[7] = {0x60,0x09,0x00,0x00,0x00,0x00,0x08};
+//volatile __xdata BYTE LineCode[7] = {0x60,0x09,0x00,0x00,0x00,0x00,0x08};
 
 //static void setup_descriptors (void){
 void setup_descriptors (void){
@@ -88,7 +88,6 @@ void usb_install_handlers (void){
 
 // On the FX2 the only plausible endpoints are 0, 1, 2, 4, 6, 8
 // This doesn't check to see that they're enabled
-
 unsigned char plausible_endpoint (unsigned char ep){
 	ep &= ~0x80;	// ignore direction bit
 	
@@ -108,17 +107,17 @@ __xdata volatile unsigned char *
 epcs (unsigned char ep)
 {
 	if (ep == 0x01)		// ep1 has different in and out CS regs
-		return EP1OUTCS;
+		return (__xdata volatile unsigned char *)EP1OUTCS;
 
 	if (ep == 0x81)
-		return EP1INCS;
+		return (__xdata volatile unsigned char *)EP1INCS;
 
 	ep &= ~0x80;			// ignore direction bit
 
 	if (ep == 0x00)		// ep0
-		return EP0CS;
+		return (__xdata volatile unsigned char *)EP0CS;
 		
-	return EP2CS + (ep >> 1);	// 2, 4, 6, 8 are consecutive
+	return (__xdata volatile unsigned char *)(EP2CS + (ep >> 1));	// 2, 4, 6, 8 are consecutive
 }
 
 void usb_handle_setup_packet (void)
@@ -142,20 +141,12 @@ void usb_handle_setup_packet (void)
 					SUDPTRL = LSB (current_devqual_descr);
 				break;
 				case DT_CONFIG:
-					//if (0 && wValueL != 1)	// FIXME only a single configuration
-					//	fx2_stall_ep0 ();
-					//else {
 					SUDPTRH = MSB (current_config_descr);
 					SUDPTRL = LSB (current_config_descr);
-					//}
 				break;
 				case DT_OTHER_SPEED:
-					//if (0 && wValueL != 1)	// FIXME only a single configuration
-					//	fx2_stall_ep0 ();
-					//else {
 					SUDPTRH = MSB (other_config_descr);
 					SUDPTRL = LSB (other_config_descr);
-					//}
 				break;
 				case DT_STRING:
 					if (wValueL >= nstring_descriptors)
@@ -251,7 +242,7 @@ void usb_handle_setup_packet (void)
 			//}
 		break;
 
-		case RQ_GET_LINE_CODING:
+/*		case RQ_GET_LINE_CODING:
 			SUDPTRCTL = 0x01;
 			EP0BUF[0] = LineCode[0]; 
 			EP0BUF[1] = LineCode[1]; 
@@ -281,9 +272,9 @@ void usb_handle_setup_packet (void)
 			LineCode[4] = EP0BUF[4]; 
 			LineCode[5] = EP0BUF[5]; 
 			LineCode[6] = EP0BUF[6];
-			process_line_coding();
+			//process_line_coding();
 		break;
-			
+*/			
 		//case RQ_SET_CONTROL_STATE:
 		//break;
 	}

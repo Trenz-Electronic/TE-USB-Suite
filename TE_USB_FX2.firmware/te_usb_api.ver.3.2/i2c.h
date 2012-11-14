@@ -19,11 +19,21 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
 FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS 
 IN THE SOFTWARE.
 */
-#ifndef __EEPROM_H__
-#define __EEPROM_H__
+#ifndef __I2C_H__
+#define __I2C_H__
+
 #include "fx2regs.h"
 
+#define MSB(x)	(((WORD) x) >> 8)
+#define LSB(x)	(((WORD) x) & 0xff)
+
+void EEPROMWriteByte(WORD addr, BYTE value);
 void EEPROMWrite(WORD addr, BYTE length, BYTE __xdata *buf);
+void EEPROMRead(WORD addr, BYTE length, BYTE __xdata *buf);
 void EEsendData(BYTE DATA);
+BYTE EEreadData(void);
+void I2CWrite(BYTE addr, BYTE length, BYTE __xdata *buf);
+void I2CRead(BYTE addr, BYTE length, BYTE __xdata *buf);
+void I2CRead2(BYTE addr, BYTE length, BYTE *buf);
 
 #endif

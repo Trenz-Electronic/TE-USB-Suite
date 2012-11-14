@@ -35,7 +35,7 @@
 #include "usb_descriptors.h"
 #include "usb_requests.h"
 #include "syncdelay.h"
-#include "eeprom.h"
+//#include "i2c.h"
 #include "te_api.h"
 #include "fpga.h"
 
@@ -87,9 +87,10 @@ void system_init(void)              // Called once at startup
 
 	IOD = 0x03;			// Enable PS_ON and disable PROG_B 
 	OED = 0x03;			// Configure PS_ON and PROG as outputs
-	//fx2_status.IntAutoConfigured = 0;
-	//fx2_status.current_mode = 1;
-	//IntAutoResponse.PinStatus = 0;
+	OEA = 0x82;			// FlagD and INT1 as outputs
+
+	if( !( EP1OUTCS & 0x02) ) 	// Need to clear EP1 buffer
+		EP1OUTBC = 0x40;
 }
 
 //-----------------------------------------------------------------------------

@@ -22,6 +22,7 @@ IN THE SOFTWARE.
 #include "fx2regs.h"
 #include "syncdelay.h"
 #include "spi.h"
+#include "fpga.h"
 
 /*
     Put byte to SPI port
@@ -67,6 +68,9 @@ void page_write (BYTE addhighest, BYTE addhigh, BYTE addlow,
     volatile unsigned int pw_count, pw_adress;
     volatile unsigned char add_high;
 
+    OED = 0x73;		    // 0b01110001;
+    FPGA_POWER = 0;	// power off fpga
+	
     pw_count = p_write_size;
     add_high = addhighest;
     write_enable ();
@@ -103,14 +107,14 @@ void page_write (BYTE addhighest, BYTE addhigh, BYTE addlow,
 /*
     Read page from Flash
 */
-/*
+
 void page_read (BYTE addhighest, BYTE addhigh, BYTE addlow,	BYTE *rdptr, 
     WORD count) {
     unsigned char rd_buff;
     volatile unsigned int pr_count, pr_address;
 
-    OED = 0x71;		    // 0b01110001;
-    FPGA_POWER_ON = 0;	// power off fpga
+    OED = 0x73;		    // 0b01110001;
+    FPGA_POWER = 0;		// power off fpga
 
     pr_count = count;
     if (pr_count > 256) pr_count = pr_count & 0x00ff;
@@ -118,7 +122,7 @@ void page_read (BYTE addhighest, BYTE addhigh, BYTE addlow,	BYTE *rdptr,
     pr_address = (unsigned int) addhigh;
     pr_address = (pr_address << 8) + addlow;
 
-    FLASH_ENABLE            // assert chip select
+    FLASH_ENABLE;            // assert chip select
     putcSPI(SPI_READ);      // send read command
     putcSPI(addhighest);    // send high byte of address
     putcSPI(addhigh);       // send high byte of address
@@ -131,18 +135,18 @@ void page_read (BYTE addhighest, BYTE addhigh, BYTE addlow,	BYTE *rdptr,
         pr_address++;
         if (pr_address == 0) {
             addhighest++;
-            FLASH_DISABLE
+            FLASH_DISABLE;
 
-            FLASH_ENABLE
+            FLASH_ENABLE;
             putcSPI(SPI_READ);      // send read command
             putcSPI(addhighest);    // send high byte of address
             putcSPI(addhigh);       // send high byte of address
             putcSPI(addlow);        // send low byte of address
         }
     }
-    FLASH_DISABLE
+    FLASH_DISABLE;
 }
-*/
+
 /*
     Send Wite Enable command to Flash
 */
@@ -167,9 +171,43 @@ void busy_polling (void) {
 }
 
 /*
+ * Return Flash Busy flag
+ */
+BYTE get_flash_busy(void){
+	BYTE sr;
+	
+	OED = 0x73;			// 0b01110001;
+	FPGA_POWER = 0;	//power off fpga
+	
+	FLASH_ENABLE;           // assert chip select
+    putcSPI(SPI_RDSR1);		// send read status register command
+    sr = getcSPI();         // read data byte
+    FLASH_DISABLE;			// negate chip select
+	
+	return (sr & 0x01);
+}
+
+/*
+    Send Bulk Erase command to Flash
+*/
+void bulk_erase(void)
+{
+	OED = 0x73;			// 0b01110001;
+	FPGA_POWER = 0;	//power off fpga
+	write_enable ();
+	FLASH_ENABLE; 		//assert chip select
+	putcSPI(0xC7); 		//send SE command  // it's BE!
+	FLASH_DISABLE; 		//negate chip select
+}
+
+/*
     Send Sector Erase command to Flash
 */
 void sector_erase(BYTE sector) {
+
+	OED = 0x73;			// 0b01110001;
+	FPGA_POWER = 0;	//power off fpga
+	
 	write_enable();		// assert WE before program/erase 
 	FLASH_ENABLE;		// assert chip select
 	putcSPI(SPI_SE);	// send SE command

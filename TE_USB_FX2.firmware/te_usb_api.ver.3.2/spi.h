@@ -67,8 +67,12 @@ void putcSPI(unsigned char data_wr);
 unsigned char getcSPI(void);
 void page_write (BYTE addhighest, BYTE addhigh, BYTE addlow, 
 	unsigned char *wrptr, WORD p_write_size);
+void page_read (BYTE addhighest, BYTE addhigh, BYTE addlow,	BYTE *rdptr, 
+    WORD count);
 void write_enable (void);
 void busy_polling (void);
+void bulk_erase(void);
 void sector_erase (unsigned char sector);
+BYTE get_flash_busy(void);
 //-----------------------------------------------------------------------------
 #endif
