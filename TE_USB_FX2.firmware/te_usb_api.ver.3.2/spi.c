@@ -60,6 +60,34 @@ unsigned char getcSPI(void) {
     return data_rd;
 }
 
+void spi_command(BYTE CmdLen, unsigned char *CmdData, BYTE RdLen, unsigned char *RdData){
+	volatile unsigned char spi_count, rd_buff;// pr_address;
+
+	OED = 0x73;			// 0b01110011;
+	FPGA_POWER = 0;		//power off fpga
+	
+	FLASH_ENABLE; 		//assert chip select
+	//Write command
+	spi_count = CmdLen;
+	if (spi_count > 64) spi_count = 64;
+	while (spi_count > 0){
+		putcSPI(*CmdData); //send read command
+		CmdData++;
+		spi_count = spi_count - 1;
+	}
+
+	//Read response
+	spi_count = RdLen;
+	if (spi_count > 64) spi_count = 64;
+	while (spi_count > 0){
+		rd_buff = getcSPI();
+		*RdData = rd_buff;
+		RdData++;
+		spi_count = spi_count - 1;
+	}
+	FLASH_DISABLE;
+}
+
 /*
     Write page to flash
 */
@@ -107,7 +135,6 @@ void page_write (BYTE addhighest, BYTE addhigh, BYTE addlow,
 /*
     Read page from Flash
 */
-
 void page_read (BYTE addhighest, BYTE addhigh, BYTE addlow,	BYTE *rdptr, 
     WORD count) {
     unsigned char rd_buff;

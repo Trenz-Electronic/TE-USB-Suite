@@ -30,16 +30,6 @@ IN THE SOFTWARE.
 #include "fpga.h"
 #include "i2c.h"
 #include "spi.h"
-
-#define MAX_CMD_LENGTH	20
-
-//#define VERSION 	"1.03 beta"
-
-BYTE mode = MODE_COM;
-WORD eeprom_addr;
-BYTE flash_addr_h, flash_addr_m, flash_addr_l;
-BYTE command_buf_cnt = 0;					// buffer data count
-BYTE command_buf[MAX_CMD_LENGTH+1];			// buffer to store command
 //==============================================================================
 // Global definitions 
 __xdata BYTE	sts_fifo_error = 0;
@@ -168,13 +158,11 @@ void ep1_pool(void){
 				sts_flash_busy = 1;
 				break;
 			//-----------------------------------------------------------------
-			/*
 			case CMD_FLASH_WRITE_COMMAND:
 				EP1INBUF[0] = 0x55;
 				spi_command(EP1OUTBUF[1], &EP1OUTBUF[3], EP1OUTBUF[2], &EP1INBUF[1]);
 				new_data = 1;
 				break;
-			*/
 			//-----------------------------------------------------------------
 			case CMD_EEPROM_WRITE:					
 				adr = EP1OUTBUF[1];
@@ -232,7 +220,7 @@ void ep1_pool(void){
 					continue;
 				}
 				I2CRead(i, EP1OUTBUF[3], &EP1INBUF[0]);	// adress, size, data					
-				new_data = TRUE;
+				new_data = 1;
 				break;
 			*/
 			//-----------------------------------------------------------------

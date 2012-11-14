@@ -74,5 +74,7 @@ void busy_polling (void);
 void bulk_erase(void);
 void sector_erase (unsigned char sector);
 BYTE get_flash_busy(void);
+void spi_command(BYTE CmdLen, unsigned char *CmdData, BYTE RdLen, 
+	unsigned char *RdData);
 //-----------------------------------------------------------------------------
 #endif
