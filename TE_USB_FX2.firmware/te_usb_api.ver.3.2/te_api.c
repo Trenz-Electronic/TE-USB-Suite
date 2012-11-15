@@ -107,6 +107,12 @@ void ep1_pool(void){
 				new_data = 1;
 				break;
 			//-----------------------------------------------------------------
+			case	CMD_SWITCH_MODE:
+				sts_current_mode = 1;
+				new_data = 1;
+				EP1INBUF[0] = EP1OUTBUF[1];
+				break;
+			//-----------------------------------------------------------------
 			case	CMD_READ_STATUS:
 				sts_flash_busy = get_flash_busy();
 				sts_booting = FPGA_DONE;
@@ -127,9 +133,27 @@ void ep1_pool(void){
 			case CMD_RESET_FIFO_STATUS:
 				sts_fifo_error = 0;
 				FIFORESET = 0x80;  SYNCDELAY;  // NAK all requests from host.
-				FIFORESET = 0x02;  SYNCDELAY;
-				FIFORESET = 0x04;  SYNCDELAY;
-				FIFORESET = 0x06;  SYNCDELAY;
+				switch(EP1OUTBUF[1]){
+					case 2:
+						EP2FIFOCFG = 0x48;  SYNCDELAY;
+						FIFORESET = 0x02;  SYNCDELAY;
+						break;
+					case 4:
+						EP4FIFOCFG = 0x48;  SYNCDELAY;
+						FIFORESET = 0x04;  SYNCDELAY;
+						break;
+					case 6:
+						EP6FIFOCFG = 0x48;  SYNCDELAY;
+						FIFORESET = 0x06;  SYNCDELAY;
+						break;
+					default:	// 0
+						FIFORESET = 0x02;  SYNCDELAY;
+						FIFORESET = 0x04;  SYNCDELAY;
+						FIFORESET = 0x06;  SYNCDELAY;
+				}
+				//FIFORESET = 0x02;  SYNCDELAY;
+				//FIFORESET = 0x04;  SYNCDELAY;
+				//FIFORESET = 0x06;  SYNCDELAY;
 				FIFORESET = 0x00;  SYNCDELAY;	// Resume normal operation.
 				new_data = 1;
 				break;
@@ -230,9 +254,9 @@ void ep1_pool(void){
 					sts_int_auto_configured = 0;
 				}
 				else{
-					FPGA_POWER = 1;
 					IOD = 0x03;	// Enable Power and disable Reset
 					OED = 0x03;	// PROG_B and POWER
+					FPGA_POWER = 1;
 				}
 				EP1INBUF[0] = (FPGA_POWER) ? 1 : 0;
 				EP1INBUF[1] = 0xAA;

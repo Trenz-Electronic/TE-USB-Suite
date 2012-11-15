@@ -239,29 +239,20 @@ if fx2dll.TE_USB_FX2_Open(CardNumber, timeout_ms, DriverBufferSize) != 0: # Open
 else:
 	print "Connected to card 1"
 
-#	time_write_start = time.time()  	# remember start time
-
 if flash_erase() == 0:
 	print "Programming Flash"
 	if flash_write(fpga_bitstream) == 0:
 		print "Done"
-
+		time.sleep(2)
 		print "Turn on FPGA power"
 		power_on()
-	
+		time.sleep(2)
 		print "Checking DONE pin"
 		if check_done() == 0:
 			print "DONE pin is High"
 		else:
 			print "ERROR: DONE pin is not High"
-
-#time_end = time.time()
-#time_total = round((time_end - time_start),1)
-#time_erase = round((time_write_start - time_start),1)
-#time_programing = round((time_end - time_write_start),1)
-#print "Total time " + str(time_total) + " s (erase " + str(time_erase) + " s / program " + str(time_programing) + " s)"
-	
-	
+power_on()
 fx2dll.TE_USB_FX2_Close ()	  # close driver connection
 print "Done"
 	
