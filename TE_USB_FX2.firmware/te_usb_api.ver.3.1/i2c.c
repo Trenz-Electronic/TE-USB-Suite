@@ -21,7 +21,7 @@ IN THE SOFTWARE.
 */
 #include "i2c.h"
 
-void EEPROMWrite(WORD addr, BYTE length, BYTE __xdata *buf){
+void EEPROMWrite(WORD addr, BYTE length, BYTE xdata *buf){
     BYTE	i;
     while (I2CS & bmSTOP);  // wait for transfer end
     I2CS |= bmSTART;
@@ -57,7 +57,7 @@ BYTE EEreadData(void) {
     return DATA;
 }
 
-void EEPROMRead(WORD addr, BYTE length, BYTE __xdata *buf)
+void EEPROMRead(WORD addr, BYTE length, BYTE xdata *buf)
 {
     BYTE		i = 0;
     BYTE		j = 0;
@@ -87,7 +87,7 @@ void EEPROMRead(WORD addr, BYTE length, BYTE __xdata *buf)
     I2CS |= bmSTOP;				// send stop
 }
 
-void I2CWrite(BYTE addr, BYTE length, BYTE __xdata *buf){
+void I2CWrite(BYTE addr, BYTE length, BYTE xdata *buf){
     BYTE	i, address_write;
     
     address_write = (addr << 1);
@@ -102,7 +102,7 @@ void I2CWrite(BYTE addr, BYTE length, BYTE __xdata *buf){
     I2CS |= bmSTOP;				// send stop
 }
 
-void I2CRead(BYTE addr, BYTE length, BYTE __xdata *buf){
+void I2CRead(BYTE addr, BYTE length, BYTE xdata *buf){
     BYTE		i = 0;
     BYTE		j = 0;
     BYTE 		adress_read;

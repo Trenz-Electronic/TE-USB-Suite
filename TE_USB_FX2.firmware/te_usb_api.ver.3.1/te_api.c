@@ -157,11 +157,11 @@ void EP1_Pool(void){
 				new_data = TRUE;
 				break;
 
-			//case	SWITCH_MODE:
-			//		fx2_status.current_mode = 1;
-			//		new_data = TRUE;
-			//		EP1INBUF[0] = EP1OUTBUF[1];
-			//		break;
+			case	SWITCH_MODE:
+				fx2_status.current_mode = 1;
+				new_data = TRUE;
+				EP1INBUF[0] = EP1OUTBUF[1];
+				break;
 
 			case	READ_STATUS:
 				//if (fx2_status.flash_busy == 1){
@@ -182,6 +182,7 @@ void EP1_Pool(void){
 				break;
 
 			case RESET_FIFO_STATUS:
+			/*
 				fx2_status.fifo_error = 0;
 				FIFORESET = 0x80;  SYNCDELAY;  // NAK all requests from host.
 				FIFORESET = 0x02;  SYNCDELAY;
@@ -190,7 +191,31 @@ void EP1_Pool(void){
 				FIFORESET = 0x00;  SYNCDELAY;	// Resume normal operation.
 				new_data = TRUE;
 				break;
-
+			*/
+				
+				fx2_status.fifo_error = 0;
+				FIFORESET = 0x80;  SYNCDELAY;  // NAK all requests from host.
+				if (EP1OUTBUF[1] == 2) {
+					EP2FIFOCFG = 0x48;  SYNCDELAY; // Configure EP2 for AUTOIN, 8bit wide bus.
+					FIFORESET = 0x02;  SYNCDELAY;  // Reset individual EP (2,4,6,8)							
+				}
+				else 	if (EP1OUTBUF[1] == 4) {
+					EP4FIFOCFG = 0x48;  SYNCDELAY; // Configure EP4 for AUTOIN, 8bit wide bus.										
+					FIFORESET = 0x04;  SYNCDELAY;  // Reset individual EP (2,4,6,8)
+					}	
+				else 	if (EP1OUTBUF[1] == 6) {
+					EP6FIFOCFG = 0x48;  SYNCDELAY; // Configure EP6 for AUTOIN, 8bit wide bus.
+					FIFORESET = 0x06;  SYNCDELAY;  // Reset individual EP (2,4,6,8)
+					}
+				else	if (EP1OUTBUF[1] == 0) {
+					FIFORESET = 0x02;  SYNCDELAY;  // Reset individual EP (2,4,6,8)
+					FIFORESET = 0x04;  SYNCDELAY;
+				   	FIFORESET = 0x06;  SYNCDELAY;
+					}
+				FIFORESET = 0x00;  SYNCDELAY;  // Resume normal operation.
+				new_data = TRUE;
+				break;
+				
 			case FLASH_WRITE:
 				if (EP1OUTBUF[4] > 59) EP1OUTBUF[4] = 59;
 				page_write(EP1OUTBUF[1], EP1OUTBUF[2], EP1OUTBUF[3], &EP1OUTBUF[5], EP1OUTBUF[4]);	//highest, high, low adr, read_ptr, size
@@ -356,7 +381,7 @@ void EP_Init(void)				 // Called once at startup
 	EP1INCFG = 0xA0;
 	fx2_status.IntAutoConfigured = 0;
 
-	//fx2_status.current_mode = 1;
+	fx2_status.current_mode = 1;
 	IntAutoResponse.PinStatus = 0;
 
 	CPUCS = 0x12;  		// 48MHz, output to CLKOUT signal enabled.
