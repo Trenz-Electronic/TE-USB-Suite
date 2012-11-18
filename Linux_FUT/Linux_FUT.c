@@ -25,6 +25,7 @@ To compile the software you have to install the libusb-1.0
 #include <stdio.h>
 #include <libusb.h>
 #include <string.h>
+#include <getopt.h>
 
 // TE USB FX2: generation 2.0
 // #define  VENDOR_ID   0x0547
