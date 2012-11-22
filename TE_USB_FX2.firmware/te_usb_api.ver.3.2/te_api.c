@@ -42,13 +42,15 @@ __xdata BYTE	sts_int_auto_configured = 0;
 __xdata BYTE	sts_high_speed_mode = 0;
 
 __xdata BYTE	iar_pin_status = 0;
-__xdata BYTE	iar_adress = 0;
-__xdata BYTE	iar_count = 0;
+__xdata BYTE	iar_adress = 0x3F;
+__xdata BYTE	iar_count = 12;
 __xdata BYTE	iar_int_idx = 0;
 
 __xdata BYTE	auto_response_data[32];
 
 __xdata BYTE	lock = 0;
+BYTE prev_done = 0;
+BYTE cmd_cnt = 0;
 //==============================================================================
 /*******************************************************************************
 * Pull INT pool 
@@ -75,8 +77,27 @@ void ep1_pool(void){
 	WORD adr;
 	BYTE new_data = 0;
 	
+	// Test data for internal test
+	if(FPGA_INT0 && FPGA_DONE && !prev_done && !cmd_cnt){
+		EP8FIFOCFG = 0x00;  SYNCDELAY;
+		FIFORESET = 0x08; SYNCDELAY;
+		FIFORESET = 0x00; SYNCDELAY;
+		EP8FIFOBUF[0] = 0x12;
+		EP8FIFOBUF[1] = 0x34;
+		EP8FIFOBUF[2] = 0x56;
+		EP8FIFOBUF[3] = 0x78;
+		EP8FIFOBUF[4] = 0x90;
+		EP8FIFOBUF[5] = 0xAB;
+		EP8FIFOBUF[6] = 0xCD;
+		EP8FIFOBUF[7] = 0xEF;
+		EP8BCH = 0;
+		EP8BCL = 8;
+		EP8FIFOCFG = 0x10;  SYNCDELAY;
+		prev_done = 1;
+	}
+
 	if( !( EP1OUTCS & 0x02) ){ 			// Got something
-	
+		cmd_cnt++;
 		for (i = 0; i < 0x40; i++) 
 			EP1INBUF[i] = 0xFF;			// fill output buffer
 			
@@ -147,13 +168,14 @@ void ep1_pool(void){
 						FIFORESET = 0x06;  SYNCDELAY;
 						break;
 					default:	// 0
+						EP2FIFOCFG = 0x48;  SYNCDELAY;
+						EP4FIFOCFG = 0x48;  SYNCDELAY;
+						EP6FIFOCFG = 0x48;  SYNCDELAY;
+						EP8FIFOCFG = 0x10;  SYNCDELAY;
 						FIFORESET = 0x02;  SYNCDELAY;
 						FIFORESET = 0x04;  SYNCDELAY;
 						FIFORESET = 0x06;  SYNCDELAY;
 				}
-				//FIFORESET = 0x02;  SYNCDELAY;
-				//FIFORESET = 0x04;  SYNCDELAY;
-				//FIFORESET = 0x06;  SYNCDELAY;
 				FIFORESET = 0x00;  SYNCDELAY;	// Resume normal operation.
 				new_data = 1;
 				break;

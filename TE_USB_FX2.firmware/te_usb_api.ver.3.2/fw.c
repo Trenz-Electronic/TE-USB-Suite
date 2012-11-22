@@ -35,7 +35,6 @@
 #include "usb_descriptors.h"
 #include "usb_requests.h"
 #include "syncdelay.h"
-//#include "i2c.h"
 #include "te_api.h"
 #include "fpga.h"
 
@@ -80,11 +79,12 @@ void system_init(void)              // Called once at startup
 	EP6FIFOPFL = 0xFF;	SYNCDELAY;	// to be active at the level you wish
 	OUTPKTEND = 0x88; SYNCDELAY;	// Arm both EP2 buffers to “prime the pump”		
 	OUTPKTEND = 0x88; SYNCDELAY;
+	
 	EP2FIFOCFG = 0x48;  SYNCDELAY; 	// Configure EP2 for AUTOIN, 8bit wide bus.
 	EP4FIFOCFG = 0x48;  SYNCDELAY;	// Configure EP4 for AUTOIN, 8bit wide bus.
 	EP6FIFOCFG = 0x48;  SYNCDELAY;	// Configure EP6 for AUTOIN, 8bit wide bus.
 	EP8FIFOCFG = 0x10;  SYNCDELAY;	// Configure EP8 for AUTOOUT, 8bit wide bus.
-
+	
 	IOD = 0x03;			// Enable PS_ON and disable PROG_B 
 	OED = 0x03;			// Configure PS_ON and PROG as outputs
 	OEA = 0x82;			// FlagD and INT1 as outputs

@@ -31,6 +31,7 @@ CMD_MB_PING		            = b'\x05'
 CMD_MB_TEST		            = b'\x06'
 CMD_MB_PASSED	            = b'\x07'
 CMD_MB_ERROR	            = b'\x08'
+CMD_MB_GET_REVISION			= b'\x09'
 
 # Other definitions
 MB_I2C_ADRESS				= b'\x3F'

@@ -108,6 +108,29 @@ while reply[0] == chr(0):
 
 print "Microblaze Firmware v. " + str(ord(reply[1])) + "." + str(ord(reply[2])) + " r" + str(ord(reply[3])) + " Build " + str(ord(reply[4]))
 #-------------------------------------------------------------------------------
+# Get Board Revision
+# Send command to start I2C read of Microblaze FW version 
+cmd[0] = CMD_FX2_I2C_WRITE
+cmd[1] = MB_I2C_ADRESS
+cmd[2] = I2C_BYTES
+cmd[3] = chr(0)
+cmd[4] = chr(0)
+cmd[5] = chr(0)
+cmd[6] = CMD_MB_GET_REVISION
+if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API	
+	print "ERROR: Can't call API function"
+	sys.exit()
+
+# Pull till Microblaze reply
+cmd[0] = CMD_FX2_GET_INTERRUPT
+reply[0] = chr(0)	# in this byte FX2 will return number of received I2C packets
+while reply[0] == chr(0):
+	if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API	
+		print "ERROR: Can't call API function"
+		sys.exit()
+
+print "Board Revision  " + str(ord(reply[4]) >> 4) + " Assembly Variant " + str(ord(reply[4]) & 0x0F)
+#-------------------------------------------------------------------------------
 PACKET_LEN = 102400
 packets = 600
 data = create_string_buffer(PACKET_LEN * packets)
