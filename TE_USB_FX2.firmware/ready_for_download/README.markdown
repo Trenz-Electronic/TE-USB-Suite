@@ -2,7 +2,7 @@
 This repository contains binary firmware files for Trenz Electronic modules equipped with a USB microcontroller.
 ## generation 2 (_DW)
 ### not recommended for new designs
-Recommend firmware file: *TE-USB-FX2\_current\_**DW**.iic*
+Recommend firmware file: *TE-USB-FX2 current __DW__.iic*
 
 System requirements:
 
@@ -15,7 +15,7 @@ System requirements:
 Please check your VID/PID in device manager (devmgmt.msc > properties > details > Hardware Ids).
 
 ## generation 3 (_TE)
-Recommend firmware file: *TE-USB-FX2\_current\_**TE**.iic*
+Recommend firmware file: *TE-USB-FX2 current __TE__.iic*
 
 System requirements:
 
