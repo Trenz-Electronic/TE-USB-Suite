@@ -325,4 +325,8 @@ make sure you don't distribute files belonging to the operating system.
    GDI32.dll - C:\Windows\system32\GDI32.dll
    ole32.dll - C:\Windows\system32\ole32.dll
 
-C:\Python27\test>
+** Note
+Warning
+The following modules appear to be missing
+['Carbon', 'Carbon.Files', 'win32api', 'win32con', 'win32pipe']
+Could be ignored
