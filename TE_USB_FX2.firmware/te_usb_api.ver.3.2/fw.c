@@ -60,8 +60,8 @@ void system_init(void)              // Called once at startup
 	FIFORESET = 0x00;	SYNCDELAY;  // Resume normal operation.
 	// PORTACFG: FLAGD SLCS(*) 0 0 0 0 INT1 INT0
 	PORTACFG = 0xC0;	SYNCDELAY;	// (delay maybe not needed) //INT0 interrupt
-	PINFLAGSAB = 0x00;	SYNCDELAY;	//FA: EP6E,		FB: EP6F
-	PINFLAGSCD = 0xB0;	SYNCDELAY;	//FC: EP6P,	FD: EP8 EF
+	PINFLAGSAB = 0x00;	SYNCDELAY;	//FA: EPxP,	FB: EPxF
+	PINFLAGSCD = 0xB0;	SYNCDELAY;	//FC: EPxE,	FD: EP8E
 	FIFOPINPOLAR=0x3F;  SYNCDELAY;	// All polarities active high
 	// This determines how much data is accumulated in the FIFOs before a
 	// USB packet is committed. Use 512 bytes to be sure.
