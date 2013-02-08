@@ -20,12 +20,12 @@ On some computer configurations, weird behaviors can be experienced with the Ope
 
 In this case, you shall change the paths in lines 74 and 75 of openfut.py to absolute paths with an r before the paths. The r escapes the \s (slashes).
 
-From fx2dll_32_name = "TE_USB_FX2_API_C-32.dll" 
-to   fx2dll_32_name = r"C:\OpenFut\TE_USB_FX2_API_C-32.dll"  
+From fx2dll_32_name = "TE_USB_FX2_API_C-32.dll"<br />
+to   fx2dll_32_name = r"C:\OpenFut\TE_USB_FX2_API_C-32.dll" <br />
 or   fx2dll_32_name = r'C:\OpenFut\TE_USB_FX2_API_C-32.dll'
    
-From fx2dll_64_name = "TE_USB_FX2_API_C-64.dll" 
-to   fx2dll_64_name = r"C:\OpenFut\TE_USB_FX2_API_C-64.dll"
+From fx2dll_64_name = "TE_USB_FX2_API_C-64.dll"<br />
+to   fx2dll_64_name = r"C:\OpenFut\TE_USB_FX2_API_C-64.dll"<br />
 or   fx2dll_64_name = r'C:\OpenFut\TE_USB_FX2_API_C-64.dll'
       
 The same problem may happen with open() function: in this case, you must force an absolute path in a similar way: 
@@ -34,7 +34,7 @@ for example open(r"C:\file2download\birstream.bit").
 Another problem that may happen in some configurations is the convention call of ctype.
 In this case you must change lines 621 and 623 from windll convention to cdll convention.
 
-From fx2dll = windll.LoadLibrary(fx2dll_32_name) 
+From fx2dll = windll.LoadLibrary(fx2dll_32_name)<br />
 to   fx2dll =   cdll.LoadLibrary(fx2dll_32_name)
 
 From fx2dll = windll.LoadLibrary(fx2dll_64_name) 
