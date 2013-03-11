@@ -16,7 +16,7 @@ For generation 3, please use VID/PID = 0x0BD0/0x0300. <br />
 TE API firmware (alias TE API commands) are defined here. <br /> 
 They must not be confused with TE API USB of Generation 2 and 3: one of the TE API USB (SendCommand) is used to send one command to MicroBlaze and FX2 microcontroller. The command used is defined in the firmware project.
 
-## TE_USB_FX2.gen_2 <br /> (contains TE API USB Generation 2 and some examples) <br />
+## TE_USB_FX2.gen_2 <br /> (contains TE API USB Generation 2, some examples and Open_Fut tool) <br />
 **Not recommended for new designs**.<br />
 - Open Firmware Upgrade Tool 2:<br />
   provides main functions to update EEPROM and Flash memory on TE modules based on Cypress EZ-USB FX2 microcontroller.
