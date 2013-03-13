@@ -1,0 +1,27 @@
+Microsoft Windows [Version 6.1.7601]
+Copyright (c) 2009 Microsoft Corporation.  All rights reserved.
+
+C:\Windows\system32>cd Python27
+The system cannot find the path specified.
+
+C:\Windows\system32>cd
+C:\Windows\system32
+
+C:\Windows\system32>cd..
+
+C:\Windows>cd..
+
+C:\>cd Python27
+
+C:\Python27>
+
+C:\Python27>cd Open_FUT
+C:\Python27\Open_FUT>python setup-64.py install
+running install
+running build
+running install_data
+copying TE_USB_FX2_API_C-64.dll -> C:\Python27\.
+running install_egg_info
+Removing C:\Python27\Lib\site-packages\UNKNOWN-0.0.0-py2.7.egg-info
+Writing C:\Python27\Lib\site-packages\UNKNOWN-0.0.0-py2.7.egg-info
+C:\Python27\Open_FUT>make_exe-64
