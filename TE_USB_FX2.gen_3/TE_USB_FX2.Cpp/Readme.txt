@@ -1,6 +1,6 @@
 The part that follows is taken from the manual UM-TE_USB_API.cpp (September 2012).
 This readme file is only for quick information and, in case of difference, the manual always prevails.
-
+A
 ----------------------------------------
 
 Requirements
