@@ -43,7 +43,8 @@
 void usb_serial_init(void)              // Called once at startup
 {
     CPUCS = ((CPUCS & ~bmCLKSPD) | bmCLKSPD1); // set the CPU clock to 48MHz
-    IFCONFIG = 0xE3; SYNCDELAY;     // Enable slave FIFO Interface @48MHz
+    //IFCONFIG = 0xE3; SYNCDELAY;     // Enable slave FIFO Interface @48MHz
+    IFCONFIG = 0xEF; SYNCDELAY;     // Enable slave FIFO Interface @48MHz async
     REVCTL = 0x03; SYNCDELAY;
     // Endpoints configuration
     EP1INCFG = 0xB0; SYNCDELAY;     // Configure EP1IN as INT IN EP
