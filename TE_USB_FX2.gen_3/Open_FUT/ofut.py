@@ -405,19 +405,51 @@ def spi_program():	  # SPI Flash programming
 		sectors2erase = (bitstream_size >> 16) + 1 # full sectors + remainder
 		#spi_erase_sectors(sectors2erase)
 		spi_erase_bulk()
+
+	if op_error == 0:   # No errors in past
+		printlog("Check binary file")
+		file_type = 0			# Unknown
+		offset = 0				# offset to bitstream data
+		for i in range(200):	# Header usually less than 200 bytes
+			if((ord(fpga_bitstream[i]) == 0xFF) and (ord(fpga_bitstream[i+1]) == 0x55)):	# Bin file header (FF) 55 99 ...
+				file_type = 1	# BIN file
+				printlog("File type is BIN")
+				break
+			if((ord(fpga_bitstream[i]) == 0xFF) and (ord(fpga_bitstream[i+1]) == 0xAA)):	# Bit file header (FF) AA 99 ...
+				printlog("File type is BIT")
+				file_type = 2	# BIT file
+				break
+			if((ord(fpga_bitstream[i+1]) == 0xFF) and (offset == 0)):	# first FF
+				offset = i+1
+		if file_type == 5:		# Header not found
+			op.set("Error") # Update operation label
+			printlog("ERROR: File is not Xilinx FPGA bitstream")
+			op_error = 15
 			
+		
 	# Write to flash
 	if op_error == 0:   # No errors in past
 		op.set("Preparing")		 # Update operation label
 		progressbar["value"] = 0	# Reset progressbar
 		wr_bitstream = create_string_buffer(bitstream_size) # Create buffer
-		printlog("Prepare write buffer")	# We have to swap bits before write
-		for i in range(bitstream_size):
-			wr_bitstream[i] = chr(bitswap(ord(fpga_bitstream[i])))   # swap
-			if i % 10000 == 0:  # update progressbar, but not often
-				complete = (i * 100) / bitstream_size
-				progressbar["value"] = complete
-				root.update()
+			
+		printlog("Prepare write buffer")
+		if file_type == 2:	# BIT file = we just have to move data after header
+			for i in range(bitstream_size-offset):
+				wr_bitstream[i] = fpga_bitstream[i+offset]   # move
+				if i % 10000 == 0:  # update progressbar, but not often
+					complete = (i * 100) / bitstream_size
+					progressbar["value"] = complete
+					root.update()
+			
+		if file_type == 1:	# We have to swap bits before write
+			for i in range(bitstream_size):
+				wr_bitstream[i] = chr(bitswap(ord(fpga_bitstream[i])))   # swap
+				if i % 10000 == 0:  # update progressbar, but not often
+					complete = (i * 100) / bitstream_size
+					progressbar["value"] = complete
+					root.update()
+					
 		printlog("Programming")
 		op.set("Programming")	   # Update operation label
 		progressbar["value"] = 0	# Reset progressbar
@@ -484,7 +516,7 @@ def spi_program():	  # SPI Flash programming
 			printlog("ERROR: Can't call API function TE0300_SendCommand")
 			op.set("Error")
 			op_error = 5
-		if ord(reply[3]) == 0:  # Check DONE
+		if ord(reply[4]) == 0:  # Check DONE
 			printlog("ERROR: DONE pin is not High")
 		else:
 			printlog("DONE pin is High")
@@ -492,6 +524,14 @@ def spi_program():	  # SPI Flash programming
 			complete = 100			  # Show it 100%
 			progressbar["value"] = 100  # Show it 100%
 			root.update()			   # Rewrite
+			
+	cmd[0] = CMD_FX2_POWER_ON   # Power ON FPGA
+	cmd[1] = chr(1)			 # 1 = Turn ON
+	if fx2dll.TE_USB_FX2_SendCommand ( byref(cmd), cmd_length, byref(reply), reply_length, timeout_ms) != 0:	# call API
+		printlog("ERROR: Can't call API function TE0300_SendCommand")
+		op.set("Error")
+		op_error = 5
+	
 	if opened == 1:
 		fx2dll.TE_USB_FX2_Close ()	  # close driver connection
 		opened = 0
@@ -509,7 +549,7 @@ iffont = tkFont.Font(family = "Helvetica", size = 8, weight = "normal")
 # Create widgets
 # Row 0 - FPGA
 fpga_frame = Frame(root)
-fpga_file_label = Label(fpga_frame, text = "FPGA bitstream bin file",width = 25)
+fpga_file_label = Label(fpga_frame, text = "FPGA bitstream file",width = 25)
 fpga_file_text = Text(fpga_frame, font = iffont, width = 50, height = 1)
 fpga_btn_select = Button(fpga_frame, text = "...", width = 10, 
 command = fpga_bitfile_select)

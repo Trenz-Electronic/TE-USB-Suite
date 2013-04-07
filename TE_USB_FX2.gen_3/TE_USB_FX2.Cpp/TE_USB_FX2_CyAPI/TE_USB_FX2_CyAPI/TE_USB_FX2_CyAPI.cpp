@@ -17,19 +17,19 @@ using namespace std;
 TE_USB_FX2_ScanCards()
 
   Declaration
-TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards(CCyUSBDevice *USBDeviceList)
+TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards(CCyUSBDevice *USBdevList)
 
   Function Call
 Your application program shall call this function like this:
-TE_USB_FX2_ScanCards(USBDeviceList);
+TE_USB_FX2_ScanCards(USBdevList);
 
   Description
-This function takes an already initialized USB device list (USBDeviceList), searches for Trenz Electronic USB FX2 devices 
+This function takes an already initialized USB device list (USBdevList), searches for Trenz Electronic USB FX2 devices 
 (Cypress driver derivative and VID = 0xbd0, PID=0x0300) and counts them.
 This function returns the number of Trenz Electronic USB FX2 devices attached to the USB bus of the host computer.
 
   Parameters
-1) CCyUSBDevice *USBDeviceList
+1) CCyUSBDevice *USBdevList
 CCyUSBDevice is a type defined in CyAPI.dll. Its name is misleading because it is not a class that represents a single USB device, 
 but it rather represents a list of USB devices. CCyUSBDevice is the list of devices served by the CyUSB.sys driver 
 (or a derivative like TE_USB_FX2.sys). 
@@ -41,7 +41,7 @@ This function returns the number of USB devices attached to the host computer US
 */
 
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards ( CCyUSBDevice *USBDeviceList )
+TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards ( CCyUSBDevice *USBdevList )
 {
   int CardCount = 0;
 
@@ -51,7 +51,7 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards ( CCyUSBDevice *USBDeviceList )
 
   //This method give the number of card that use CyUSB.sys and its derivative 
   //(like TE_USB_FX2_64.sys and TE_USB_FX2_32.sys used by Trenz Electronic)
-  int CypressDeviceNumberTOT = USBDeviceList->DeviceCount();
+  int CypressDeviceNumberTOT = USBdevList->DeviceCount();
   //cout << "CypressDeviceNumberTOT" << CypressDeviceNumberTOT << endl;
   if (CypressDeviceNumberTOT==0) return 0;
   else
@@ -61,14 +61,14 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards ( CCyUSBDevice *USBDeviceList )
     int CypressDeviceNumber = 0;
     do {
       // Open automatically calls Close() if necessary
-      USBDeviceList->Open(CypressDeviceNumber);
-      vID = USBDeviceList->VendorID;
-      pID = USBDeviceList->ProductID;
+      USBdevList->Open(CypressDeviceNumber);
+      vID = USBdevList->VendorID;
+      pID = USBdevList->ProductID;
       CypressDeviceNumber++;
       //cout << "VID" << vID << endl;
       //cout << "PID" << pID << endl;
       //cout << "CypressDeviceNumber" << CypressDeviceNumber << endl;
-      USBDeviceList->Close();
+      USBdevList->Close();
 	  // If i found a device having VID = 0bd0, PID = 0300 i augment by one CardCount variable
       if ( (vID == 0x0bd0) && (pID == 0x0300) )
       {
@@ -83,24 +83,24 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards ( CCyUSBDevice *USBDeviceList )
 TE_USB_FX2_Open()
 
   Declaration
-TE_USB_FX2_CYAPI int TE_USB_FX2_Open(CCyUSBDevice *USBDeviceList, int CardNumber)
+TE_USB_FX2_CYAPI int TE_USB_FX2_Open(CCyUSBDevice *USBdevList, int CardNumber)
 
   Function Call
 Your application program shall call this function like this:
-TE_USB_FX2_Open(USBDeviceList, CardNumber);
+TE_USB_FX2_Open(USBdevList, CardNumber);
 
   Description
 This function takes an already initialized USB device list, searches for Trenz Electronic USB FX2 devices 
 (Cypress driver derivative and VID = 0xbd0, PID=0x0300) and counts them.
-If no device is attached, USBDeviceList is not initialized to null (the device list is not erased). 
+If no device is attached, USBdevList is not initialized to null (the device list is not erased). 
 An internal operation that closes an handle to the CyUSB.sys driver (or a derivative like TE_USB_FX2.sys) is executed instead 
 (see page 33 of CyAPI.pdf).
 If one or more devices are attached and 
 1) if 0 <= CardNumber <= (number of attached devices – 1), then the selected module is 
-not directly given by USBDeviceList (CCyUSBDevice type). An internal operation that opens a handle to CyUSB.sys driver 
+not directly given by USBdevList (CCyUSBDevice type). An internal operation that opens a handle to CyUSB.sys driver 
 (or a derivative like TE_USB_FX2_xx.sys) is executed instead (see page 45 of CyAPI.pdf). This handle is internally managed by 
 CyAPI.dll, therefore there is no need to expose them to the user.
-2) if CardNumber >= number of attached devices, then USBDeviceList (CyUSBDevice type) is not initialized to null (the device list 
+2) if CardNumber >= number of attached devices, then USBdevList (CyUSBDevice type) is not initialized to null (the device list 
 is not erased). An internal operation that closes an handle to CyUSB.sys driver (or a derivative like TE_USB_FX2.sys) is executed 
 instead (see page 33 of CyAPI.pdf).
 
@@ -108,7 +108,7 @@ A more intuitive name for this function would have been TE_USB_FX2_SelectCard().
 You can use this function to select the card desired without the need to call Close before.
 
   Parameters
-1)  CCyUSBDevice *USBDeviceList
+1)  CCyUSBDevice *USBdevList
 CCyUSBDevice is a type defined in CyAPI.dll. Its name is misleading because it is not a class that represents a single USB device, 
 but it rather represents a list of USB devices. 
 CCyUSBDevice is the list of devices served by the CyUSB.sys driver (or a derivative like TE_USB_FX2.sys). 
@@ -130,7 +130,7 @@ enum ST_Status
 */
 
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_Open ( CCyUSBDevice *USBDeviceList, int CardNumber)
+TE_USB_FX2_CYAPI int TE_USB_FX2_Open ( CCyUSBDevice *USBdevList, int CardNumber)
 {
   int CardCount = 0;
   int CardCounted = 0;
@@ -139,23 +139,23 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Open ( CCyUSBDevice *USBDeviceList, int CardNumb
   int CypressDeviceNumber = 0;
   //Number of Trenz Device
   int TrenzDeviceNumber = 0;
-  //Position of Trenz Device desired in the USBDeviceList
+  //Position of Trenz Device desired in the USBdevList
   int DeviceNumber = 0;
 
   //This method give the number of card that use CyUSB.sys and its derivative 
   //(like TE_USB_FX2_64.sys and TE_USB_FX2_32.sys used by Trenz Electronic)
-  int CypressDeviceNumberTOT = USBDeviceList->DeviceCount();
+  int CypressDeviceNumberTOT = USBdevList->DeviceCount();
   int vID, pID;
 
   // Look for a device having VID = 0x0bd0, PID = 0x0300
   // Create an instance of CCyUSBDevice
   do {
     // Open automatically calls Close() if necessary
-    USBDeviceList->Open(CypressDeviceNumber);
-    vID = USBDeviceList->VendorID;
-    pID = USBDeviceList->ProductID;
+    USBdevList->Open(CypressDeviceNumber);
+    vID = USBdevList->VendorID;
+    pID = USBdevList->ProductID;
     CypressDeviceNumber++;
-    USBDeviceList->Close();
+    USBdevList->Close();
     if ( (vID == 0x0bd0) && (pID == 0x0300) )
     {
 	  //CardCount
@@ -164,7 +164,7 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Open ( CCyUSBDevice *USBDeviceList, int CardNumb
       {
 		//I store the DeviceNumber that identify the Trenz Card (CardNumber) requested
 		//Memorize this number for later use
-		//This is the position of Trenz Device desired in the USBDeviceList
+		//This is the position of Trenz Device desired in the USBdevList
         DeviceNumber = CypressDeviceNumber-1;
       }
     }
@@ -181,9 +181,9 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Open ( CCyUSBDevice *USBDeviceList, int CardNumb
   if ( ((CardNumber>=0) && (CardNumber<CardCounted)) )
   {
     //USBDevice USBdev = USBdevList[DeviceNumber] LIKE of C#;
-    USBDeviceList->Open(DeviceNumber);
-    vID = USBDeviceList->VendorID;
-    pID = USBDeviceList->ProductID;
+    USBdevList->Open(DeviceNumber);
+    vID = USBdevList->VendorID;
+    pID = USBdevList->ProductID;
     if ((((pID == 0x0300) && (vID == 0x0bd0)) == true))
       return ST_OK;
     else
@@ -199,16 +199,16 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Open ( CCyUSBDevice *USBDeviceList, int CardNumb
 TE_USB_FX2_Close()
 
   Declaration
-TE_USB_FX2_CYAPI int TE_USB_FX2_Close(CCyUSBDevice *USBDeviceList)
+TE_USB_FX2_CYAPI int TE_USB_FX2_Close(CCyUSBDevice *USBdevList)
 
   Function Call
 Your application program shall call this function like this:
-TE_USB_FX2_Close(USBDeviceList);
+TE_USB_FX2_Close(USBdevList);
 
   Description
 This function takes an already initialized USB device list, searches for Trenz Electronic USB FX2 devices 
 (any Cypress driver derivative and VID = 0xbd0, PID=0x0300) and opens (and immediately after closes) the first device found.
-The selected module is not directly given by USBDeviceList (CCyUSBDevice type). An internal operation that opens and immediately 
+The selected module is not directly given by USBdevList (CCyUSBDevice type). An internal operation that opens and immediately 
 after closes an handle to CyUSB.sys driver (or a derivative like TE_USB_FX2_xx.sys) is executed instead (see page 45 of CyAPI.pdf). 
 The open method closes every other handle already opened, and close method closes the only handle open; in this way, all handles 
 are closed. These handles are internally managed by CyAPI.dll and there is no need to expose them to the user.
@@ -217,7 +217,7 @@ This function does not differ much from from its homonym of the previous TE0300D
 closes a handle (like TE0300DLL.dll) to the  driver but the handle is not exposed to user (unlike TE0300DLL.dll).
 
   Parameters
-1) CCyUSBDevice *USBDeviceList
+1) CCyUSBDevice *USBdevList
 CCyUSBDevice is a type defined in CyAPI.dll. Its name is misleading because it is not a class that represents a single USB device, but it rather represents a list of USB devices. CCyUSBDevice is the list of devices served by the CyUSB.sys driver (or a derivative like TE_USB_FX2.sys). This parameter is passed by pointer. See page 7 and pages 23-49 of CyAPI.pdf (Cypress CyAPI Programmer's Reference).
 2) int CardNumber.
 This is the number of the selected Trenz Electronic USB FX2 device.
@@ -233,7 +233,7 @@ enum ST_Status
 
 */
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBDeviceList)
+TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBdevList)
 {
   //int CardCount = 0;
   //int CardCounted = 0;
@@ -242,15 +242,15 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBDeviceList)
   //int TrenzDeviceNumber = 0;
   //int DeviceNumber = 0;
 
-  int CypressDeviceNumberTOT = USBDeviceList->DeviceCount();
+  int CypressDeviceNumberTOT = USBdevList->DeviceCount();
   int vID, pID;
   do {
     // Open automatically calls Close() if necessary
-    USBDeviceList->Open(CypressDeviceNumber);
-    vID = USBDeviceList->VendorID;
-    pID = USBDeviceList->ProductID;
+    USBdevList->Open(CypressDeviceNumber);
+    vID = USBdevList->VendorID;
+    pID = USBdevList->ProductID;
     CypressDeviceNumber++;
-    USBDeviceList->Close();
+    USBdevList->Close();
     /*if ( (vID == 0x0bd0) && (pID == 0x0300) )
     {
     	TrenzDeviceNumber++; //CardCount
@@ -274,10 +274,10 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBDeviceList)
   if ( ((CardNumber>=0) && (CardNumber<CardCounted)) )
   {
   	//USBDevice USBdev = USBdevListToDispose[DeviceNumber];
-  	USBDeviceList->Open(DeviceNumber);
-  	vID = USBDeviceList->VendorID;
-  	pID = USBDeviceList->ProductID;
-  	USBDeviceList->Close();
+  	USBdevList->Open(DeviceNumber);
+  	vID = USBdevList->VendorID;
+  	pID = USBdevList->ProductID;
+  	USBdevList->Close();
   	if ((((pID == 0x0300) && (vID == 0x0bd0)) == true))
   		return ST_OK;
         else
@@ -295,15 +295,15 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBDeviceList)
 TE_USB_FX2_SendCommand()
 
   Declaration
-TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand(CCyUSBDevice *USBDeviceList, byte* Command, long CmdLength, byte* Reply, long ReplyLength,
+TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand(CCyUSBDevice *USBdevList, byte* Command, long CmdLength, byte* Reply, long ReplyLength,
 unsigned long Timeout)
 
   Function Call
 Your application program shall call this function like this:
-TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, Timeout);
+TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, Timeout);
 
   Description
-This function takes an already initialized USB device list (USBDeviceList previously selected by TE_USB_FX2_Open()) and sends a 
+This function takes an already initialized USB device list (USBdevList previously selected by TE_USB_FX2_Open()) and sends a 
 command (API command) to the USB FX2  microcontroller (USB FX2 API command) or to the MicroBlaze embedded processor (MicroBlaze API 
 command) through the USB FX2 microcontroller endpoint EP1 buffer. 
 This function is normally used to send 64 bytes packets to the USB endpoint EP1 (0x01).
@@ -311,7 +311,7 @@ This function is also able to obtain the response of the USB FX2 microcontroller
 microcontroller endpoint EP1 (0x81).
 
   Parameters
-1) CCyUSBDevice *USBDeviceList
+1) CCyUSBDevice *USBdevList
 CCyUSBDevice is a type defined in CyAPI.dll. Its name is misleading because it is not a class that represents a single USB device, 
 but it rather represents a list of USB devices. CCyUSBDevice is the list of devices served by the CyUSB.sys driver (or a derivative 
 like TE_USB_FX2_xx.sys). This parameter is passed by pointer. See page 7 and pages 23-49 of CyAPI.pdf (Cypress CyAPI Programmer's 
@@ -355,7 +355,7 @@ enum ST_Status
 */
 
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBDeviceList, byte* Command, long CmdLength, byte* Reply, long ReplyLength, unsigned long Timeout)
+TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBdevList, byte* Command, long CmdLength, byte* Reply, long ReplyLength, unsigned long Timeout)
 {
   
   bool bResultCommand = false;
@@ -368,14 +368,14 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBDeviceList, byte* 
   CCyBulkEndPoint *BulkInEP = NULL;
 
   //Number of EndPoint of the Card/Device selected by a previous TE_USB_FX2_Open() function. 
-  int eptCount = USBDeviceList->EndPointCount();
+  int eptCount = USBdevList->EndPointCount();
   //cout << eptCount << endl;
 
   //Search the EndPoint EP1 OUT for Command transmission from host computer to USB FX2 device
   for (int i=0; i<eptCount; i++)
   {
-    bool bInC = ((USBDeviceList->EndPoints[i]->Address )==0x01); //& 0x01)==0x01); Cypress bad example
-    bool bBulkC = (USBDeviceList->EndPoints[i]->Attributes == 2);
+    bool bInC = ((USBdevList->EndPoints[i]->Address )==0x01); //& 0x01)==0x01); Cypress bad example
+    bool bBulkC = (USBdevList->EndPoints[i]->Attributes == 2);
     //cout << "bInC" << bInC << endl;
     //cout << "bBulkC" << bBulkC << endl;
 
@@ -384,7 +384,7 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBDeviceList, byte* 
     if (bBulkC && bInC)
     {
 	  //If the EndPoint EP1 OUT exists instantiate the abstract class in the concrete class CCyBulkEndPoint
-      BulkInEP = (CCyBulkEndPoint *) USBDeviceList->EndPoints[i];
+      BulkInEP = (CCyBulkEndPoint *) USBdevList->EndPoints[i];
 	  //set the TimeOut to Timeout
       BulkInEP->TimeOut=Timeout;
 	  //use synchronous method XferData to send Command
@@ -396,15 +396,15 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBDeviceList, byte* 
   //Search the EndPoint EP1 IN for Reply reception from USB FX2 device to host computer. 
   for (int i=1; i<eptCount; i++)
   {
-    bool bInR = ((USBDeviceList->EndPoints[i]->Address )==0x81); //& 0x81)==0x81); Cypress bad example
-    bool bBulkR = (USBDeviceList->EndPoints[i]->Attributes == 2);
+    bool bInR = ((USBdevList->EndPoints[i]->Address )==0x81); //& 0x81)==0x81); Cypress bad example
+    bool bBulkR = (USBdevList->EndPoints[i]->Attributes == 2);
 
 	//If the EndPoint EP1 INPUT exists instantiate the abstract class in the concrete class CCyBulkEndPoint,
 	//set the TimeOut to Timeout, use synchronous method XferData to receive Reply
     if (bBulkR && bInR && bResultCommand )
     {
 	  //If the EndPoint EP1 OUT exists instantiate the abstract class in the concrete class CCyBulkEndPoint
-      BulkOutEP = (CCyBulkEndPoint *) USBDeviceList->EndPoints[i];
+      BulkOutEP = (CCyBulkEndPoint *) USBdevList->EndPoints[i];
 	  //set the TimeOut to Timeout
       BulkOutEP->TimeOut=Timeout;
 	  //use synchronous method XferData to receive Reply
@@ -424,15 +424,15 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBDeviceList, byte* 
 TE_USB_FX2_GetData_InstanceDriverBuffer()
 
   Declaration
-TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBDeviceList, CCyBulkEndPoint **BulkInEP, 
+TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBdevList, CCyBulkEndPoint **BulkInEP, 
 PI_PipeNumber PipeNo,unsigned long TimeOut, int BufferSize)
 
   Function Call
 Your application program shall call this function like this:
-TE_USB_FX2_GetData_InstanceDriverBuffer (USBDeviceList, &BulkInEP, PipeNo, TimeOut, BufferSize);
+TE_USB_FX2_GetData_InstanceDriverBuffer (USBdevList, &BulkInEP, PipeNo, TimeOut, BufferSize);
 
   Description
-This function takes an already initialized USB device list (USBDeviceList previously selected by TE_USB_FX2_Open()) and a not 
+This function takes an already initialized USB device list (USBdevList previously selected by TE_USB_FX2_Open()) and a not 
 initialized CCyBulkEndPoint double pointer, BulkInEP. This function selects the endpoint to use: you shall choose EP6 (0x86) 
 (endpoints EP4(0x84) or EP2(0x82) are also theoretically possible).
 Currently (April 2012), only endpoint 0x86 is actually implemented in Trenz Electronic USB FPGA modules, so that endpoints EP2 and 
@@ -468,11 +468,11 @@ data = new byte [RX_PACKET_LEN*packets]; //allocate memory
 PI_PipeNumber PipeNo = PI_EP6;
 
 //starts test
-SendFPGAcommand(USBDeviceList,FX22MB_REG0_START_TX); 
+SendFPGAcommand(USBdevList,FX22MB_REG0_START_TX); 
 
 CCyBulkEndPoint *BulkInEP = NULL;
 
-TE_USB_FX2_GetData_InstanceDriverBuffer (USBDeviceList,  &BulkInEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
+TE_USB_FX2_GetData_InstanceDriverBuffer (USBdevList,  &BulkInEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
  
 ElapsedTime.Start(); //StopWatch start
 for (unsigned int i = 0; i < packets; i++)
@@ -490,10 +490,10 @@ for (unsigned int i = 0; i < packets; i++)
 //DEBUG StopWatch 
 TheElapsedTime = ElapsedTime.Stop(false); 
 
-SendFPGAcommand(USBDevicelist,FX22MB_REG0_STOP); 
+SendFPGAcommand(USBdevList,FX22MB_REG0_STOP); 
 
   Parameters
-1)  CCyUSBDevice *USBDeviceList
+1)  CCyUSBDevice *USBdevList
 CCyUSBDevice is a type defined in CyAPI.dll. Its name is misleading because it is not a class that represents a single USB device, 
 but it rather represents a list of USB devices. CCyUSBDevice is the list of devices served by the CyUSB.sys driver 
 (or a derivative like TE_USB_FX2_xx.sys). This parameter is passed by pointer. See page 7 and pages 23-49 of CyAPI.pdf 
@@ -527,7 +527,7 @@ enum ST_Status
 
 */
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBDeviceList, CCyBulkEndPoint **BulkInEP, PI_PipeNumber PipeNo,unsigned long Timeout, int BufferSize)
+TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBdevList, CCyBulkEndPoint **BulkInEP, PI_PipeNumber PipeNo,unsigned long Timeout, int BufferSize)
 {
 
   bool bResultDataRead = false;
@@ -548,20 +548,20 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBD
   unsigned int DeviceDriverBufferSize = BufferSize; //131072;//409600;//131072;
 
   //Number of EndPoint of the Card/Device selected by a previous TE_USB_FX2_Open() function. 
-  int eptCount = USBDeviceList->EndPointCount();
+  int eptCount = USBdevList->EndPointCount();
 
   //Search the EndPoint EP6 INPUT for Read Fpga Ram transmission from USB FX2 device to host computer 
   for (int i=1; i<eptCount; i++)
   {
-    bool bOutR = ((USBDeviceList->EndPoints[i]->Address )==PipeNoHex);
-    bool bBulkR = (USBDeviceList->EndPoints[i]->Attributes == 2);
+    bool bOutR = ((USBdevList->EndPoints[i]->Address )==PipeNoHex);
+    bool bBulkR = (USBdevList->EndPoints[i]->Attributes == 2);
 
 	//If the EndPoint EP6 INPUT exists instantiate the abstract class in the concrete class CCyBulkEndPoint,
 	//set the TimeOut to Timeout, set the XferMode to XMODE_DIRECT,use synchronous method XferData to receive a packet
 	//of DeviceDriverBufferSize
     if (bBulkR && bOutR)
     {
-      (*BulkInEP) = (CCyBulkEndPoint *) USBDeviceList->EndPoints[i];
+      (*BulkInEP) = (CCyBulkEndPoint *) USBdevList->EndPoints[i];
       (*BulkInEP)->TimeOut=Timeout;
       (*BulkInEP)->XferMode=XMODE_DIRECT;
       (*BulkInEP)->SetXferSize(DeviceDriverBufferSize);
@@ -669,12 +669,12 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_GetData (CCyBulkEndPoint **BulkInEP, byte* DataR
 TE_USB_FX2_SetData_InstanceDriverBuffer()
 
   Declaration
-TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer(CCyUSBDevice *USBDeviceList, CCyBulkEndPoint **BulkOutEP, 
+TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer(CCyUSBDevice *USBdevList, CCyBulkEndPoint **BulkOutEP, 
 PI_PipeNumber PipeNo,unsigned long Timeout, int BufferSize)
 
   Function Call
 Your application program shall call this function like this:
-TE_USB_FX2_SetData_InstanceDriverBuffer (USBDeviceList, &BulkOutEP, PipeNo, Timeout, BufferSize);
+TE_USB_FX2_SetData_InstanceDriverBuffer (USBdevList, &BulkOutEP, PipeNo, Timeout, BufferSize);
 
   Description
 This function takes an already initialized USB device list (USBDevice previously selected by TE_USB_FX2_Open()) and a not initialized
@@ -712,11 +712,11 @@ data = new byte [TX_PACKET_LEN*packets]; //allocate memory
 PI_PipeNumber PipeNo = PI_EP8;
 
 //starts test
-SendFPGAcommand(USBDeviceList,FX22MB_REG0_START_RX); 
+SendFPGAcommand(USBdevList,FX22MB_REG0_START_RX); 
 
 CCyBulkEndPoint *BulkOutEP = NULL;
 
-TE_USB_FX2_SetData_InstanceDriverBuffer (USBDeviceList,  &BulkOutEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
+TE_USB_FX2_SetData_InstanceDriverBuffer (USBdevList,  &BulkOutEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
  
 ElapsedTime.Start(); //StopWatch start
 for (unsigned int i = 0; i < packets; i++)
@@ -737,10 +737,10 @@ for (unsigned int i = 0; i < packets; i++)
 //DEBUG StopWatch 
 TheElapsedTime = ElapsedTime.Stop(false); 
 
-SendFPGAcommand(USBDeviceList,FX22MB_REG0_STOP); 
+SendFPGAcommand(USBdevList,FX22MB_REG0_STOP); 
 
   Parameters
-1) CCyUSBDevice *USBDeviceList
+1) CCyUSBDevice *USBdevList
 CCyUSBDevice is a type defined in CyUSB.dll. Its name is misleading because it is not a class that represents a single USB device, 
 but it rather represents a list of USB devices. CCyUSBDevice is the list of devices served by the CyUSB.sys driver (or a derivative 
 like TE_USB_FX2_xx.sys). This parameter is passed by pointer. See page 7 and pages 23-49 of CyAPI.pdf (Cypress CyAPI Programmer's 
@@ -776,7 +776,7 @@ enum ST_Status
 */
 
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer (CCyUSBDevice *USBDeviceList, CCyBulkEndPoint **BulkOutEP, PI_PipeNumber PipeNo,unsigned long Timeout, int BufferSize)
+TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer (CCyUSBDevice *USBdevList, CCyBulkEndPoint **BulkOutEP, PI_PipeNumber PipeNo,unsigned long Timeout, int BufferSize)
 {
 
   bool bResultDataWrite = false;
@@ -794,20 +794,20 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer (CCyUSBDevice *USBD
   // Find a second bulk OUT endpoint in the EndPoints[] array
 
   //Number of EndPoint of the Card/Device selected by a previous TE_USB_FX2_Open() function. 
-  int eptCount = USBDeviceList->EndPointCount();
+  int eptCount = USBdevList->EndPointCount();
 
   //Search the EndPoint EP8 OUTPUT for Write Fpga Ram transmission from host computer to USB FX2 device
   for (int i=1; i<eptCount; i++)
   {
-    bool bOutR = ((USBDeviceList->EndPoints[i]->Address )==PipeNoHex);
-    bool bBulkR = (USBDeviceList->EndPoints[i]->Attributes == 2);
+    bool bOutR = ((USBdevList->EndPoints[i]->Address )==PipeNoHex);
+    bool bBulkR = (USBdevList->EndPoints[i]->Attributes == 2);
 
 	//If the EndPoint EP8 OUTPUT exists instantiate the abstract class in the concrete class CCyBulkEndPoint,
 	//set the TimeOut to Timeout, set the XferMode to XMODE_DIRECT,use synchronous method XferData to transmit a packet
 	//of DeviceDriverBufferSize
     if (bBulkR && bOutR)
     {
-      (*BulkOutEP) = (CCyBulkEndPoint *) USBDeviceList->EndPoints[i];
+      (*BulkOutEP) = (CCyBulkEndPoint *) USBdevList->EndPoints[i];
       (*BulkOutEP)->TimeOut=Timeout;
       (*BulkOutEP)->XferMode=XMODE_DIRECT;
       (*BulkOutEP)->SetXferSize(DeviceDriverBufferSize);

@@ -9,3 +9,4 @@ Projects:
 
 Notes:
 * Current version of TE API firmware is 3.2
+* TE API firmware is also called TE API commands because these API are used to send commands from computer to MicroBlaze and Cypress FX2 microcontroller.  

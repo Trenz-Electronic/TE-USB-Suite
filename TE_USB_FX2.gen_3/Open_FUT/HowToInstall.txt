@@ -1,16 +1,7 @@
-C:\>cd Python27
-
-C:\Python27>python
-Python 2.7.3 (default, Apr 10 2012, 23:24:47) [MSC v.1500 64 bit (AMD64)] on win
-32
-Type "help", "copyright", "credits" or "license" for more information.
->>> exit()
-
-C:\Python27>cd test
-
-C:\Python27\test>pyhon setup.py install
-'pyhon' is not recognized as an internal or external command,
-operable program or batch file.
+To use this programm Python 2.7 should be installed on your system.
+Use corresponding Python version for your system.
+Windows 32 bit - http://www.python.org/ftp/python/2.7.3/python-2.7.3.msi
+Windows 64 bit - http://www.python.org/ftp/python/2.7.3/python-2.7.3.amd64.msi
 
 C:\Python27\test>python setup.py install
 running install
@@ -325,4 +316,8 @@ make sure you don't distribute files belonging to the operating system.
    GDI32.dll - C:\Windows\system32\GDI32.dll
    ole32.dll - C:\Windows\system32\ole32.dll
 
-C:\Python27\test>
+** Note
+Warning
+The following modules appear to be missing
+['Carbon', 'Carbon.Files', 'win32api', 'win32con', 'win32pipe']
+Could be ignored
