@@ -12,7 +12,7 @@ TE modules based on Cypress EZ-USB FX2 microcontroller.
 Note: Please be sure that you download correct version, as python.org can offer you
 32 bit version by default.
 - TE USB FX2 driver (generation 3)
-- simplified TE USB FX2 API (generation 3): TE_USB_FX2_API_C.dll
+- simplified C++ TE USB FX2 API (generation 3): TE_USB_FX2_API_C.dll (not officialy supported yet)
 
 ## Attention
 
