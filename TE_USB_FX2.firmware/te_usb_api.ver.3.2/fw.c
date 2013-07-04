@@ -80,9 +80,9 @@ void system_init(void)              // Called once at startup
 	OUTPKTEND = 0x88; SYNCDELAY;	// Arm both EP2 buffers to “prime the pump”		
 	OUTPKTEND = 0x88; SYNCDELAY;
 	
-	EP2FIFOCFG = 0x48;  SYNCDELAY; 	// Configure EP2 for AUTOIN, 8bit wide bus.
-	EP4FIFOCFG = 0x48;  SYNCDELAY;	// Configure EP4 for AUTOIN, 8bit wide bus.
-	EP6FIFOCFG = 0x48;  SYNCDELAY;	// Configure EP6 for AUTOIN, 8bit wide bus.
+	EP2FIFOCFG = 0x4C;  SYNCDELAY; 	// Configure EP2 for AUTOIN, 8bit wide bus.
+	EP4FIFOCFG = 0x4C;  SYNCDELAY;	// Configure EP4 for AUTOIN, 8bit wide bus.
+	EP6FIFOCFG = 0x4C;  SYNCDELAY;	// Configure EP6 for AUTOIN, 8bit wide bus.
 	EP8FIFOCFG = 0x10;  SYNCDELAY;	// Configure EP8 for AUTOOUT, 8bit wide bus.
 	
 	IOD = 0x03;			// Enable PS_ON and disable PROG_B 

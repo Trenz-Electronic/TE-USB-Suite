@@ -34,7 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CyUSB">
+    <Reference Include="CyUSB, Version=3.4.7.0, Culture=neutral, PublicKeyToken=01f1d2b6c851ae92, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\CyUSB.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -44,7 +45,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="TE_USB_FX2_CyUSB">
+    <Reference Include="TE_USB_FX2_CyUSB, Version=1.0.0.0, Culture=neutral, PublicKeyToken=b44d944a1dafcf9e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>.\TE_USB_FX2_CyUSB.dll</HintPath>
     </Reference>
   </ItemGroup>

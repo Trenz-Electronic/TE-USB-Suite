@@ -7,7 +7,6 @@ using System.Runtime.InteropServices;
 using System.Runtime;
 using Microsoft.Win32;
 //using System.ComponentModel;
-using System.IO;
 
 [StructLayout(LayoutKind.Sequential, Pack = 1)]
 public struct SINGLE_TRANSFER

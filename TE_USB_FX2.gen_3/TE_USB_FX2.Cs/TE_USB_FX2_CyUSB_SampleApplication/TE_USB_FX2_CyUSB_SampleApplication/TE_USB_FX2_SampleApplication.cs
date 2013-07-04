@@ -657,7 +657,7 @@ namespace TE_USB_FX2_SampleApplication
       {
         DrawMenu();
         //cin >> m_sel;
-        string line = Console.ReadLine(); // Read string from console
+       string line = Console.ReadLine(); // Read string from console
         int value;
         int.TryParse(line, out value); // Try to parse the string as an integer
         m_sel = value;
@@ -714,8 +714,8 @@ namespace TE_USB_FX2_SampleApplication
           case 9:
             //ReadDataFPGAIntegrity(TE_USB_FX2_USBDevice);
 
-            Console.WriteLine("Write the Buffer Size desired for EP6 (power of 2 is better)");
-            Console.WriteLine("Value suggested is 131072");
+            Console.WriteLine("Write the Buffer Size desired for EP6");
+            Console.WriteLine("Value suggested is 102400, do not use 131072");
 
             string lineBufferSizeR = Console.ReadLine(); // Read string from console
             int BufferSizeR = 131072;
@@ -771,8 +771,8 @@ namespace TE_USB_FX2_SampleApplication
           case 10:
             //WriteDataFPGAIntegrity(TE_USB_FX2_USBDevice);
 
-            Console.WriteLine("Write the Buffer Size desired for EP8 (power of 2 is better)");
-            Console.WriteLine("Value suggested is 131072");
+            Console.WriteLine("Write the Buffer Size desired for EP8");
+            Console.WriteLine("Value suggested is 102400, do not use 131072");
 
             string lineBufferSizeW = Console.ReadLine(); // Read string from console
             int BufferSizeW = 131072;

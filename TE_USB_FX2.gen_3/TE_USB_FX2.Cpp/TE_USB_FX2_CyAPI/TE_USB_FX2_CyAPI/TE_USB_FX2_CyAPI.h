@@ -20,24 +20,24 @@ enum PI_PipeNumber
 };
 
 //typedef int (WINAPI *_TE_USB_FX2_ScanCards)();
-TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards (CCyUSBDevice *USBDeviceList);
+TE_USB_FX2_CYAPI int TE_USB_FX2_ScanCards (CCyUSBDevice *USBdevList);
 
 //typedef int (WINAPI *_TE_USB_FX2_Open)(unsigned int* PHandle, int CardNo);
-TE_USB_FX2_CYAPI int TE_USB_FX2_Open (CCyUSBDevice *USBDeviceList, int CardNo);
+TE_USB_FX2_CYAPI int TE_USB_FX2_Open (CCyUSBDevice *USBdevList, int CardNo);
 
 //typedef int (WINAPI *_TE_USB_FX2_Close)(unsigned int* PHandle);
-TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBDeviceList);
+TE_USB_FX2_CYAPI int TE_USB_FX2_Close (CCyUSBDevice *USBdevList);
 
 //typedef int (WINAPI *_TE_USB_FX2_SendCommand)(unsigned int PHandle, byte* cmd, int cmd_len, byte* reply, int* reply_len, int timeout);
-TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBDeviceList, byte* Command, long CmdLength, byte* Reply, long ReplyLength, unsigned long Timeout);
+TE_USB_FX2_CYAPI int TE_USB_FX2_SendCommand (CCyUSBDevice *USBdevList, byte* Command, long CmdLength, byte* Reply, long ReplyLength, unsigned long Timeout);
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBDeviceList, CCyBulkEndPoint **BulkInEP, PI_PipeNumber PipeNo, unsigned long Timeout, int BufferSize);
+TE_USB_FX2_CYAPI int TE_USB_FX2_GetData_InstanceDriverBuffer (CCyUSBDevice *USBdevList, CCyBulkEndPoint **BulkInEP, PI_PipeNumber PipeNo, unsigned long Timeout, int BufferSize);
 
 //typedef int (WINAPI *_TE_USB_FX2_GetData)(unsigned int PHandle, byte* data, int* len, PI_PipeNumber, int timeout);
 //TE_USB_FX2_CYAPI int TE_USB_FX2_GetData (HANDLE PHandle, byte* data, long len, PI_PipeNumber PipeNo, int timeout);
 TE_USB_FX2_CYAPI int TE_USB_FX2_GetData (CCyBulkEndPoint **BulkInEP, byte* DataRead, long DataReadLength);
 
-TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer (CCyUSBDevice *USBDeviceList, CCyBulkEndPoint **BulkOutEP, PI_PipeNumber PipeNo, unsigned long Timeout, int BufferSize);
+TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer (CCyUSBDevice *USBdevList, CCyBulkEndPoint **BulkOutEP, PI_PipeNumber PipeNo, unsigned long Timeout, int BufferSize);
 
 //typedef int (WINAPI *_TE_USB_FX2_SetData)(unsigned int PHandle, byte* data, int len, PI_PipeNumber);
 //TE_USB_FX2_CYAPI int TE_USB_FX2_SetData (HANDLE PHandle, byte* data, long len, PI_PipeNumber PipeNo);

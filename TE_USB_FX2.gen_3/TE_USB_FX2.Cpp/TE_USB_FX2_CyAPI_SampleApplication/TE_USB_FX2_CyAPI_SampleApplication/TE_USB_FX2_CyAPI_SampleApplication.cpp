@@ -38,7 +38,7 @@ void DrawMenu()
   cout << "	0 - Exit " << endl;
 }
 
-int GetFPGAstatus(CCyUSBDevice *USBDeviceList)
+int GetFPGAstatus(CCyUSBDevice *USBdevList)
 {
   byte Command[64], Reply[64];
   int CmdLength = 64;
@@ -49,7 +49,7 @@ int GetFPGAstatus(CCyUSBDevice *USBDeviceList)
   Command[1] = MB_I2C_ADRESS;
   Command[2] = I2C_BYTES;
 
-  if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000)) {
+  if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000)) {
     cout << "Error" << endl;
     return -1;
   }
@@ -66,7 +66,7 @@ int GetFPGAstatus(CCyUSBDevice *USBDeviceList)
   //cout << "host->memory data Second step" << endl;
   while (Reply[0] == 0) {
     //cout << "Wait" << endl;
-    if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+    if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
     {
       cout << "Error" << endl;
       return -1;
@@ -83,7 +83,7 @@ int GetFPGAstatus(CCyUSBDevice *USBDeviceList)
 
 }
 
-void SendFPGAcommand(CCyUSBDevice *USBDeviceList, enum MB_Commands Command2MB)
+void SendFPGAcommand(CCyUSBDevice *USBdevList, enum MB_Commands Command2MB)
 {
   byte Command[64], Reply[64];
   int CmdLength = 64;
@@ -97,19 +97,19 @@ void SendFPGAcommand(CCyUSBDevice *USBDeviceList, enum MB_Commands Command2MB)
   Command[5] = 0;
   Command[6] = Command2MB;
 
-  if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
     cout << "Error" << endl;
 }
 
 
-void GetNumberOfCards(CCyUSBDevice *USBDeviceList)
+void GetNumberOfCards(CCyUSBDevice *USBdevList)
 {
-  cout << endl << TE_USB_FX2_ScanCards(USBDeviceList) << endl;
+  cout << endl << TE_USB_FX2_ScanCards(USBdevList) << endl;
 }
 
-void GetFX2version(CCyUSBDevice *USBDeviceList)
+void GetFX2version(CCyUSBDevice *USBdevList)
 {
-  if (USBDeviceList == NULL)
+  if (USBdevList == NULL)
   {
     cout << "Error,no device is selected" <<endl ;
     return;
@@ -121,7 +121,7 @@ void GetFX2version(CCyUSBDevice *USBDeviceList)
 
   Command[0] = 0x00;//comand read FX2 version
 
-  if (!TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (!TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
   {
     if (ReplyLength >= 4)
     {
@@ -135,9 +135,9 @@ void GetFX2version(CCyUSBDevice *USBDeviceList)
     cout << "Error" << endl;
 }
 
-void GetFPGAversion(CCyUSBDevice *USBDeviceList)
+void GetFPGAversion(CCyUSBDevice *USBdevList)
 {
-  if (USBDeviceList == NULL)
+  if (USBdevList == NULL)
   {
     cout << "Error,no device is selected" <<endl ;
     return;
@@ -151,7 +151,7 @@ void GetFPGAversion(CCyUSBDevice *USBDeviceList)
   Command[1] = MB_I2C_ADRESS; //0x3F;//I2C slave address
   Command[2] = I2C_BYTES; //12;//12 bytes payload
 
-  if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
     cout << "Error" << endl;
 
   Command[0] = 0xAD;//comand I2C_WRITE
@@ -160,12 +160,12 @@ void GetFPGAversion(CCyUSBDevice *USBDeviceList)
   Command[5] = 0;
   Command[6] = 1; //get FPGA version
 
-  if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
     cout << "Error" << endl;
 
   Command[0] = 0xB1;//comand GET_INTERRUPT
 
-  if (!TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (!TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
   {
 
     if ((ReplyLength > 4) &&(Reply[0] != 0))
@@ -180,10 +180,10 @@ void GetFPGAversion(CCyUSBDevice *USBDeviceList)
     cout << "Error" << endl;
 }
 
-void GetFX2FifoStatus(CCyUSBDevice *USBDeviceList)
+void GetFX2FifoStatus(CCyUSBDevice *USBdevList)
 {
 
-  if (USBDeviceList == NULL)
+  if (USBdevList == NULL)
   {
     cout << "Error,no device is selected" <<endl ;
     return;
@@ -195,7 +195,7 @@ void GetFX2FifoStatus(CCyUSBDevice *USBDeviceList)
 
   Command[0] = 0xAC;//comand GET_FIFO_STATUS
 
-  if (!TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (!TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
   {
     if (ReplyLength >= 4)
     {
@@ -209,10 +209,10 @@ void GetFX2FifoStatus(CCyUSBDevice *USBDeviceList)
     cout << "Error" << endl;
 }
 
-void ResetFX2FifoStatus(CCyUSBDevice *USBDeviceList)
+void ResetFX2FifoStatus(CCyUSBDevice *USBdevList)
 {
 
-  if (USBDeviceList == NULL)
+  if (USBdevList == NULL)
   {
     cout << "Error,no device is selected" <<endl ;
     return;
@@ -228,20 +228,20 @@ void ResetFX2FifoStatus(CCyUSBDevice *USBDeviceList)
   //cmd[0] = 0xA0;//comand SWITCH_MODE
   //cmd[1] = 0;//COMMAND mode
 
-  if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
     cout << "Error" << endl;
 
   Command[0] = 0xA0;//comand SWITCH_MODE
   Command[1] = 1;//FIFO mode
 
-  if (TE_USB_FX2_SendCommand(USBDeviceList, Command, CmdLength, Reply, ReplyLength, 1000))
+  if (TE_USB_FX2_SendCommand(USBdevList, Command, CmdLength, Reply, ReplyLength, 1000))
     cout << "Error" << endl;
 }
 
 
-void ReadData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriverBufferSize, unsigned int packets, int RX_PACKET_LEN, unsigned long TIMEOUT)
+void ReadData_Throughput(CCyUSBDevice *USBdevList, unsigned int DeviceDriverBufferSize, unsigned int packets, int RX_PACKET_LEN, unsigned long TIMEOUT)
 {
-  if (USBDeviceList == NULL)
+  if (USBdevList == NULL)
   {
     cout << "Error,no device is selected" <<endl ;
     return;
@@ -273,15 +273,15 @@ void ReadData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriverB
   //Shortest and more portable way to select the Address using the PipeNumber
   PI_PipeNumber PipeNo = PI_EP6;
 
-  ResetFX2FifoStatus(USBDeviceList);
+  ResetFX2FifoStatus(USBdevList);
 
-  SendFPGAcommand(USBDeviceList,FX22MB_REG0_START_TX);
+  SendFPGAcommand(USBdevList,FX22MB_REG0_START_TX);
   //starts test
   //Get_Data_Start(handle);
 
   CCyBulkEndPoint *BulkInEP = NULL;
 
-  TE_USB_FX2_GetData_InstanceDriverBuffer ( USBDeviceList, &BulkInEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
+  TE_USB_FX2_GetData_InstanceDriverBuffer ( USBdevList, &BulkInEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
 
   ElapsedTime.Start();
   //StopWatch start
@@ -304,7 +304,7 @@ void ReadData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriverB
   TheElapsedTime = ElapsedTime.Stop(false);
   //DEBUG StopWatch timer
 
-  SendFPGAcommand(USBDeviceList,FX22MB_REG0_STOP);
+  SendFPGAcommand(USBdevList,FX22MB_REG0_STOP);
   //end of test for FPGA
 
   //verify data
@@ -346,14 +346,14 @@ void ReadData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriverB
   printf("Transferred %d kB in %2.3f s = %2.3f MB/s\r\n",
          total_cnt/1024, TheElapsedTime, (double)total_cnt/(TheElapsedTime*1024*1024));
 
-  ResetFX2FifoStatus(USBDeviceList);
+  ResetFX2FifoStatus(USBdevList);
   delete data;
 }
 
-void WriteData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriverBufferSize, unsigned int packets, int TX_PACKET_LEN, unsigned long TIMEOUT, unsigned int GetFpgaStatusFlag)
+void WriteData_Throughput(CCyUSBDevice *USBdevList, unsigned int DeviceDriverBufferSize, unsigned int packets, int TX_PACKET_LEN, unsigned long TIMEOUT, unsigned int GetFpgaStatusFlag)
 {
 
-  if (USBDeviceList == NULL)
+  if (USBdevList == NULL)
   {
     cout << "Error,no device is selected" <<endl ;
     return;
@@ -387,9 +387,9 @@ void WriteData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriver
     total_cnt++;
   }
 
-  ResetFX2FifoStatus(USBDeviceList);
+  ResetFX2FifoStatus(USBdevList);
 
-  SendFPGAcommand(USBDeviceList, FX22MB_REG0_START_RX);
+  SendFPGAcommand(USBdevList, FX22MB_REG0_START_RX);
   //starts test
 
   bool bResultDataWrite = false;
@@ -399,7 +399,7 @@ void WriteData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriver
   // Find a second bulk OUT endpoint in the EndPoints[] array
   CCyBulkEndPoint *BulkOutEP = NULL;
 
-  TE_USB_FX2_SetData_InstanceDriverBuffer ( USBDeviceList, &BulkOutEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
+  TE_USB_FX2_SetData_InstanceDriverBuffer ( USBdevList, &BulkOutEP, PipeNo, TIMEOUT, DeviceDriverBufferSize);
 
   ElapsedTime.Start();
   //StopWatch start
@@ -424,7 +424,7 @@ void WriteData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriver
     total_cnt += ( packetlen);
   }
   TheElapsedTime = ElapsedTime.Stop(false); //DEBUG StopWatch timer
-  SendFPGAcommand(USBDeviceList, FX22MB_REG0_STOP); //stops test
+  SendFPGAcommand(USBdevList, FX22MB_REG0_STOP); //stops test
 
   cout << "EndTime" << endl;
 
@@ -432,7 +432,7 @@ void WriteData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriver
 
   if (GetFpgaStatusFlag==1)
   {
-    status=GetFPGAstatus(USBDeviceList);
+    status=GetFPGAstatus(USBdevList);
   }
   else
     status=2;
@@ -447,7 +447,7 @@ void WriteData_Throughput(CCyUSBDevice *USBDeviceList, unsigned int DeviceDriver
   //cout << "XMODE_DIRECT" << XMODE_DIRECT <<endl;
   //cout << "XMODE_BUFFERED" << XMODE_BUFFERED <<endl;
 
-  ResetFX2FifoStatus(USBDeviceList);
+  ResetFX2FifoStatus(USBdevList);
 
   delete data;
 }
@@ -472,7 +472,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
   //
 
-  CCyUSBDevice *USBDeviceList = new CCyUSBDevice((HANDLE)0,CYUSBDRV_GUID,true);
+  CCyUSBDevice *USBdevList = new CCyUSBDevice((HANDLE)0,CYUSBDRV_GUID,true);
   //CYUSBDRV_GUID,true);
 
   int CardNo = 1;
@@ -496,19 +496,19 @@ int _tmain(int argc, _TCHAR* argv[])
     switch (m_sel)
     {
     case '1' :
-      GetNumberOfCards(USBDeviceList);
+      GetNumberOfCards(USBdevList);
       //handle_test=(unsigned int) m_handle;
       //cout << "Handle Test" << handle_test <<endl;
       break;
     case '2' :
-      if (TE_USB_FX2_Open(USBDeviceList, 0)==0)
+      if (TE_USB_FX2_Open(USBdevList, 0)==0)
         cout << "Module is connected!"  <<endl; //&m_handle
       //if (TE_USB_FX2_Open(&m_handle, 0)!=0)
       else
         cout << "Module is not connected!" <<endl;
       break;
     case '3' :
-      if (TE_USB_FX2_Open(USBDeviceList, 1)==0)
+      if (TE_USB_FX2_Open(USBdevList, 1)==0)
         cout << "Module is connected!"  <<endl; //&m_handle
       //if (TE_USB_FX2_Open(&m_handle, 0)!=0)
       else
@@ -518,19 +518,19 @@ int _tmain(int argc, _TCHAR* argv[])
       //	cout << "Module is not connected!" << endl;
       //break;
     case '4' :
-      TE_USB_FX2_Close(USBDeviceList);
+      TE_USB_FX2_Close(USBdevList);
       break;
     case '5' :
-      GetFX2version(USBDeviceList);
+      GetFX2version(USBdevList);
       break;
     case '6' :
-      GetFPGAversion(USBDeviceList);
+      GetFPGAversion(USBdevList);
       break;
     case '7' :
-      GetFX2FifoStatus(USBDeviceList);
+      GetFX2FifoStatus(USBdevList);
       break;
     case '8' :
-      ResetFX2FifoStatus(USBDeviceList);
+      ResetFX2FifoStatus(USBdevList);
       break;
     case 'r' :
       //ReadDataFPGAIntegrity(TE_USB_FX2_USBdevice);
@@ -567,7 +567,7 @@ int _tmain(int argc, _TCHAR* argv[])
 
       cin>>TimeOutR; // Try to parse the string as an integer
 
-      ReadData_Throughput(USBDeviceList,BufferSizeR,PacketsNumberR,PacketLengthR,TimeOutR);
+      ReadData_Throughput(USBdevList,BufferSizeR,PacketsNumberR,PacketLengthR,TimeOutR);
 
       break;
 
@@ -611,14 +611,14 @@ int _tmain(int argc, _TCHAR* argv[])
       cin>>GetStatusFPGAyn;   // Try to parse the string as an integer
 
 
-      WriteData_Throughput(USBDeviceList,BufferSizeW,PacketsNumberW,PacketLengthW,TimeOutW,GetStatusFPGAyn);
+      WriteData_Throughput(USBdevList,BufferSizeW,PacketsNumberW,PacketLengthW,TimeOutW,GetStatusFPGAyn);
       break;
 
     }
   }
 
-  if (USBDeviceList != 0)
-    TE_USB_FX2_Close(USBDeviceList);
+  if (USBdevList != 0)
+    TE_USB_FX2_Close(USBdevList);
   CloseTE0300DLL();
 
   system("Pause");
