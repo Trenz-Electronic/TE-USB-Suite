@@ -82,6 +82,7 @@ op = StringVar()	# Current operation name
 op.set("")		  # No operation at start
 #-----m_handle = c_int(0) # create variable to handle
 opened = 0		  # handle flag
+max_flash_erase_time	= 60
 #-------------------------------------------------------------------------------
 def bitswap(orig_byte): # Function swap bits in byte
 	return sum(1<<(8-1-i) for i in range(8) if orig_byte>>i&1)
@@ -238,9 +239,9 @@ def spi_erase_bulk():
 	# Chip erase time 15-30s
 	erase_complete = 0
 	if op_error == 0:   # No errors in past
-		for t in range(35):
+		for t in range(max_flash_erase_time):
 			time.sleep(1)
-			complete = (t * 100) / 35 # progressbar
+			complete = (t * 100) / max_flash_erase_time # progressbar
 			progressbar["value"] = complete
 			root.update()				   # Redrive to update progressbar
 			# testing Busy Flag
@@ -458,6 +459,7 @@ def spi_program():	  # SPI Flash programming
 		spi_addr = 0				# From address 0
 		wr_op_cnt = 0			   # count cycles for progressbar
 		cmd[0] = CMD_FX2_FLASH_WRITE	# Set command
+		bitstream_size = bitstream_size - offset;
 		while spi_addr < bitstream_size:	# cycle to the end of bitstream
 			if (bitstream_size - spi_addr) > wr_block_max_size: # can write 59
 				wr_block_size = wr_block_max_size
@@ -618,7 +620,9 @@ log_text.config(yscrollcommand = log_scroll.set)	# coonect test to scroll
 log_text.config(state = DISABLED)   # Edit by user is disabled
 # Run
 if(platform.architecture()[0]=="64bit"):
-	fx2dll = windll.LoadLibrary(fx2dll_64_name)
+	#fx2dll = windll.LoadLibrary(fx2dll_64_name)
+	fx2dll = cdll.LoadLibrary(fx2dll_64_name)
 else:
-	fx2dll = windll.LoadLibrary(fx2dll_32_name)
+	#fx2dll = windll.LoadLibrary(fx2dll_32_name)
+	fx2dll = cdll.LoadLibrary(fx2dll_32_name)
 root.mainloop()
