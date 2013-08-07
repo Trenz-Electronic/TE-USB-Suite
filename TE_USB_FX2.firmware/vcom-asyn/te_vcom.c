@@ -190,6 +190,7 @@ BYTE printable(BYTE c){
 		return 0;
 }
 
+#ifdef ENABLE_PROGSPI
 void process_flash_status(void){
 	BYTE sr1, sr2;
 	char msg[] = "SR1 ?? SR2 ??";
@@ -290,6 +291,7 @@ void process_flash_read(void){
 		flash_addr_l += 8;
 	print_ep6_string(msg);
 }
+#endif
 
 void process_fpga_status(void){
 	__xdata char msg[7] = {'d','i','s','p','-','-',0};
@@ -342,6 +344,7 @@ void process_command(void){
 		processed = 1;
 	}
 	
+#ifdef ENABLE_PROGSPI
 	if(string_match("flash status",command_buf)){
 		FPGA_POWER = 0;
 		OED = 0x73;		// Configure MOSI, CCLK, CSO_B, PS_ON, PROG as outputs
@@ -376,7 +379,7 @@ void process_command(void){
 		process_flash_read();
 		processed = 1;
 	}
-	
+#endif	
 	if(string_match("fpga status",command_buf)){
 		process_fpga_status();
 		processed = 1;
@@ -472,6 +475,7 @@ void process_eeprom_write(void){
 	}
 }
 
+#ifdef ENABLE_PROGSPI
 void process_flash_write(void){
 	WORD packet_length,i,c;
 	WORD block_remainder, packet_remainder;
@@ -504,4 +508,4 @@ void process_flash_write(void){
 		OUTPKTEND = 0x82; // SKIP=1, do NOT pass buffer on to master
 	}
 }
-
+#endif

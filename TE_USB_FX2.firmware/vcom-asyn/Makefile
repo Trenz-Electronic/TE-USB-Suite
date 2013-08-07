@@ -31,16 +31,18 @@ LIB=libfx2.lib
 
 CC=sdcc
 CFLAGS+=-mmcs51 --no-xinit-opt -I${LIBDIR}
-
 CFLAGS+=--opt-code-size
 
-#AS=asx8051
-AS=sdas8051
+CFLAGSA=${CFLAGS}
+CFLAGSA+=-DENABLE_PROGSPI
+
+AS=asx8051
+#AS=sdas8051
 ASFLAGS+=-plosgff
 
 LDFLAGS=--code-loc 0x0000 --code-size 0x1800
 LDFLAGS+=--xram-loc 0x1800 --xram-size 0x0800
-LDFLAGS+=-Wl '-b USBDESCSEG = 0xE100'
+#LDFLAGS+=-Wl '-b USBDESCSEG = 0xE100'
 LDFLAGS+=-L ${LIBDIR}
 
 %.rel : %.a51
@@ -49,13 +51,13 @@ LDFLAGS+=-L ${LIBDIR}
 %.rel : %.c
 	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
 
-default: usbserial.iic
+default: usbserial.iic vcom.iic
 
 %.iic : %.hex
 	c:\\Cypress\USB\bin\Hex2bix.exe -ir -f 0xC2 -m 0xF000 -c 0x1 -o $@ $<
 
 usbserial.hex: vectors.rel usbserial.rel dscr.rel eeprom.rel startup.rel te_vcom.rel spi.rel ${LIBDIR}/${LIB}
-	$(CC) $(CFLAGS) $(LDFLAGS) -o $@ $+
+	$(CC) $(CFLAGSA) $(LDFLAGS) -o $@ $+
 	packihx $@ > .tmp.hex
 	rm $@
 	mv .tmp.hex $@

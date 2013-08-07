@@ -25,7 +25,7 @@ CPPFLAGS+=
 libfx2.lib: delay.rel fx2utils.rel i2c.rel isr.rel timer.rel usb_common.rel
 	rm -f $@
 	touch $@
-	copy $@.save $@
+	cp $@.save $@
 #	for %j in ($^) do basename %j .rel >> $@ # Windows CLI cant understand it ?!
 #	echo delay >> $@
 #	echo fx2utils >> $@

@@ -117,9 +117,11 @@ void activity(void){ // Called repeatedly while the device is idle
 		case MODE_EEPROM_WRITE:
 			process_eeprom_write();
 		break;
+#ifdef ENABLE_PROGSPI
 		case MODE_FLASH_WRITE:
 			process_flash_write();
 		break;
+#endif
 	}
 }
 
