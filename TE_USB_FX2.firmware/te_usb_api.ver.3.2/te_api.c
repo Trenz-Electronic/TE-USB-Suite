@@ -156,21 +156,21 @@ void ep1_pool(void){
 				FIFORESET = 0x80;  SYNCDELAY;  // NAK all requests from host.
 				switch(EP1OUTBUF[1]){
 					case 2:
-						EP2FIFOCFG = 0x48;  SYNCDELAY;
+						EP2FIFOCFG = 0x4C;  SYNCDELAY;
 						FIFORESET = 0x02;  SYNCDELAY;
 						break;
 					case 4:
-						EP4FIFOCFG = 0x48;  SYNCDELAY;
+						EP4FIFOCFG = 0x4C;  SYNCDELAY;
 						FIFORESET = 0x04;  SYNCDELAY;
 						break;
 					case 6:
-						EP6FIFOCFG = 0x48;  SYNCDELAY;
+						EP6FIFOCFG = 0x4C;  SYNCDELAY;
 						FIFORESET = 0x06;  SYNCDELAY;
 						break;
 					default:	// 0
-						EP2FIFOCFG = 0x48;  SYNCDELAY;
-						EP4FIFOCFG = 0x48;  SYNCDELAY;
-						EP6FIFOCFG = 0x48;  SYNCDELAY;
+						EP2FIFOCFG = 0x4C;  SYNCDELAY;
+						EP4FIFOCFG = 0x4C;  SYNCDELAY;
+						EP6FIFOCFG = 0x4C;  SYNCDELAY;
 						EP8FIFOCFG = 0x10;  SYNCDELAY;
 						FIFORESET = 0x02;  SYNCDELAY;
 						FIFORESET = 0x04;  SYNCDELAY;
