@@ -85,8 +85,8 @@ void system_init(void)              // Called once at startup
 	EP6FIFOCFG = 0x4C;  SYNCDELAY;	// Configure EP6 for AUTOIN, 8bit wide bus.
 	EP8FIFOCFG = 0x10;  SYNCDELAY;	// Configure EP8 for AUTOOUT, 8bit wide bus.
 	
-	IOD = 0x03;			// Enable PS_ON and disable PROG_B 
-	OED = 0x03;			// Configure PS_ON and PROG as outputs
+	IOD = 0x03;			// Enable FX2_PS_EN and disable FX2_PROG_B 
+	OED = 0x03;			// Configure FX2_PS_EN and FX2_PROG_B as outputs
 	OEA = 0x82;			// FlagD and INT1 as outputs
 
 	if( !( EP1OUTCS & 0x02) ) 	// Need to clear EP1 buffer
