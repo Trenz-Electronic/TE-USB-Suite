@@ -96,7 +96,7 @@ If no device is attached, USBdevList is not initialized to null (the device list
 An internal operation that closes an handle to the CyUSB.sys driver (or a derivative like TE_USB_FX2.sys) is executed instead 
 (see page 33 of CyAPI.pdf).
 If one or more devices are attached and 
-1) if 0 <= CardNumber <= (number of attached devices – 1), then the selected module is 
+1) if 0 <= CardNumber <= (number of attached devices ï¿½ 1), then the selected module is 
 not directly given by USBdevList (CCyUSBDevice type). An internal operation that opens a handle to CyUSB.sys driver 
 (or a derivative like TE_USB_FX2_xx.sys) is executed instead (see page 45 of CyAPI.pdf). This handle is internally managed by 
 CyAPI.dll, therefore there is no need to expose them to the user.
@@ -811,6 +811,7 @@ TE_USB_FX2_CYAPI int TE_USB_FX2_SetData_InstanceDriverBuffer (CCyUSBDevice *USBd
       (*BulkOutEP)->TimeOut=Timeout;
       (*BulkOutEP)->XferMode=XMODE_DIRECT;
       (*BulkOutEP)->SetXferSize(DeviceDriverBufferSize);
+      bResultDataWrite = true;
 
 	  /*This part must not be grayed out because has been moved to TE_USB_FX2_SetData() for Throughput reason*/
       //bResultDataWrite=BulkOutEP->XferData(data, len);
