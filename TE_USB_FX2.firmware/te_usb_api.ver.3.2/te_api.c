@@ -53,24 +53,35 @@ BYTE prev_done = 0;
 BYTE cmd_cnt = 0;
 //==============================================================================
 /*******************************************************************************
-* Pull INT pool 
+* Pull INT pool aka Interrupt Pin polling
+* 
+* MB Command: connection type A.
+* Command (aka host computer software's MB command to FPGA's MB2FX2_REGs) and reply 
+* (aka FPGA's MB2FX2_REGs to FX2 microcontroller firmware's autoresponse bytes array and 
+* host computer software's reply bytes array).
+* 
+* MB Commnad: connection type B.
+* Command (aka host computer software's MB command to FPGA's MB2FX2_REGs) with no reply.
 *******************************************************************************/
+
+//"AUTORESPONSE YES: 3rd section of code to run if MB Command connection Type A is realized"
+//for example https://wiki.trenz-electronic.de/display/TEUSB/FX22MB_REG0_GETVERSION+command
 void int_pin_pool(void){
-	if (sts_int_auto_configured){
-		if(FPGA_INT0){
-			iar_pin_status = 1;
-			if (iar_count > 32)
-				iar_count = 32;
-			I2CRead2(iar_adress, iar_count, &auto_response_data[0]);
-			iar_int_idx = iar_int_idx + 1;
-			sts_i2c_new_data = 1;
+	if (sts_int_auto_configured){           //if (Interrupt AutoResponse Configured == 1) 
+		if(FPGA_INT0){                  //if (pin INT0 ==1)
+			iar_pin_status = 1;     //Interrupt AutoResponse PinStatus = 1;
+			if (iar_count > 32)     //Interrupt AutoResponse Count > 32
+				iar_count = 32; //Interrupt AutoResponse Count = 32
+			I2CRead2(iar_adress, iar_count, &auto_response_data[0]); // adress, size, data
+			iar_int_idx = iar_int_idx + 1; //iar_int_idx is Interrupt AutoResponse Index
+			sts_i2c_new_data = 1;   //New i2c data are availble, the MB2FX2_REGs in particular
 		}
 		else 
-			iar_pin_status = 0;
+			iar_pin_status = 0;     //IntAutoResponse PinStatus = 0;
 	}
 }
 /*******************************************************************************
-* Pull EP1 data
+* Pull EP1 data aka Polling for EP1 data
 *******************************************************************************/
 void ep1_pool(void){
 	BYTE i;
@@ -112,6 +123,8 @@ void ep1_pool(void){
 				new_data = 1;
 				break;
 			//-----------------------------------------------------------------
+			//"AUTORESPONSE YES: 1st section of code to run if MB Command connection Type A is realized"
+			//https://wiki.trenz-electronic.de/display/TEUSB/SET_INTERRUPT+command
 			case	CMD_SET_AUTORESPONSE:
 				sts_int_auto_configured = 1;
 				iar_adress = EP1OUTBUF[1];
@@ -120,6 +133,8 @@ void ep1_pool(void){
 				new_data = 1;
 				break;
 			//-----------------------------------------------------------------
+			//"AUTORESPONSE YES: 4th section of code to run if MB Command connection Type A is realized"
+			//https://wiki.trenz-electronic.de/display/TEUSB/GET_INTERRUPT+command
 			case	CMD_GET_AUTORESPONSE:
 				EP1INBUF[0] = iar_int_idx;
 				for(i = 0; i < 32; i++)
@@ -204,6 +219,10 @@ void ep1_pool(void){
 				sts_flash_busy = 1;
 				break;
 			//-----------------------------------------------------------------
+			//https://wiki.trenz-electronic.de/display/TEUSB/FLASH_WRITE_COMMAND+command
+			//This command sends instruction(s) (SPI command(s)) to the SPI Flash. 
+			//See SPI Flash data sheet for detailed command description.
+			//See also https://wiki.trenz-electronic.de/display/TEUSB/SPI+Flash+Commands
 			case CMD_FLASH_WRITE_COMMAND:
 				EP1INBUF[0] = 0x55;
 				spi_command(EP1OUTBUF[1], &EP1OUTBUF[3], EP1OUTBUF[2], &EP1INBUF[1]);
@@ -243,6 +262,10 @@ void ep1_pool(void){
 				new_data = 1;
 				break;
 			//-----------------------------------------------------------------
+			//https://wiki.trenz-electronic.de/display/TEUSB/I2C_WRITE+command
+			//Used with MB API Commands https://wiki.trenz-electronic.de/pages/viewpage.action?pageId=10620639
+			//"AUTORESPONSE NO: "only" section of code to run if MB Command connection Type B is realized"
+			//"AUTORESPONSE YES: 1st section of code to run if MB Command connection Type A is realized"
 			case CMD_I2C_WRITE:
 				I2CWrite(EP1OUTBUF[1], EP1OUTBUF[2], &EP1OUTBUF[3]);	// adress, size, data
 				new_data = 1;
