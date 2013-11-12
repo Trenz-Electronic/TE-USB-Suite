@@ -22,23 +22,32 @@
 #define _USB_COMMON_H_
 
 #define	bRequestType	SETUPDAT[0]
-#define	bRequest		SETUPDAT[1]
-#define	wValueL			SETUPDAT[2]
-#define	wValueH			SETUPDAT[3]
-#define	wIndexL			SETUPDAT[4]
-#define	wIndexH			SETUPDAT[5]
-#define	wLengthL		SETUPDAT[6]
-#define	wLengthH		SETUPDAT[7]
+#define	bRequest		  SETUPDAT[1]
+#define	wValueL			  SETUPDAT[2]
+#define	wValueH			  SETUPDAT[3]
+#define	wIndexL			  SETUPDAT[4]
+#define	wIndexH			  SETUPDAT[5]
+#define	wLengthL		  SETUPDAT[6]
+#define	wLengthH		  SETUPDAT[7]
 
 #define MSB(x)	(((unsigned short) x) >> 8)
 #define LSB(x)	(((unsigned short) x) & 0xff)
 
+//It is defined in usb_common.c
 extern volatile __bit _usb_got_SUDAV;
+
 // Provided by user application to havdle serial line changes
 void process_line_coding(void);
 void usb_install_handlers (void);
+
+/** Handles the setup package and the basic device requests like reading 
+ *  descriptors, get/set confifuration etc. 
+ */
 void usb_handle_setup_packet (void);
 
+// Macro to check if new setup data is available: it is syntactic sugar.
+// See usb_common.c. 
+// It is used in fw.c.
 #define usb_setup_packet_avail()	_usb_got_SUDAV
 
 #endif /* _USB_COMMON_H_ */
