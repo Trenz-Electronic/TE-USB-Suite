@@ -33,6 +33,9 @@
 //extern __xdata char str4[];
 //extern __xdata char str5[];
 
+//This bit is a flag for the arrival of a SETUP USB PACKET.
+//Global variable set by SUDAV isr (_usb_got_SUDAV, usb SetUp Data AVailable). 
+//In usb_common.h is redefined using a macro as usb_setup_packet_avail(). It is syntactic sugar.
 volatile __bit _usb_got_SUDAV;
 
 unsigned char	_usb_config = 0;
@@ -61,6 +64,14 @@ void setup_descriptors (void){
 	}
 }
 
+//SUDAV ISR
+/*SUDAV ISR should set a flag ( _usb_got_SUDAV) and return. 
+In the main polling loop (aka superloop while(1) in fw.c) the flag change is detected by 
+"if(usb_setup_packet_avail()"  (it is equal to "if(_usb_got_SUDAV)"). 
+If _usb_got_SUDAV=1, the usb_handle_setup_packet() in fw.c (and defined in usbcommon.c) process the data from SETUP USB PACKET.  
+Remember that the 8051 runs "slowly" compared to the USB bus.  You just don't have time to do a big switch statement 
+inside the ISR and in any case is not normally good practice to put "heavy" function inside an ISR. 
+The ISR should exit and then "jump" to the desired "heavy" function (if any).*/
 static void isr_SUDAV (void) __interrupt{
 	clear_usb_irq ();
 	_usb_got_SUDAV = 1;
