@@ -65,8 +65,9 @@ BYTE cmd_cnt = 0;                       //Number of command arrived at EP1
 * The host computer's SW should use a polling procedure to retrieve the I2C bytes read 
 * (and stored) by FX2 microcontroller.
 * 
+* NOTE
 * The interrupt request USB_INT of XPS_I2C_SLAVE custom IP block is 
-* served by a polling function (int_pin_pool()) that run in the superloop while(1) of fw.c.
+* served by a polling function (int_pin_pool()) that run in the superloop while(1) of fw.c, and not by an ISR.
 * int_pin_pool() is wrapped with ep1_pool() inside activity() function.
 * 
 * It is used with MB Command connection type A. If XPS_I2C_SLAVE custom IP block is synthetized on the FPGA.
@@ -76,13 +77,34 @@ BYTE cmd_cnt = 0;                       //Number of command arrived at EP1
 * 
 * It is not used with MB Command: connection type B. If XPS_I2C_SLAVE custom IP block is synthetized on the FPGA.
 * Command (aka host computer software's MB command to FPGA's MB2FX2_REGs) with no reply.
+* 
+* Pull INT pool. Every Logical Architecture Layer.
+* If an autoresponse interrupt is preconfigured (by host computer'SW using SET_INTERRUPT => CMD_SET_AUTORESPONSE =>
+* sts_int_auto_configured = 1) and an interrupt request is rised by FPGA chip (FPGA_INTERRUPT_REQUEST = 1 
+* => pin INT0=1 => FPGA_INT0=1), FX2 microcontroller firmware reads (using I2C) a maximum of 32 byte (in the 
+* firmware a maximum of 12 is preconfigured but it could be overwritten by a host software TE API Command 
+* SET_INTERRUPT => CMD_SET_AUTORESPONSE => iar_adress = EP1OUTBUF[1];iar_count = EP1OUTBUF[2];) from an I2C address.
+* The I2C bytes data are copied in the byte array auto_response_data by the int_pin_pool() firmware function. 
+* This byte array coul be pulled out by host computer'SW using SET_INTERRUPT ( => CMD_GET_AUTORESPONSE => 
+* for(i = 0; i < 32; i++) EP1INBUF[i+1] = auto_response_data[i];). 
+* 
+* Pull INT pool. Reference Design: Logical Archirecture Layer = Reference Architecture Layer
+* It is usually used with XPS_I2C_SLAVE custom IP block for command, settings and status communication.
+* When MicroBlaze write data to MB2FX2_REG0, an interrupt request (USB_INT) is rised by FPGA chip 
+* (USB_INT =1=> pin INT0 =1 => FPGA_INT0 =1) is rised. 
+* This pin is connected to PA0/INT0 pin of FX2 microcontroller. 
+* If an autoresponse interrupt is preconfigured (sts_int_auto_configured = 1) and a FPGA_INT0=1, the FX2 
+* microcontroller firmware reads all MB2FX2 registers. The registers value are copied in the byte array 
+* auto_response_data by the int_pin_pool() firmware function. This byte array coul be pulled out by host 
+* computer'SW using SET_INTERRUPT ( => CMD_GET_AUTORESPONSE => 
+* for(i = 0; i < 32; i++) EP1INBUF[i+1] = auto_response_data[i];)
 *******************************************************************************/
 
 //"AUTORESPONSE YES: 3rd section of code to run if MB Command connection Type A is realized"
 //for example https://wiki.trenz-electronic.de/display/TEUSB/FX22MB_REG0_GETVERSION+command
 void int_pin_pool(void){
 	if (sts_int_auto_configured){           //if (Interrupt AutoResponse Configured == 1) 
-	        //pin INT0 (aka FPGA_INT0) is 1 if USB_INT=1
+	        //pin INT0 (aka FPGA_INT0) is 1 if USB_INT=1 (Reference Design case)
 		if(FPGA_INT0){                  //if (pin INT0 ==1)  
 			iar_pin_status = 1;     //Interrupt AutoResponse Pin Status = 1;
 			if (iar_count > 32)     //Interrupt AutoResponse Count > 32
