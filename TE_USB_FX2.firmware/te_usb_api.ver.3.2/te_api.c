@@ -57,7 +57,15 @@ BYTE prev_done = 0;                     //Flag: internal test not done before
 BYTE cmd_cnt = 0;                       //Number of command arrived at EP1
 //==============================================================================
 /*******************************************************************************
-* Pull INT pool aka Interrupt Pin polling: the interrupt request USB_INT of XPS_I2C_SLAVE custom IP block is 
+* Pull INT pool aka Interrupt Pin polling aka
+* Pull INT pool data from an I2C address when FPGA's chip rise INT0 pin and an autoresponse 
+* interrupt is preconfigured by host computer's SW. The FX2 microcontroller pull 
+* (using I2C in int_pin_pool()) x (x defined by EP1OUTBUF[2]) number of bytes 
+* from y I2C address (y defined by EP1OUTBUF[1]). 
+* The host computer's SW should use a polling procedure to retrieve the I2C bytes read 
+* (and stored) by FX2 microcontroller.
+* 
+* The interrupt request USB_INT of XPS_I2C_SLAVE custom IP block is 
 * served by a polling function (int_pin_pool()) that run in the superloop while(1) of fw.c.
 * int_pin_pool() is wrapped with ep1_pool() inside activity() function.
 * 
@@ -88,7 +96,10 @@ void int_pin_pool(void){
 	}
 }
 /*******************************************************************************
-* Pull EP1 data aka Polling for EP1 data
+* Pull EP1 data aka Polling for EP1 data aka
+* Pull EP1 data aka pull possible TE API Commands (FW APIs) 
+* from USB connection (with host computer's SW) 
+* and execute the function requested by host computer's SW using TE API Commands.
 *******************************************************************************/
 void ep1_pool(void){
 	BYTE i;
@@ -441,10 +452,25 @@ void ep1_pool(void){
 	}
 }
 /*****************************************************************************
-* Main loop 
+* One of the two main loop content at the end of initialization phase. 
+* Activity is the Second and Third Polling Activity inside while(1) of fw.c 
+* The first Polling activity is "if(usb_setup_packet_avail()) usb_handle_setup_packet();" inside while(1) of fw.c
 ******************************************************************************/
-void activity(void){
-	ep1_pool();     // Pull EP1 data aka Polling for EP1 data
-	int_pin_pool(); // Pull INT pool aka Interrupt Pin polling
+void activity(void)
+{
+	ep1_pool();     // Second Polling Activity inside while(1) of fw.c
+        // Pull EP1 data aka Polling for EP1 data aka
+        // Pull EP1 data aka pull possible TE API Commands (FW APIs) 
+        // from USB connection (with host computer's SW) 
+        // and execute the function requested by host computer's SW using TE API Commands.
+        
+        int_pin_pool(); // Third Polling Activity inside while(1) of fw.c
+        // Pull INT pool aka Interrupt Pin polling aka
+        // Pull INT pool data from an I2C address when FPGA's chip rise INT0 pin and an autoresponse 
+        // interrupt is preconfigured by host computer's SW. The FX2 microcontroller pull 
+        // (using I2C in int_pin_pool()) x (x defined by EP1OUTBUF[2]) number of bytes 
+        // from y I2C address (y defined by EP1OUTBUF[1]). 
+        // The host computer's SW should use a polling procedure to retrieve the I2C bytes read 
+        // (and stored) by FX2 microcontroller.
 }
 //*****************************************************************************
