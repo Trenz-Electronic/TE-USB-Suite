@@ -81,6 +81,8 @@ void usb_install_handlers (void){
 	setup_descriptors ();	    // ensure that they're set before use
 
 	hook_uv (UV_SUDAV,     (unsigned short) isr_SUDAV);
+	//used in "if(usb_setup_packet_avail())" inside the superloop while(1) of fw.c
+	
 	hook_uv (UV_USBRESET,  (unsigned short) isr_USBRESET);
 	hook_uv (UV_HIGHSPEED, (unsigned short) isr_HIGHSPEED);
 	USBIE = bmSUDAV | bmURES | bmHSGRANT;
