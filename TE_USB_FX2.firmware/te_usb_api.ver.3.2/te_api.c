@@ -37,7 +37,8 @@ EP1INBUF: EP1 (reply) buffer from host computer to USB FX2 microcontroller =>
 It is written in the host computer's SW byte array reply[] of 
 C++ TE_USB_FX2_SendCommand(...,command,...) or 
 C# TE_USB_FX2_SendCommand(...,command,...) or 
-libusb(x) C libusb_bulk_transfer(usbDeviceHandle, LIBUSB_ENDPOINT_IN | 1, command, x, &actual_length, 1000) used with command[0] = USB FX2 API Command.
+libusb(x) C libusb_bulk_transfer(usbDeviceHandle, LIBUSB_ENDPOINT_IN | 1, command, x, &actual_length, 1000) 
+used with command[0] = USB FX2 API Command.
 */
 
 #include "te_api.h"
@@ -133,6 +134,7 @@ void int_pin_pool(void){
 			iar_pin_status = 0;     //Interrupt AutoResponse Pin Status = 0;
 	}
 }
+
 /*******************************************************************************
 * Pull EP1 data aka Polling for EP1 data aka
 * Pull EP1 data aka pull possible TE API Commands (FW APIs) 
@@ -489,6 +491,7 @@ void ep1_pool(void){
 		}
 	}
 }
+
 /*****************************************************************************
 * One of the two main loop content at the end of initialization phase. 
 * Activity is the Second and Third Polling Activity inside while(1) of fw.c 
