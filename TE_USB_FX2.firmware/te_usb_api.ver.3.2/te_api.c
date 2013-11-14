@@ -24,6 +24,22 @@ IN THE SOFTWARE.
 -- Engineer: Oleksandr Kiyenko (a.kienko@gmail.com)
 */
 
+/*
+EP1OUTBUF : EP1 (command) buffer from USB FX2 microcontroller to host computer => 
+EP1OUTBUF[0] is written by host computer's software 
+C++ TE_USB_FX2_SendCommand(...,command,...)  or 
+C# TE_USB_FX2_SendCommand(...,command,...) or 
+libusb(x) C libusb_bulk_transfer(usbDeviceHandle, LIBUSB_ENDPOINT_OUT | 1, command, x, &actual_length, 1000) 
+used with command[0] = USB FX2 API Command.
+*/
+/*
+EP1INBUF: EP1 (reply) buffer from host computer to USB FX2 microcontroller => 
+It is written in the host computer's SW byte array reply[] of 
+C++ TE_USB_FX2_SendCommand(...,command,...) or 
+C# TE_USB_FX2_SendCommand(...,command,...) or 
+libusb(x) C libusb_bulk_transfer(usbDeviceHandle, LIBUSB_ENDPOINT_IN | 1, command, x, &actual_length, 1000) used with command[0] = USB FX2 API Command.
+*/
+
 #include "te_api.h"
 #include "syncdelay.h"
 #include "fx2regs.h"
