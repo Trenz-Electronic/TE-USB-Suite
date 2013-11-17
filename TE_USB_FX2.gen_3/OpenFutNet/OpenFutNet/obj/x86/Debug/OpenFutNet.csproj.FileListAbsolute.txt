@@ -1,0 +1,11 @@
+C:\OpenFutNet\OpenFutNet\bin\Debug\OpenFutNet.exe
+C:\OpenFutNet\OpenFutNet\bin\Debug\OpenFutNet.pdb
+C:\OpenFutNet\OpenFutNet\bin\Debug\CyUSB.dll
+C:\OpenFutNet\OpenFutNet\bin\Debug\TE_USB_FX2_CyUSB.dll
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\OpenFutNet.Form1.resources
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\OpenFutNet.Properties.Resources.resources
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\GenerateResource.read.1.tlog
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\GenerateResource.write.1.tlog
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\OpenFutNet.exe
+C:\OpenFutNet\OpenFutNet\obj\x86\Debug\OpenFutNet.pdb

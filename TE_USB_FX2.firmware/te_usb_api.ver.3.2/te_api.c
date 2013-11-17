@@ -55,7 +55,7 @@ __xdata BYTE	sts_flash_busy = 1;     //SPI Flash memory busy status
 __xdata BYTE	sts_fpga_prog = 1;      //FPGA DONE PIN status
 __xdata BYTE	sts_booting = 0;
 __xdata BYTE	sts_i2c_new_data = 0;
-__xdata BYTE	sts_int_auto_configured = 0; HighSpeedMode
+__xdata BYTE	sts_int_auto_configured = 0; 
 __xdata BYTE	sts_high_speed_mode = 0; //HighSpeedMode USB FX2 enabled status
 
 __xdata BYTE	iar_pin_status = 0;     //Interrupt AutoResponse Pin Status
@@ -446,12 +446,24 @@ void ep1_pool(void){
 				new_data = 1; //A flag is raised: new data are availble in EP1INBUF for the host computer's SW
 				break;
 			//-----------------------------------------------------------------
-			//TO DO: add FPGA_RESET to Trenz Electronic Wiki
-			//Currently the Reference FPGA image does NOT use INT1 pin for FPGA RESET;
-			//#NET  USB_INT1_pin is commented out (#) in 
-			//1) TE0300 reference design constraints file: https://github.com/Trenz-Electronic/TE03XX-Reference-Designs/blob/master/reference-TE0300/data/system.ucf
-			//2) TE0320 reference design constraints file: https://github.com/Trenz-Electronic/TE03XX-Reference-Designs/blob/master/reference-TE0320/data/system.ucf
-			//3) TE0630 reference design constraints file: https://github.com/Trenz-Electronic/TE063X-Reference-Designs/blob/master/reference-TE0630/data/system.ucf
+			// TO DO: add FPGA_RESET to Trenz Electronic Wiki
+			// In TE USB FX2 reference firmware (here), the "fpga reset" command drive pin PD1 to '1' 
+                        // or '0' on the base of EP1OUTBUF[1] (Command[1]) value.
+			// Currently the Reference FPGA image does NOT use INT1 pin for FPGA RESET;
+			// #NET  USB_INT1_pin is commented out (#) in 
+			// 1) TE0300 reference design constraints file: https://github.com/Trenz-Electronic/TE03XX-Reference-Designs/blob/master/reference-TE0300/data/system.ucf
+			// 2) TE0320 reference design constraints file: https://github.com/Trenz-Electronic/TE03XX-Reference-Designs/blob/master/reference-TE0320/data/system.ucf
+			// 3) TE0630 reference design constraints file: https://github.com/Trenz-Electronic/TE063X-Reference-Designs/blob/master/reference-TE0630/data/system.ucf
+			// 
+			// In vcom reference firmware, 
+			// (https://github.com/Trenz-Electronic/TE-USB-Suite/blob/master/TE_USB_FX2.firmware/vcom-asyn/te_vcom.c
+			// or https://github.com/Trenz-Electronic/TE-USB-Suite/blob/master/TE_USB_FX2.firmware/vcom-cli/te_vcom.c)
+			// the "fpga reset" command execute FPGA reset sequence by driving FPGA 
+			// FX2_PROG_B pin low and high after some delay. 
+                        // FPGA_PROG = 0; //FX2_PROG_B = 0;
+                        // SYNCDELAY; SYNCDELAY; SYNCDELAY;
+                        // FPGA_PROG = 1; //FX2_PROG_B = 1;
+                        //
 			case CMD_FPGA_RESET:
 				FPGA_INT1 = (EP1OUTBUF[1]) ? 1 : 0;
 				EP1INBUF[0] = FPGA_INT1;
