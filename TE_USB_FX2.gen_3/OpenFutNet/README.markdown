@@ -10,79 +10,67 @@ TO DO: add type of FPGA selection (add manual selection; automatic selection is 
 TO DO: change the memory instantiation. <br />
 
 ##Info
-1)
-TE USB FX2 module starts as a TE device (at power on) when
-A) 3rd Generation Firmware is correctly stored in FX2 microcontroller's EEPROM;
+1)<br />
+TE USB FX2 module starts as a TE device (at power on) when:<br />
+A) 3rd Generation Firmware is correctly stored in FX2 microcontroller's EEPROM;<br />
 B) the EEPROM switch is set to ON when the TE USB FX2 module is powered on.<br />
 
-TE USB FX2 module starts as a Cypress device (at power on) when
+TE USB FX2 module starts as a Cypress device (at power on) when:<br />
 A) the EEPROM switch is set to OFF when the TE USB FX2 module is powered on.<br />
 
-TE USB FX2 module starts as a DEWESoft device (at power on) when
-A) 2nd Generation Firmware is correctly stored in FX2 microcontroller's EEPROM;
+TE USB FX2 module starts as a DEWESoft device (at power on) when:<br />
+A) 2nd Generation Firmware is correctly stored in FX2 microcontroller's EEPROM;<br />
 B) the EEPROM switch is set to ON when the TE USB FX2 module is powered on.<br />
 
 
-2)
-Recovery Procedure.
-TE USB FX2 module is used as a Cypress device and it is possible to programm into
-FX2 microcontroller's EEPROM 2nd or 3rd Generation Firmware.<br />
-Procedure description. You should:
-A) turn off the TE micromodule
-B) set the EEPROM switch to OFF
-C) turn on the TE micromodule
-D) set the EEPROM switch to ON
-E) install the Cypress USB Generic driver (if it is not already installed)
-F) select the .icc file (FX2 microcontroller's Firmware of 2nd or 3rd Generation must be used) to 
-   program into FX2 microcontoller's EEPROM using left button "Select .iic file or enter file path"
-G) program the .icc file into EEPROM using right button "Program USB: write IIC EEPROM"
-H) wait the end of OpenFutNet programming operation (the programming operation ends when buttons are released)
-I) check the firmware version written if a 3rd Generation firmware has been selected at section F) section.<br />
+2)<br />
+Recovery Procedure.<br />
+TE USB FX2 module is used as a Cypress device and it is possible to programm into FX2 microcontroller's EEPROM 2nd or 3rd Generation Firmware.<br />
+Procedure description. You should:<br />
+A) turn off the TE micromodule;<br />
+B) set the EEPROM switch to OFF;<br />
+C) turn on the TE micromodule;<br />
+D) set the EEPROM switch to ON;<br />
+E) install the Cypress USB Generic driver (if it is not already installed);<br />
+F) select the .icc file (FX2 microcontroller's Firmware of 2nd or 3rd Generation must be used) to program into FX2 microcontoller's EEPROM using left button "Select .iic file or enter file path";<br />
+G) program the .icc file into EEPROM using right button "Program USB: write IIC EEPROM";<br />
+H) wait the end of OpenFutNet programming operation (the programming operation ends when buttons are released);<br />
+I) check the firmware version written if a 3rd Generation firmware has been selected at section F).<br />
  
  
 ##Warning
  
-1)
-For the Recovery Procedure, it is necessary to install the Cypress USB Generic driver.
-On some computers, it could automatically install itself. On other computers, you must install
-the version that can be founded on Trenz Electronic Web Site 
+1)<br />
+For the Recovery Procedure, it is necessary to install the Cypress USB Generic driver.<br />
+On some computers, it could automatically install itself. On other computers, you must install the version that can be founded on Trenz Electronic Web Site<br /> 
 http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite/d2/recovery/d3/drivers.html.<br />
  
  
-2)
+2)<br />
 To be able to use this program you must install the Trenz Electronic driver TE USB FX2 driver.<br />
  
  
-3) 
+3)<br /> 
 This program should be used with a single Trenz Electronic or Cypress device attached.<br />
 
-This program has been realized in this way for two reason:
-A) the TE USB FX2 module are not identified by a unique serial number;
+This program has been realized in this way for two reason:<br />
+A) the TE USB FX2 module are not identified by a unique serial number;<br />
 B) the program is more simple and intuitive to use.<br />
 
-In any case, if it is necessary a version of this program to use with more than one single micromodule,
-it can be realized using this program as example (or better the alternative version under test explained), 
-but it is strongly advised to find a way to uniquely identify the TE micromodule, before to write a new program.<br />
+In any case, if it is necessary a version of this program to use with more than one single micromodule, it can be realized using this program as example (or better the alternative version under test explained), but it is strongly advised to find a way to uniquely identify the TE micromodule, before to write a new program.<br />
 
  
 4)
-Micromodule's EEPROM switch should be moved to ON to realize the FX2 microcontroller's 
-EEPROM programming. 
+Micromodule's EEPROM switch should be moved to ON to realize the FX2 microcontroller's EEPROM programming.<br />
 
-For the Recovery Procedure (TE USB FX2 module turn on as Cypress device), the TE USB FX2 module must be 
-powered on with EEPROM switch moved to OFF.
-After this, the EEPROM switch must be set to ON; otherwise the EEPROM programming will fail.
-Unfortunately, at this moment the TE USB FX2 module can't automatically warning you about user's oversight 
-(EEPROM switch is left to OFF). <br />
+For the Recovery Procedure (TE USB FX2 module turn on as Cypress device), the TE USB FX2 module must be powered on with EEPROM switch moved to OFF.<br />
+After this, the EEPROM switch must be set to ON; otherwise the EEPROM programming will fail.<br />
+Unfortunately, at this moment the TE USB FX2 module can't automatically warning you about user's oversight (EEPROM switch is left to OFF). <br />
 
  
 5)
-At this moment, like the Python Open_FUT, the program use one single large array of byte for 
-the FPGA's bitstream that should be written into the SPI Flash of the micromodule.
-If a very old computer with very low RAM is used, this may affect the performance of the program;
-we have not yet actually seen this behavior in our tests and we also doesn't expect a large hit 
-on the performnance because the performance of this program are I/O bounded by TE USB FX2 module's 
-SPI Flash.<br />
+At this moment, like the Python Open_FUT, the program use one single large array of byte for the FPGA's bitstream that should be written into the SPI Flash of the micromodule.<br />
+If a very old computer with very low RAM is used, this may affect the performance of the program; we have not yet actually seen this behavior in our tests and we also doesn't expect a large hit  on the performnance because the performance of this program are I/O bounded by TE USB FX2 module's SPI Flash.<br />
 
 At this moment, another version of OpenFutNet, using OpenFile and ReadBinary function to lessen 
 the computer's memory used, is under investigation for the correct sizing of buffer to use.
@@ -127,7 +115,7 @@ Firmware (EEPROM) and that you will not be able to program SPI Flash (FPGA).<br 
 OpenFutNet warns you about TE USB FX2 module insertion if TE USB FX2 module is seen as DEWESoft device.
 OpenFutNet warns you that it can't write the TE micromodule. 
 You should use a Recovery Procedure:
-A) turn off the TE micromodule
+A) turn off the TE micromodule;
 B) follow the Recovery Firmware Boot. <br />  
  
 
@@ -137,9 +125,7 @@ version written into FX2 microcontroller's EEPROM. <br />
  
   
 6)
-OpenFutNet use TE_USB_FX2.dll to automatically obtains information about the TE Reference Architecture 
-(TE Reference Design based on Xilinx MicroBlaze soft processor and custom TE USB FX2 module) running onto 
-Xilinx FPGA and written into SPI Flash. <br />
+OpenFutNet use TE_USB_FX2.dll to automatically obtains information about the TE Reference Architecture (TE Reference Design based on Xilinx MicroBlaze soft processor and custom TE USB FX2 module) running onto Xilinx FPGA and written into SPI Flash. <br />
  
  
 7)
