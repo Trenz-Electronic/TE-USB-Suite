@@ -16,3 +16,8 @@ Please find the documentation here (generation 3): http://www.trenz-electronic.d
 ## Open_FUT3
 Python version of DEWESoft FUT (Firmware Upgrade Tool).<br />
 Based on simplified TE USB FX2 API for C, C++ and Python (TE_USB_FX2_API_C.dll).
+
+## OpenFutNet
+C# version of Open_FUT.
+This program is a C# evolution of the program Python Open_FUT for 3rd Generation Firmware.
+Based on TE USB FX2 API for .NET ( managed C++ and C# for example).
