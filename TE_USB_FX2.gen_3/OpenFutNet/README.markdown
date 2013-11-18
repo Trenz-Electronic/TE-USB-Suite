@@ -1,6 +1,6 @@
 ## OpenFutNet 
 C# version of Open_FUT.<br />
-This program is a C# evolution of the program Python OpenFut for 3rd Generation Firmware.<br />
+This program is a C# evolution of the program Python Open_FUT for 3rd Generation Firmware.<br />
 Based on TE USB FX2 API for .NET ( managed C++ and C# for example).<br />
 
 TO DO: add .bin file support for FPGA bitstream. <br />
@@ -27,9 +27,9 @@ B) the EEPROM switch is set to ON when the TE USB FX2 module is powered on.<br /
 Recovery Procedure.<br />
 TE USB FX2 module is used as a Cypress device and it is possible to programm into FX2 microcontroller's EEPROM 2nd or 3rd Generation Firmware.<br />
 Procedure description. You should:<br />
-A) turn off the TE micromodule;<br />
+A) turn off the TE TE USB FX2 module;<br />
 B) set the EEPROM switch to OFF;<br />
-C) turn on the TE micromodule;<br />
+C) turn on the TE USB FX2 module;<br />
 D) set the EEPROM switch to ON;<br />
 E) install the Cypress USB Generic driver (if it is not already installed);<br />
 F) select the .icc file (FX2 microcontroller's Firmware of 2nd or 3rd Generation must be used) to program into FX2 microcontoller's EEPROM using left button "Select .iic file or enter file path";<br />
@@ -57,11 +57,11 @@ This program has been realized in this way for two reason:<br />
 A) the TE USB FX2 module are not identified by a unique serial number;<br />
 B) the program is more simple and intuitive to use.<br />
 
-In any case, if it is necessary a version of this program to use with more than one single micromodule, it can be realized using this program as example (or better the alternative version under test explained), but it is strongly advised to find a way to uniquely identify the TE micromodule, before to write a new program.<br />
+In any case, if it is necessary a version of this program to use with more than one single TE USB FX2 module, it can be realized using this program as example (or better the alternative version under test explained), but it is strongly advised to find a way to uniquely identify the TE USB FX2 module, before to write a new program.<br />
 
  
 4)
-Micromodule's EEPROM switch should be moved to ON to realize the FX2 microcontroller's EEPROM programming.<br />
+TE USB FX2 module's EEPROM switch should be moved to ON to realize the FX2 microcontroller's EEPROM programming.<br />
 
 For the Recovery Procedure (TE USB FX2 module turn on as Cypress device), the TE USB FX2 module must be powered on with EEPROM switch moved to OFF.<br />
 After this, the EEPROM switch must be set to ON; otherwise the EEPROM programming will fail.<br />
@@ -69,7 +69,7 @@ Unfortunately, at this moment the TE USB FX2 module can't automatically warning 
 
  
 5)
-At this moment, like the Python Open_FUT, the program use one single large array of byte for the FPGA's bitstream that should be written into the SPI Flash of the micromodule.<br />
+At this moment, like the Python Open_FUT, the program use one single large array of byte for the FPGA's bitstream that should be written into the SPI Flash of the TE USB FX2 module.<br />
 If a very old computer with very low RAM is used, this may affect the performance of the program; we have not yet actually seen this behavior in our tests and we also doesn't expect a large hit  on the performnance because the performance of this program are I/O bounded by TE USB FX2 module's SPI Flash.<br />
 
 At this moment, another version of OpenFutNet, using OpenFile and ReadBinary function to lessen 
@@ -77,7 +77,7 @@ the computer's memory used, is under investigation for the correct sizing of buf
 In this version, a lower number of static variables will be used.
 If you desire to realize a OpenFutNet program to write more than one single micromodule, this version will 
 certainly better fits your needs. But, before considering this alternative version of the program, 
-it is strongly advised to find a way to uniquely identify the TE micromodule.<br />
+it is strongly advised to find a way to uniquely identify the TE USB FX2 module.<br />
 
 
 6)
@@ -100,8 +100,8 @@ If the 3rd Generation Firmware v3.02 is used, the Firmware RAM loading is correc
 TE USB FX2 module detach/insertion cycle; it logically happens even if it isn't manually relaized.<br />
 
 2)
-OpenFutNet warns you about double (or more) TE USB FX2 module insertion if TE micromodules are seen as 
-Cypress or Trenz Electronic device. The TE micromodules seen as DEWESoft device are not warned as
+OpenFutNet warns you about double (or more) TE USB FX2 module insertion if TE USB FX2 modules are seen as 
+Cypress or Trenz Electronic device. The TE USB FX2 modules are seen as DEWESoft device are not warned as
 multiple insertions because they have another warning message.<br />
 
 
@@ -113,9 +113,9 @@ Firmware (EEPROM) and that you will not be able to program SPI Flash (FPGA).<br 
 
 4)
 OpenFutNet warns you about TE USB FX2 module insertion if TE USB FX2 module is seen as DEWESoft device.
-OpenFutNet warns you that it can't write the TE micromodule. 
+OpenFutNet warns you that it can't write the TE USB FX2 module. 
 You should use a Recovery Procedure:
-A) turn off the TE micromodule;
+A) turn off the TE USB FX2 module;
 B) follow the Recovery Firmware Boot. <br />  
  
 
