@@ -22,11 +22,13 @@ They must not be confused with TE API USB of Generation 2 and 3: one of the TE A
   provides main functions to update EEPROM and Flash memory on TE modules based on Cypress EZ-USB FX2 microcontroller.
 - Example programs (C language) which show API usage.
 
-## TE_USB_FX2.gen_3 <br /> (contains TE API USB Generation 3, some examples and Open_Fut tool)
+## TE_USB_FX2.gen_3 <br /> (contains TE API USB Generation 3, some examples, Python Open_Fut tool and C# OpenFutNet)
 - Trenz Electronic C++ API<br />
   for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).
 - Trenz Electronic C#  API<br />
   for FPGA module series equipped with FX2 USB microcontroller (Trenz Electronic firmware and drivers).
 - Example programs (C++ and C# language) which show API usage.
-- Open Firmware Upgrade Tool 3:<br />
+- Open Firmware Upgrade Tools (Generation 3):<br />
   provides main functions to update EEPROM and Flash memory on TE modules based on Cypress EZ-USB FX2 microcontroller.
+    - Python Open_FUT 
+    - C# OpenFutNet
