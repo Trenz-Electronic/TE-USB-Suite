@@ -547,7 +547,7 @@ namespace OpenFutNet
         String DEWESoftDeviceAttached_String = "The TE USB FX2 module starts as a DEWESoft USB Device." + "\r\n" + "This happens when EEPROM switch is set to ON when the TE USB FX2 module is attached to USB port (or more generally when the TE USB FX2 module is powered on with EEPROM switch ON) but the 2nd Generation Firmware is stored in the EEPROM of FX2 microcontroller." + "\r\n" + "If the DEWESoft driver is installed you are able to find this device in Windows 'Device Manager' under 'Universal Serial Bus controller'. Otherwise you are able to find this device in Windows 'Device Manager' under 'Unknow Device'." + "\r\n" + "If you desire to change the FX2 Firmware from 2nd Generation to 3rd Generation (or even if you want to simply upgrade the 2nd Generation FX2 Firmware version) you must start a Recovery Procedure. " + "\r\n" + "Recovery Procedure: you should use a power off/on cycle with EEPROM switch to OFF to start with VID and PID of a Cypress Generic device. If the computer does't see the Cypress Generic device you must install the 'Cypress Generic device' driver found on Trenz Electronic web site in the recovery area." + "\r\n";
 
         //String that is used to store the OpenFutNet version
-        String OpenFutNETversion = "v 1.0.2";
+        String OpenFutNETversion = "v 1.0.3";
         /*String  STOP*/
 
         /*Initialization of Form1 */
@@ -2320,8 +2320,15 @@ namespace OpenFutNet
                                                                 wr_fpga_bitsream[addressfield + i2] = temp_array[i2];
                                                             }
                                                             // Increment the size of the bitstream (MCS 2 BIT) 
-                                                            fpga_bitstream_sizeMCS2BIT += 1;
+                                                            //fpga_bitstream_sizeMCS2BIT += 1; 
+                                                            //The line above is correct only for *.mcs file without "holes"
+                                                            //For example if the *.mcs file has bitstream + user data. 
                                                         }
+                                                        fpga_bitstream_sizeMCS2BIT = addressfield + RecordDatByteNumber;
+                                                        //Using the line above OpenFutNet supports the *.mcs file with "holes".
+                                                        //For example if the *.mcs file has bitstream + user data.
+                                                        //Thanks to the Trenz Electronic Fpga User 
+                                                        //Alejandro for the recommendation
 
                                                     }
                                                     //else if((record_type == 1))
