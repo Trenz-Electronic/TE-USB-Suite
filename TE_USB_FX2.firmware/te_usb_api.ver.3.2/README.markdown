@@ -1,8 +1,4 @@
-# FX2 firmware for Virtual COM and CLI.
-This repository contains virtual COM project relevant to 
-Trenz Electronic modules equipped with a USB microcontroller.
-Project mased on GNU radio and usb_jtag projects.
-Refer to AN-TE0002 for project details.
+# Firmware source for TE USB (FX2) equipped modules
 
 ## Build project
 Requirements:
@@ -14,7 +10,9 @@ Build
 * make
 
 ## Driver
-Project use example virtual COM port driver from Cypress AN58764.
+Project use a digitally signed USB driver from Cypress.
+It is available here: 
+http://www.trenz-electronic.de/download/d0/Trenz_Electronic/d1/TE-USB-Suite/d2/generation_3/d3/drivers.html
 
 ## FX2 Firmware
 FX2 firmware file in iic format can be found in 'ready_for_download' folder. 
