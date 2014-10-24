@@ -323,8 +323,8 @@ void ep1_pool(void){
 				new_data = 1; //A flag is raised: new data are availble in EP1INBUF for the host computer's SW
 				break;
 			//-----------------------------------------------------------------
-			//This command writes data (from 1 to 60 bytes) to the requested EEPROM address. 
-			//Normally, it writes a 1 to 60 bytes of a new USB FX2 firmware. 
+			//This command writes data (from 1 to 32 bytes) to the requested EEPROM address. 
+			//Normally, it writes a 1 to 32 bytes of a new USB FX2 firmware. 
 			//Afterwards, CMD_EEPROM_READ command is executed and the Firmware reads back data from EEPROM. 
 			//These reads backs data will be retrieved by host computer SW in a reply packet.
 			//https://wiki.trenz-electronic.de/display/TEUSB/EEPROM_WRITE+command
@@ -337,8 +337,8 @@ void ep1_pool(void){
 				// break; It is not an error. The final break of CMD_EEPROM_WRITE is commented out; 
 				//in this way the CMD_EEPROM_READ is executed after CMD_EEPROM_WRITE.
 			//-----------------------------------------------------------------
-			//This command reads data (from 1 to 64 bytes) from requested EEPROM address.
-			//Normally, it read a 1 to 64 bytes of the current USB FX2 firmware.
+			//This command reads data (from 1 to 60 bytes) from requested EEPROM address.
+			//Normally, it read a 1 to 60 bytes of the current USB FX2 firmware.
 			//These reads data will be retrieved by host computer SW in a reply packet.
 			//https://wiki.trenz-electronic.de/display/TEUSB/EEPROM_READ+command
 			case CMD_EEPROM_READ:
